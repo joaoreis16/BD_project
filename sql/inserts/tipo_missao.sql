@@ -1,0 +1,6 @@
+INSERT INTO EXERCITO.tipo_missao(tipo) VALUES ('Territorial')
+INSERT INTO EXERCITO.tipo_missao(tipo) VALUES ('Conflito')
+INSERT INTO EXERCITO.tipo_missao(tipo) VALUES ('Diplomática')
+INSERT INTO EXERCITO.tipo_missao(tipo) VALUES ('Civil-Militar')
+INSERT INTO EXERCITO.tipo_missao(tipo) VALUES ('Evacuação')
+INSERT INTO EXERCITO.tipo_missao(tipo) VALUES ('Assalto')
