@@ -96,5 +96,23 @@ INSERT INTO EXERCITO.tipo_missao(tipo) VALUES ('Civil-Militar')
 INSERT INTO EXERCITO.tipo_missao(tipo) VALUES ('Evacuação')
 INSERT INTO EXERCITO.tipo_missao(tipo) VALUES ('Assalto')
 
+insert into EXERCITO.militar (nCC, Pnome, Unome, morada, email, dNasc, tel, nacionalidade, nMissoes, ramo, base, cargo) values (936125839, 'Willabella', ' Slatcher', '651 Amoth Hill', 'wslatcher0@yelp.com', '2/26/1988', '944116603', 'Portugal', 6, 1, 12, 1);
+
+SELECT ramo FROM EXERCITO.militar WHERE nCC = 2
+INSERT INTO EXERCITO.pelotao (nome) VALUES ('lllaoq')
+
+SELECT * FROM EXERCITO.pelotao
+SELECT * FROM EXERCITO.base_militar WHERE id =12
+SELECT * FROM EXERCITO.militar
+
+EXEC EXERCITO.createSoldado 2,10
+EXEC EXERCITO.createEngenheiro 4
+EXEC EXERCITO.createMedico 6, 2
+EXEC EXERCITO.deleteMilitar 10
+EXEC EXERCITO.setRamoCEME 11, 2
+
+UPDATE EXERCITO.base_militar SET nCC = 936125839 WHERE id = 12
+DELETE FROM EXERCITO.militar WHERE nCC = 1
+
 
 

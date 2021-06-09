@@ -8,6 +8,7 @@ DROP TRIGGER EXERCITO.base_has_unique_captain
 CREATE TRIGGER base_has_unique_captain ON EXERCITO.base_militar
 INSTEAD OF UPDATE
 AS
+	SET NOCOUNT ON;
 	DECLARE @targetCC INT
 	DECLARE @cargo	INT
 	DECLARE @base	INT
@@ -16,8 +17,8 @@ AS
 		BEGIN
 		SELECT @targetCC = nCC, @base = id FROM INSERTED
 		SELECT @cargo = cargo, @mil_base = base FROM EXERCITO.militar WHERE nCC = @targetCC
-
-		IF (@targetCC = NULL)
+		PRINT @targetCC
+		IF (@targetCC IS NULL)
 			BEGIN
 				UPDATE EXERCITO.base_militar
 				/*TODO : GUARDAR RECORD DE GENERAL ANTIGO */
@@ -54,6 +55,7 @@ GO
  *	IMPEDE QUE SEJAM ADICIONADOS MILITARES A BASES COM
  *	A CAPACIDADE MÁXIMA JÁ OCUPADA 
 */
+DROP TRIGGER EXERCITO.base_increment
 CREATE TRIGGER base_increment ON EXERCITO.militar
 AFTER INSERT, UPDATE, DELETE
 AS
@@ -87,65 +89,6 @@ AS
 
 GO
 
-
-/*
-*	TRATA DE REMOVER DA POSIÇAO CASO O MILITAR REPRESENTE
-*	UMA BASE OU UM RAMO.
-*/
-DROP TRIGGER EXERCITO.del_militar
-CREATE TRIGGER del_militar ON EXERCITO.militar
-INSTEAD OF DELETE
-AS
-	DECLARE @targetCC INT
-	DECLARE @cur_cc	INT
-	DECLARE @base	INT
-	DECLARE	@ramo	INT
-
-	SELECT @targetCC = nCC FROM DELETED
-
-	DECLARE cur CURSOR FAST_FORWARD
-
-	FOR SELECT nCC, id FROM EXERCITO.ramo;
-	OPEN cur;
-
-	FETCH cur INTO @cur_cc, @ramo
-
-	WHILE @@FETCH_STATUS = 0
-		BEGIN
-			IF (@cur_cc = @targetCC)
-				PRINT @ramo
-				UPDATE EXERCITO.ramo
-				SET nCC = NULL
-				WHERE id = @ramo
-			FETCH cur INTO @cur_cc, @ramo
-		END
-	CLOSE cur
-	DEALLOCATE cur 
-
-	DECLARE cur2 CURSOR FAST_FORWARD
-
-	FOR SELECT nCC, id FROM EXERCITO.base_militar;
-	OPEN cur2;
-
-	FETCH cur2 INTO @cur_cc, @base
-
-	WHILE @@FETCH_STATUS = 0
-		BEGIN
-			IF (@cur_cc = @targetCC)
-				UPDATE EXERCITO.ramo
-				SET nCC = NULL
-				WHERE id = @base
-			FETCH cur2 INTO @cur_cc, @base
-		END
-	CLOSE cur2
-	DEALLOCATE cur2 
-
-	DELETE FROM EXERCITO.militar WHERE nCC = @targetCC
-
-GO
-
-
-
 -------------------PELOTAO-------------------------
 
 /*
@@ -158,6 +101,7 @@ CREATE TRIGGER unique_captain ON EXERCITO.militar
 AFTER UPDATE
 AS
 	BEGIN
+		SET NOCOUNT ON;
 		DECLARE @cargo INT
 		DECLARE @targetCC INT
 		DECLARE @pelID INT
@@ -213,36 +157,6 @@ AS
 	END		
 GO
 
-/*
-*	COLOCA O CAMPO DE TODOS OS MILITARES QUE PERTENCEM
-*	AO PELOTAO A NULL E DE SEGUIDA REMOVE O PELOTAO
-*/
-DROP TRIGGER EXERCITO.del_pelotao
-CREATE TRIGGER del_pelotao ON EXERCITO.pelotao
-INSTEAD OF DELETE
-AS
-	DECLARE @pelID INT
-	DECLARE @cur_cc INT
-	SELECT @pelID = id FROM DELETED;
-	DECLARE cur CURSOR FAST_FORWARD
-
-	FOR SELECT nCC FROM EXERCITO.militar WHERE pelotao = @pelID
-	OPEN cur;
-
-	FETCH cur INTO @cur_cc
-
-	WHILE @@FETCH_STATUS = 0
-		BEGIN
-			UPDATE EXERCITO.militar
-			SET pelotao = NULL
-			WHERE nCC = @cur_cc
-			FETCH cur INTO @cur_cc
-		END
-	CLOSE cur
-	DEALLOCATE cur
-
-	DELETE FROM EXERCITO.pelotao WHERE id = @pelID
-GO
 ---------------------RAMO------------------------
 
 /* 
@@ -253,6 +167,7 @@ DROP TRIGGER EXERCITO.ramo_has_unique_CEME
 CREATE TRIGGER ramo_has_unique_CEME ON EXERCITO.ramo
 INSTEAD OF UPDATE
 AS
+	SET NOCOUNT ON;
 	DECLARE @targetCC INT
 	DECLARE @cargo	INT
 	DECLARE @ramo	INT
@@ -260,8 +175,7 @@ AS
 	IF UPDATE(nCC)
 		BEGIN			
 		SELECT @targetCC = nCC, @ramo = id FROM INSERTED
-		PRINT @targetCC
-		IF (@targetCC = NULL)
+		IF (@targetCC IS NULL)
 			BEGIN
 				UPDATE EXERCITO.ramo
 				/*TODO : GUARDAR RECORD DE GENERAL ANTIGO */
@@ -294,5 +208,33 @@ AS
 				SET nCC = @targetCC, data_inicio = GETDATE(), data_fim = NULL
 				WHERE id = @ramo
 
+		END
+GO
+
+------------------SOLDADO------------------------
+
+/*
+*	VERIFICAR QUE O TIPO DE SOLDADO DA MATCH AO SEU RAMO
+*/
+DROP TRIGGER EXERCITO.soldado_ramo_match
+CREATE TRIGGER soldado_ramo_match ON EXERCITO.soldado
+AFTER INSERT, UPDATE
+AS
+	SET NOCOUNT ON
+	DECLARE @tipo_inserted INT
+	DECLARE @ramo_inserted INT
+	DECLARE	@nCC	INT
+	DECLARE @ramo_militar INT
+
+
+	SELECT @tipo_inserted = tipo FROM INSERTED
+	SELECT @ramo_inserted = ramo FROM EXERCITO.tipo_soldado WHERE id = @tipo_inserted
+	SELECT @nCC = nCC FROM INSERTED
+	SELECT @ramo_militar = ramo FROM EXERCITO.militar WHERE nCC = @nCC
+
+	IF (@ramo_inserted != @ramo_militar)
+		BEGIN
+			RAISERROR ('TIPO DE SOLDADO INCOMPATIVEL COM RAMO',1,1)
+			ROLLBACK TRANSACTION
 		END
 GO
