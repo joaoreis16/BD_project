@@ -139,8 +139,10 @@ AS
 	END
 GO
 
+
+
 /*
-*	CRIAR UM SOLDADO ATRAVES DE MILITAR
+*	CRIAR UM SOLDADO
 */
 CREATE PROC EXERCITO.createSoldado @nCC INT, @tipo INT
 AS
@@ -157,12 +159,12 @@ AS
 GO
 
 /*
-*	CRIAR UM ENGENHEIRO ATRAVES DE MILITAR
+*	CRIAR UM ENGENHEIRO 
 */
 CREATE PROC EXERCITO.createEngenheiro @nCC INT
 AS
 	BEGIN
-		IF EXISTS (SELECT * FROM EXERCITO.militar WHERE nCC=@nCC)
+		IF EXISTS (SELECT * FROM EXERCITO.militar WHERE nCC=@nCC) AND EXERCITO.disjointMilitar(@nCC) = 1
 			BEGIN
 				INSERT INTO EXERCITO.engenheiro(nCC) VALUES (@nCC)
 				RETURN 1
@@ -174,18 +176,83 @@ AS
 GO
 
 /*
-*	CRIAR UM MEDICO ATRAVES DE MILITAR
+*	CRIAR UM MEDICO
 */
 CREATE PROC EXERCITO.createMedico @nCC INT, @espec INT
 AS
 	BEGIN
-		IF EXISTS (SELECT * FROM EXERCITO.militar WHERE nCC=@nCC)
+		IF EXISTS (SELECT * FROM EXERCITO.militar WHERE nCC=@nCC) AND EXERCITO.disjointMilitar(@nCC) = 1
 			BEGIN
 				INSERT INTO EXERCITO.medico(nCC, especialidade) VALUES (@nCC, @espec)
 				RETURN 1
 			END
 		ELSE
-			RAISERROR ('nCC NÃO REGISTADO',1,1)
+			RAISERROR ('nCC NÃO REGISTADO OU JÁ PERTENCE A OUTRA SUBCLASSE',1,1)
 			RETURN 0
+	END
+GO
+
+
+/*
+*	DAR EQUIPAMENTO A SOLDADO
+*/
+CREATE PROC EXERCITO.assignEquipamento @nCC INT, @equi INT
+AS
+	BEGIN
+		IF EXISTS (SELECT * FROM EXERCITO.soldado WHERE nCC = @nCC)
+			BEGIN
+				IF EXISTS (SELECT * FROM EXERCITO.equipamento WHERE id = @equi)
+					BEGIN
+						INSERT INTO EXERCITO.utiliza_equipamento(soldado, equipamento, data_i, data_f) VALUES (@nCC, @equi, GETDATE(), NULL)
+					END
+				ELSE
+					RAISERROR ('EQUIPAMENTO NAO EXISTE',1,1)
+					RETURN
+			END
+		ELSE
+			RAISERROR ('nCC NÃO É UM SOLDADO',1,1)
+			RETURN
+	END
+GO
+
+/*
+*	CRIAR ARMA
+*/
+DROP PROC EXERCITO.createArma
+CREATE PROC EXERCITO.createArma @tipo_equi INT, @tipo_arma INT
+AS
+	DECLARE @lastid INT
+	BEGIN
+		IF EXISTS (SELECT DISTINCT(maintipo) FROM EXERCITO.tipo_arma WHERE maintipo = @tipo_equi AND id = @tipo_arma)
+			BEGIN
+				INSERT INTO EXERCITO.equipamento(tipo) VALUES (@tipo_equi)
+				SELECT @lastid = SCOPE_IDENTITY()
+				PRINT (@lastid)
+				INSERT INTO EXERCITO.arma(idEqui, idTipo) VALUES (@lastid, @tipo_arma)
+			END
+		ELSE
+			RAISERROR ('TIPO DE EQUIPAMENTO INVALIDO',1,1)
+			RETURN
+	END
+GO
+
+/*
+*	CRIAR VEICULO
+*/ 
+DROP PROC EXERCITO.createVeiculo
+CREATE PROC EXERCITO.createVeiculo @tipo_equi INT, @tipo_arma INT, @matricula INT
+AS
+	DECLARE @lastid INT
+	BEGIN
+		IF EXISTS (SELECT DISTINCT(maintipo) FROM EXERCITO.tipo_veiculo WHERE maintipo = @tipo_equi AND id = @tipo_arma)
+			BEGIN
+				INSERT INTO EXERCITO.equipamento(tipo) VALUES (@tipo_equi)
+				SELECT @lastid = SCOPE_IDENTITY()
+				PRINT (@lastid)
+				INSERT INTO EXERCITO.veiculo(idEqui, idTipo, matricula) VALUES (@lastid, @tipo_arma, @matricula)
+			END
+		ELSE
+			RAISERROR ('TIPO DE EQUIPAMENTO INVALIDO',1,1)
+			RETURN
 	END
 GO

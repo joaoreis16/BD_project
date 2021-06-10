@@ -1,0 +1,15 @@
+INSERT INTO EXERCITO.tipo_arma (modelo, maintipo) VALUES ('Glock 17 Gen 5', 1)
+INSERT INTO EXERCITO.tipo_arma (modelo, maintipo) VALUES ('Heckler & Koch P30', 1)
+INSERT INTO EXERCITO.tipo_arma (modelo, maintipo) VALUES ('Heckler & Koch MP5', 2)
+INSERT INTO EXERCITO.tipo_arma (modelo, maintipo) VALUES ('Heckler & Koch HK416', 3)
+INSERT INTO EXERCITO.tipo_arma (modelo, maintipo) VALUES ('SCAR-H STD',3)
+INSERT INTO EXERCITO.tipo_arma (modelo, maintipo) VALUES ('Barrett M107', 4)
+INSERT INTO EXERCITO.tipo_arma (modelo, maintipo) VALUES ('Arctic Warfare', 4)
+INSERT INTO EXERCITO.tipo_arma (modelo, maintipo) VALUES ('Franchi SPAS-15', 5)
+INSERT INTO EXERCITO.tipo_arma (modelo, maintipo) VALUES ('Benelli Super Nova', 5)
+INSERT INTO EXERCITO.tipo_arma (modelo, maintipo) VALUES ('MG3', 6)
+INSERT INTO EXERCITO.tipo_arma (modelo, maintipo) VALUES ('Browning M2', 6)
+INSERT INTO EXERCITO.tipo_arma (modelo, maintipo) VALUES ('Milkor MGL', 7)
+INSERT INTO EXERCITO.tipo_arma (modelo, maintipo) VALUES ('Mk 19 mod 3', 7)
+
+SELECT * FROM EXERCITO.tipo_arma

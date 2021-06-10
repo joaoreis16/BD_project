@@ -183,14 +183,22 @@ CREATE TABLE EXERCITO.base_ramo (
 
 CREATE TABLE EXERCITO.equipamento (
 	id INT PRIMARY KEY IDENTITY(1,1),
-	modelo VARCHAR(30) NOT NULL,
+	tipo INT NOT NULL,
+)
+
+
+ALTER TABLE EXERCITO.equipamento ADD tipo INT FOREIGN KEY (tipo) REFERENCES EXERCITO.tipo_equipamento(id)
+
+CREATE TABLE EXERCITO.tipo_equipamento (
+	id INT PRIMARY KEY IDENTITY(1,1),
+	tipo VARCHAR(30) NOT NULL
 )
 
 CREATE TABLE EXERCITO.arma (
 	idEqui INT,
 	idTipo INT,
 	
-	PRIMARY KEY (idEqui, idTipo),
+	PRIMARY KEY (idEqui),
 	FOREIGN KEY (idEqui) REFERENCES EXERCITO.equipamento(id),
 	FOREIGN KEY (idTipo) REFERENCES EXERCITO.tipo_arma(id)
 )
@@ -201,7 +209,7 @@ CREATE TABLE EXERCITO.veiculo (
 	idMissao INT,
 	matricula INT UNIQUE NOT NULL,
 	
-	PRIMARY KEY (idEqui, idTipo, idMissao),
+	PRIMARY KEY (idEqui),
 	FOREIGN KEY (idEqui) REFERENCES EXERCITO.equipamento(id),
 	FOREIGN KEY (idTipo) REFERENCES EXERCITO.tipo_veiculo(id),
 	FOREIGN KEY (idMissao) REFERENCES EXERCITO.missao(id)
@@ -213,10 +221,21 @@ DROP TABLE EXERCITO.tipo_veiculo
 
 CREATE TABLE EXERCITO.tipo_arma (
 	id INT PRIMARY KEY	IDENTITY(1,1),
-	tipo VARCHAR(30) NOT NULL,
+	modelo VARCHAR(100) NOT NULL,
+	maintipo INT
+
+	FOREIGN KEY(maintipo) REFERENCES EXERCITO.tipo_equipamento(id)
 )
 
 CREATE TABLE EXERCITO.tipo_veiculo (
 	id INT PRIMARY KEY	IDENTITY(1,1),
-	tipo VARCHAR(100) NOT NULL,
+	modelo VARCHAR(100) NOT NULL,
+	maintipo INT
+
+	FOREIGN KEY(maintipo) REFERENCES EXERCITO.tipo_equipamento(id)
 )
+
+
+ALTER TABLE EXERCITO.tipo_veiculo ADD maintipo INT FOREIGN KEY (maintipo) REFERENCES EXERCITO.tipo_equipamento(id)
+ALTER TABLE EXERCITO.tipo_arma ADD maintipo INT FOREIGN KEY (maintipo) REFERENCES EXERCITO.tipo_equipamento(id)
+SELECT * FROM EXERCITO.tipo_equipamento
