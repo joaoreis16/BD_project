@@ -1,9 +1,9 @@
     *Cargos
 chefe do estado-maior do exército
 vice-chefe do estado maior do exército
-general     (chefe de uma base militar)
+General     (chefe de uma base militar)
 Capitão     (chefe de um pelotão)
-recruta        (qualquer outro gordo)
+Recruta        (qualquer outro gordo)
 
     *soldados
   -FT
@@ -237,5 +237,10 @@ INSERT INTO EXERCITO.tipo_missao('id', 'tipo') VALUES (4, 'Guerra');
 INSERT INTO EXERCITO.missao('nome', 'tipo', 'pais') VALUES ("Operação Django", 2, "Azerbeijão")
 INSERT INTO EXERCITO.missao('nome', 'tipo', 'pais') VALUES ("Operação Maldivas", 3, "Maldivas")
 
-
+missao 
+militar
+bases
+ramos
+equipamento
+pelotao
 
