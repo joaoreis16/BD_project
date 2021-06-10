@@ -41,6 +41,10 @@ Partial Class info_militar
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.BoxMissao = New System.Windows.Forms.GroupBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BoxMissao.SuspendLayout()
@@ -70,7 +74,7 @@ Partial Class info_militar
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(104, 208)
+        Me.Label1.Location = New System.Drawing.Point(104, 211)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(50, 20)
         Me.Label1.TabIndex = 21
@@ -78,16 +82,16 @@ Partial Class info_militar
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(173, 205)
+        Me.TextBox1.Location = New System.Drawing.Point(173, 208)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(368, 27)
+        Me.TextBox1.Size = New System.Drawing.Size(308, 27)
         Me.TextBox1.TabIndex = 22
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(104, 262)
+        Me.Label2.Location = New System.Drawing.Point(104, 265)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(0, 20)
         Me.Label2.TabIndex = 23
@@ -95,7 +99,7 @@ Partial Class info_militar
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(93, 258)
+        Me.Label3.Location = New System.Drawing.Point(93, 261)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(61, 20)
         Me.Label3.TabIndex = 24
@@ -103,24 +107,24 @@ Partial Class info_militar
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(173, 255)
+        Me.TextBox2.Location = New System.Drawing.Point(173, 258)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.ReadOnly = True
-        Me.TextBox2.Size = New System.Drawing.Size(368, 27)
+        Me.TextBox2.Size = New System.Drawing.Size(308, 27)
         Me.TextBox2.TabIndex = 25
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(173, 303)
+        Me.TextBox3.Location = New System.Drawing.Point(173, 306)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.ReadOnly = True
-        Me.TextBox3.Size = New System.Drawing.Size(368, 27)
+        Me.TextBox3.Size = New System.Drawing.Size(308, 27)
         Me.TextBox3.TabIndex = 26
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(88, 306)
+        Me.Label4.Location = New System.Drawing.Point(88, 309)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(66, 20)
         Me.Label4.TabIndex = 27
@@ -146,7 +150,7 @@ Partial Class info_militar
         'CheckMissao
         '
         Me.CheckMissao.AutoSize = True
-        Me.CheckMissao.Location = New System.Drawing.Point(173, 404)
+        Me.CheckMissao.Location = New System.Drawing.Point(178, 391)
         Me.CheckMissao.Name = "CheckMissao"
         Me.CheckMissao.Size = New System.Drawing.Size(18, 17)
         Me.CheckMissao.TabIndex = 30
@@ -155,7 +159,7 @@ Partial Class info_militar
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(74, 401)
+        Me.Label6.Location = New System.Drawing.Point(79, 391)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(80, 20)
         Me.Label6.TabIndex = 31
@@ -203,18 +207,56 @@ Partial Class info_militar
         Me.BoxMissao.Controls.Add(Me.TextBox5)
         Me.BoxMissao.Controls.Add(Me.Label5)
         Me.BoxMissao.Controls.Add(Me.TextBox4)
-        Me.BoxMissao.Location = New System.Drawing.Point(88, 424)
+        Me.BoxMissao.Location = New System.Drawing.Point(93, 414)
         Me.BoxMissao.Name = "BoxMissao"
         Me.BoxMissao.Size = New System.Drawing.Size(582, 180)
         Me.BoxMissao.TabIndex = 36
         Me.BoxMissao.TabStop = False
         Me.BoxMissao.Visible = False
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(595, 268)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(107, 20)
+        Me.Label9.TabIndex = 37
+        Me.Label9.Text = "Tipo de Militar"
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Location = New System.Drawing.Point(730, 204)
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.ReadOnly = True
+        Me.TextBox7.Size = New System.Drawing.Size(284, 27)
+        Me.TextBox7.TabIndex = 38
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Location = New System.Drawing.Point(730, 261)
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.ReadOnly = True
+        Me.TextBox8.Size = New System.Drawing.Size(284, 27)
+        Me.TextBox8.TabIndex = 39
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(653, 207)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(49, 20)
+        Me.Label10.TabIndex = 40
+        Me.Label10.Text = "Cargo"
+        '
         'info_militar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1071, 632)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.TextBox8)
+        Me.Controls.Add(Me.TextBox7)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.BoxMissao)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.CheckMissao)
@@ -256,4 +298,8 @@ Partial Class info_militar
     Friend WithEvents Label8 As Label
     Friend WithEvents TextBox6 As TextBox
     Friend WithEvents BoxMissao As GroupBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents Label10 As Label
 End Class
