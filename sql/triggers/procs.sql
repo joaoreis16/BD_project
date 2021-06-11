@@ -243,4 +243,17 @@ AS
 	END
 GO
 
-SELECT * FROM EXERCITO.veiculo
+
+
+/*
+*	ELIMINAR EQUIPAMENTO
+*/
+CREATE PROC EXERCITO.deleteEquipamento @id INT
+AS
+	BEGIN
+		DELETE FROM EXERCITO.utiliza_equipamento WHERE equipamento = @id
+		DELETE FROM EXERCITO.veiculo WHERE idEqui = @id
+		DELETE FROM EXERCITO.arma WHERE idEqui = @id
+		DELETE FROM EXERCITO.equipamento WHERE id = @id
+	END
+GO

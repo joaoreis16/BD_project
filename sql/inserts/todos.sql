@@ -103,9 +103,12 @@ INSERT INTO EXERCITO.pelotao (nome) VALUES ('lllaoq')
 
 
 EXEC EXERCITO.createArma 'Glock 17 Gen 5', 1, 1232112
+EXEC EXERCITO.createVeiculo 'Leopard 2', 1, 999312
+SELECT * FROM EXERCITO.utiliza_equipamento
 
-SELECT * FROM EXERCITO.arma
-
+EXEC EXERCITO.assignEquipamento 2, 20
+EXEC EXERCITO.deleteEquipamento 20
+SELECT * FROM EXERCITO.equipamento
 
 
 
