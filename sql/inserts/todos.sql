@@ -101,34 +101,11 @@ insert into EXERCITO.militar (nCC, Pnome, Unome, morada, email, dNasc, tel, naci
 SELECT ramo FROM EXERCITO.militar WHERE nCC = 2
 INSERT INTO EXERCITO.pelotao (nome) VALUES ('lllaoq')
 
-SELECT * FROM EXERCITO.pelotao
-SELECT * FROM EXERCITO.base_militar WHERE id =12
-SELECT * FROM EXERCITO.militar
-SELECT EXERCITO.equipamento.id, EXERCITO.tipo_equipamento.tipo FROM EXERCITO.equipamento
-																JOIN EXERCITO.tipo_equipamento
-																ON EXERCITO.equipamento.tipo = EXERCITO.tipo_equipamento.id
-SELECT * FROM EXERCITO.equipamento
-SELECT * FROM EXERCITO.tipo_veiculo
-SELECT * FROM EXERCITO.tipo_arma
-DELETE FROM EXERCITO.equipamento WHERE id=18
-EXEC EXERCITO.createArma 1,14
-EXEC EXERCITO.createVeiculo 10, 29, 11124134
-SELECT * FROM EXERCITO.arma
-SELECT idEqui, matricula, EXERCITO.tipo_veiculo.modelo, EXERCITO.tipo_equipamento.tipo FROM EXERCITO.veiculo
-																		JOIN EXERCITO.tipo_veiculo
-																		ON idTipo = id
-																		JOIN EXERCITO.tipo_equipamento
-																		ON EXERCITO.tipo_equipamento.id = EXERCITO.tipo_veiculo.maintipo
-SELECT * FROM EXERCITO.tipo_equipamento
- 
-EXEC EXERCITO.createSoldado 2,10
-EXEC EXERCITO.createEngenheiro 4
-EXEC EXERCITO.createMedico 5, 2
-EXEC EXERCITO.deleteMilitar 10
-EXEC EXERCITO.setRamoCEME 11, 2
 
-UPDATE EXERCITO.base_militar SET nCC = 936125839 WHERE id = 12
-DELETE FROM EXERCITO.militar WHERE nCC = 1
+EXEC EXERCITO.createArma 'Glock 17 Gen 5', 1, 1232112
+
+SELECT * FROM EXERCITO.arma
+
 
 
 

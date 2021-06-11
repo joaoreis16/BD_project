@@ -219,20 +219,13 @@ GO
 *	CRIAR ARMA
 */
 DROP PROC EXERCITO.createArma
-CREATE PROC EXERCITO.createArma @tipo_equi INT, @tipo_arma INT
+CREATE PROC EXERCITO.createArma @modelo VARCHAR(100), @tipo INT, @nSerie INT
 AS
 	DECLARE @lastid INT
 	BEGIN
-		IF EXISTS (SELECT DISTINCT(maintipo) FROM EXERCITO.tipo_arma WHERE maintipo = @tipo_equi AND id = @tipo_arma)
-			BEGIN
-				INSERT INTO EXERCITO.equipamento(tipo) VALUES (@tipo_equi)
-				SELECT @lastid = SCOPE_IDENTITY()
-				PRINT (@lastid)
-				INSERT INTO EXERCITO.arma(idEqui, idTipo) VALUES (@lastid, @tipo_arma)
-			END
-		ELSE
-			RAISERROR ('TIPO DE EQUIPAMENTO INVALIDO',1,1)
-			RETURN
+		INSERT INTO EXERCITO.equipamento(modelo) VALUES (@modelo)
+		SELECT @lastid = SCOPE_IDENTITY()
+		INSERT INTO EXERCITO.arma(idEqui, idTipo, nSerie) VALUES (@lastid, @tipo, @nSerie)
 	END
 GO
 
@@ -240,19 +233,14 @@ GO
 *	CRIAR VEICULO
 */ 
 DROP PROC EXERCITO.createVeiculo
-CREATE PROC EXERCITO.createVeiculo @tipo_equi INT, @tipo_arma INT, @matricula INT
+CREATE PROC EXERCITO.createVeiculo @modelo VARCHAR(100), @tipo INT, @matricula INT
 AS
 	DECLARE @lastid INT
 	BEGIN
-		IF EXISTS (SELECT DISTINCT(maintipo) FROM EXERCITO.tipo_veiculo WHERE maintipo = @tipo_equi AND id = @tipo_arma)
-			BEGIN
-				INSERT INTO EXERCITO.equipamento(tipo) VALUES (@tipo_equi)
-				SELECT @lastid = SCOPE_IDENTITY()
-				PRINT (@lastid)
-				INSERT INTO EXERCITO.veiculo(idEqui, idTipo, matricula) VALUES (@lastid, @tipo_arma, @matricula)
-			END
-		ELSE
-			RAISERROR ('TIPO DE EQUIPAMENTO INVALIDO',1,1)
-			RETURN
+		INSERT INTO EXERCITO.equipamento(modelo) VALUES (@modelo)
+		SELECT @lastid = SCOPE_IDENTITY()
+		INSERT INTO EXERCITO.veiculo(idEqui, idTipo, matricula) VALUES (@lastid, @tipo, @matricula)
 	END
 GO
+
+SELECT * FROM EXERCITO.veiculo
