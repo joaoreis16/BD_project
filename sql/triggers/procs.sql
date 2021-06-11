@@ -2,6 +2,7 @@
 *	TRATA DE REMOVER DA POSIÇAO CASO O MILITAR REPRESENTE
 *	UMA BASE OU UM RAMO.
 */
+DROP PROC EXERCITO.deleteMilitar
 CREATE PROC EXERCITO.deleteMilitar @nCC INT
 AS
 	BEGIN		
@@ -18,6 +19,8 @@ AS
 						UPDATE EXERCITO.base_militar SET nCC=NULL, data_inicio=NULL, data_fim=NULL 
 						WHERE nCC = @nCC
 					END
+
+				UPDATE EXERCITO.pelotao SET nCC = NULL WHERE nCC = @nCC
 				DELETE FROM EXERCITO.militar WHERE nCC = @nCC
 				RETURN 1
 			END
@@ -103,6 +106,16 @@ AS
 			RAISERROR ('MILITAR NAO EXISTE',1,1)
 	END
 GO
+
+/*
+*	CRIA UM PELOTAO
+*/
+CREATE PROC EXERCITO.createPelotao @nome VARCHAR(150)
+AS
+	BEGIN
+		INSERT INTO EXERCITO.pelotao(nome) VALUES (@nome)
+	END
+
 
 /*
 *	REMOVE UM PELOTAO 
@@ -203,7 +216,13 @@ AS
 			BEGIN
 				IF EXISTS (SELECT * FROM EXERCITO.equipamento WHERE id = @equi)
 					BEGIN
-						INSERT INTO EXERCITO.utiliza_equipamento(soldado, equipamento, data_i, data_f) VALUES (@nCC, @equi, GETDATE(), NULL)
+						IF NOT EXISTS (SELECT * FROM EXERCITO.utiliza_equipamento WHERE equipamento = @equi)
+							BEGIN
+								INSERT INTO EXERCITO.utiliza_equipamento(soldado, equipamento, data_i, data_f) VALUES (@nCC, @equi, GETDATE(), NULL)
+							END
+						ELSE
+							RAISERROR ('EQUIPAMENTO JA A SER UTILIZADO',1,1)
+							RETURN
 					END
 				ELSE
 					RAISERROR ('EQUIPAMENTO NAO EXISTE',1,1)
@@ -255,5 +274,17 @@ AS
 		DELETE FROM EXERCITO.veiculo WHERE idEqui = @id
 		DELETE FROM EXERCITO.arma WHERE idEqui = @id
 		DELETE FROM EXERCITO.equipamento WHERE id = @id
+	END
+GO
+
+/*
+*	TERMINAR MISSAO
+*/
+CREATE PROC EXERCITO.endMissao @id INT
+AS
+	BEGIN
+		UPDATE EXERCITO.pelotao SET idMissao = NULL WHERE idMissao = @id
+		UPDATE EXERCITO.veiculo SET idMissao = NULL WHERE idMissao = @id
+		DELETE FROM EXERCITO.missao WHERE id = @id
 	END
 GO

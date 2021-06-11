@@ -226,3 +226,41 @@ CREATE TABLE EXERCITO.tipo_veiculo (
 )
 
 SELECT * FROM EXERCITO.equipamento
+
+
+------------------------------- DADOS HISTORICOS -----------------------------
+
+CREATE TABLE EXERCITO.historico_ramo (
+	nCC INT,
+	data_inicio	DATE,
+	data_fim	DATE,
+
+	PRIMARY KEY (nCC, data_inicio, data_fim),
+	FOREIGN KEY (nCC) REFERENCES EXERCITO.militar(nCC)
+)
+
+CREATE TABLE EXERCITO.historico_base (
+	nCC INT,
+	base INT,
+	data_inicio	DATE,
+	data_fim	DATE,
+
+	PRIMARY KEY (nCC, base, data_inicio, data_fim),
+	FOREIGN KEY (nCC) REFERENCES EXERCITO.militar(nCC),
+	FOREIGN KEY (base) REFERENCES EXERCITO.base_militar(id)
+)
+
+CREATE TABLE EXERCITO.historico_equipamento (
+	nCC INT,
+	equip INT,
+	data_inicio DATE,
+	data_fim DATE,
+
+	PRIMARY KEY (nCC, equip, data_inicio, data_fim),
+	FOREIGN KEY (nCC) REFERENCES EXERCITO.militar(nCC),
+	FOREIGN KEY (equip) REFERENCES EXERCITO.equipamento(id)
+)
+
+CREATE TABLE EXERCITO.historico_missao (
+	
+)

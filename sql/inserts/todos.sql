@@ -98,17 +98,10 @@ INSERT INTO EXERCITO.tipo_missao(tipo) VALUES ('Assalto')
 
 insert into EXERCITO.militar (nCC, Pnome, Unome, morada, email, dNasc, tel, nacionalidade, nMissoes, ramo, base, cargo) values (936125839, 'Willabella', ' Slatcher', '651 Amoth Hill', 'wslatcher0@yelp.com', '2/26/1988', '944116603', 'Portugal', 6, 1, 12, 1);
 
-SELECT ramo FROM EXERCITO.militar WHERE nCC = 2
+SELECT * FROM EXERCITO.militar
 INSERT INTO EXERCITO.pelotao (nome) VALUES ('lllaoq')
 
 
-EXEC EXERCITO.createArma 'Glock 17 Gen 5', 1, 1232112
-EXEC EXERCITO.createVeiculo 'Leopard 2', 1, 999312
-SELECT * FROM EXERCITO.utiliza_equipamento
-
-EXEC EXERCITO.assignEquipamento 2, 20
-EXEC EXERCITO.deleteEquipamento 20
-SELECT * FROM EXERCITO.equipamento
 
 
 
