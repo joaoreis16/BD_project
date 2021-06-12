@@ -263,10 +263,17 @@ AS
 		SELECT @base=base FROM INSERTED
 		SELECT @ramo=ramo FROM INSERTED
 
-			IF NOT EXISTS (SELECT * FROM EXERCITO.base_ramo WHERE idBase = @base AND idRamo = @ramo)
+			IF NOT EXISTS (SELECT * FROM EXERCITO.base_ramo WHERE idBase = @base AND idRamo = @ramo) AND (@base IS NOT NULL)
 			BEGIN
 				RAISERROR ('BASE NAO ABRANGE RAMO DO MILITAR',1,1)
 				ROLLBACK TRANSACTION
 			END
 		END
 
+
+SELECT * FROM EXERCITO.tipo_veiculo
+SELECT matricula, tipo, modelo FROM EXERCITO.veiculo
+							JOIN EXERCITO.equipamento
+							ON idEqui = EXERCITO.equipamento.id
+							JOIN EXERCITO.tipo_veiculo
+							ON idTipo = EXERCITO.tipo_veiculo.id

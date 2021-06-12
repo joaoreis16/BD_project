@@ -312,7 +312,15 @@ AS
 	BEGIN
 		UPDATE EXERCITO.militar SET base=@base WHERE nCC=@nCC
 	END
-SELECT TOP 1 id FROM EXERCITO.especialidade
-ORDER BY NEWID()
 
-SELECT * FROM EXERCITO.engenheiro
+
+/*
+*	REMOVER BASE
+*/
+CREATE PROC EXERCITO.deleteBase @base INT
+AS
+	BEGIN
+		UPDATE EXERCITO.militar SET base = NULL WHERE base = @base
+		DELETE FROM EXERCITO.base_ramo WHERE idBase = @base
+		DELETE FROM EXERCITO.base_militar WHERE id = @base
+	END

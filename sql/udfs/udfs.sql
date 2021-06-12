@@ -16,6 +16,5 @@ BEGIN
 END
 GO
 
-SELECT * FROM EXERCITO.tipo_veiculo
-SELECT * FROM EXERCITO.tipo_equipamento
-SELECT DISTINCT(maintipo) FROM EXERCITO.tipo_veiculo WHERE maintipo = 8 AND id=25
+SELECT * FROM EXERCITO.equipamento
+SELECT * FROM EXERCITO.arma
