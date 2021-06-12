@@ -21,6 +21,12 @@ AS
 					END
 
 				UPDATE EXERCITO.pelotao SET nCC = NULL WHERE nCC = @nCC
+				DELETE FROM EXERCITO.utiliza_equipamento WHERE soldado = @nCC
+				DELETE FROM EXERCITO.manuntencao WHERE engenheiro = @nCC
+				DELETE FROM EXERCITO.soldado WHERE nCC = @nCC
+				DELETE FROM EXERCITO.medico WHERE nCC = @nCC
+				DELETE FROM EXERCITO.engenheiro WHERE nCC = @nCC
+
 				DELETE FROM EXERCITO.militar WHERE nCC = @nCC
 				RETURN 1
 			END
@@ -288,3 +294,25 @@ AS
 		DELETE FROM EXERCITO.missao WHERE id = @id
 	END
 GO
+
+/*
+*	PROMOVER MILITAR
+*/
+CREATE PROC EXERCITO.promote @nCC INT, @id INT
+AS
+	BEGIN
+		UPDATE EXERCITO.militar SET cargo=@id WHERE nCC = @nCC
+	END
+
+/*
+*	MOVER MILITAR PARA BASE
+*/
+CREATE PROC EXERCITO.moveToBase @nCC INT, @base INT
+AS
+	BEGIN
+		UPDATE EXERCITO.militar SET base=@base WHERE nCC=@nCC
+	END
+SELECT TOP 1 id FROM EXERCITO.especialidade
+ORDER BY NEWID()
+
+SELECT * FROM EXERCITO.engenheiro

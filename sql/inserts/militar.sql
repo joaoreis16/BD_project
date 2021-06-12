@@ -2968,3 +2968,5 @@ insert into EXERCITO.militar ('nCC', 'nome', 'morada', 'email', 'Dnasc', 'tel', 
 insert into EXERCITO.militar ('nCC', 'nome', 'morada', 'email', 'Dnasc', 'tel', 'nacionalidade', 'nMissoesCumpridas', 'ramo_id', 'base_id', 'cargo_id') values (595454382, 'Henka Allison', '6437 Toban Way', 'hallison5@tiny.cc', '6/20/2000', '935 395 6403', 'Portugal', 1, 3, 18, 1);
 insert into EXERCITO.militar ('nCC', 'nome', 'morada', 'email', 'Dnasc', 'tel', 'nacionalidade', 'nMissoesCumpridas', 'ramo_id', 'base_id', 'cargo_id') values (354126801, 'Dorey Pryce', '275 Calypso Court', 'dpryce6@paypal.com', '3/1/1967', '913 590 3256', 'Portugal', 8, 2, 49, 1);
 insert into EXERCITO.militar ('nCC', 'nome', 'morada', 'email', 'Dnasc', 'tel', 'nacionalidade', 'nMissoesCumpridas', 'ramo_id', 'base_id', 'cargo_id') values (898334948, 'Packston Craise', '73697 Logan Parkway', 'pcraise7@soundcloud.com', '5/6/1997', '876 234 5420', 'Portugal', 9, 3, 27, 1);
+EXEC EXERCITO.deleteMilitar 936125839
+SELECT * FROM EXERCITO.militar

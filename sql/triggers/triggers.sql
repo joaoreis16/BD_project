@@ -108,6 +108,7 @@ AS
 		DECLARE @CCinCharge INT
 		DECLARE @CargoinCharge INT
 		IF UPDATE(pelotao)
+		BEGIN
 			SELECT @pelID = pelotao FROM INSERTED
 			SELECT @targetCC = nCC FROM INSERTED
 			SELECT @cargo = cargo FROM EXERCITO.militar WHERE nCC = @targetCC
@@ -154,6 +155,9 @@ AS
 			ELSE 
 				RAISERROR ('CARGO INVALIDO E/OU GENERAL/CAPITAO JA SELECIONADOS',1,1)
 				ROLLBACK TRANSACTION
+		END
+		ELSE
+			RETURN
 	END		
 GO
 
@@ -211,6 +215,8 @@ AS
 		END
 GO
 
+------------------MILITAR------------------------
+
 ------------------SOLDADO------------------------
 
 /*
@@ -220,23 +226,47 @@ DROP TRIGGER EXERCITO.soldado_ramo_match
 CREATE TRIGGER soldado_ramo_match ON EXERCITO.soldado
 AFTER INSERT, UPDATE
 AS
-	SET NOCOUNT ON
-	DECLARE @tipo_inserted INT
-	DECLARE @ramo_inserted INT
-	DECLARE	@nCC	INT
-	DECLARE @ramo_militar INT
+	IF UPDATE(tipo)
+	BEGIN
+		SET NOCOUNT ON
+		DECLARE @tipo_inserted INT
+		DECLARE @ramo_inserted INT
+		DECLARE	@nCC	INT
+		DECLARE @ramo_militar INT
 
 
-	SELECT @tipo_inserted = tipo FROM INSERTED
-	SELECT @ramo_inserted = ramo FROM EXERCITO.tipo_soldado WHERE id = @tipo_inserted
-	SELECT @nCC = nCC FROM INSERTED
-	SELECT @ramo_militar = ramo FROM EXERCITO.militar WHERE nCC = @nCC
+		SELECT @tipo_inserted = tipo FROM INSERTED
+		SELECT @ramo_inserted = ramo FROM EXERCITO.tipo_soldado WHERE id = @tipo_inserted
+		SELECT @nCC = nCC FROM INSERTED
+		SELECT @ramo_militar = ramo FROM EXERCITO.militar WHERE nCC = @nCC
 
-	IF (@ramo_inserted != @ramo_militar)
-		BEGIN
-			RAISERROR ('TIPO DE SOLDADO INCOMPATIVEL COM RAMO',1,1)
-			ROLLBACK TRANSACTION
-		END
+		IF (@ramo_inserted != @ramo_militar)
+			BEGIN
+				RAISERROR ('TIPO DE SOLDADO INCOMPATIVEL COM RAMO',1,1)
+				ROLLBACK TRANSACTION
+			END
+	END
 GO
 
+
+/*
+*	VERIFICAR QUE BASE DO MILITAR ABRANGE O SEU RAMO
+*/
+CREATE TRIGGER militar_base_ramo_match ON EXERCITO.militar
+AFTER INSERT,UPDATE
+AS
+	IF UPDATE(base) OR UPDATE(ramo)
+		BEGIN
+		DECLARE @base INT
+		DECLARE @ramo INT
+
+		SELECT @base=base FROM INSERTED
+		SELECT @ramo=ramo FROM INSERTED
+
+			IF NOT EXISTS (SELECT * FROM EXERCITO.base_ramo WHERE idBase = @base AND idRamo = @ramo)
+			BEGIN
+				RAISERROR ('BASE NAO ABRANGE RAMO DO MILITAR',1,1)
+				ROLLBACK TRANSACTION
+			END
+		END
 
