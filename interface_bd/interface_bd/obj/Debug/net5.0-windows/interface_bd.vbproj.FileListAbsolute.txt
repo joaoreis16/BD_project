@@ -58,3 +58,5 @@ C:\Users\VascoSousa\Desktop\BD_project\interface_bd\interface_bd\obj\Debug\net5.
 C:\Users\VascoSousa\Desktop\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\ref\interface_bd.dll
 C:\Users\VascoSousa\Desktop\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.pdb
 C:\Users\VascoSousa\Desktop\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.genruntimeconfig.cache
+C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.bases_militares.resources
+C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.info_base.resources

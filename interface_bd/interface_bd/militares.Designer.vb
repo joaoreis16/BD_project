@@ -25,11 +25,11 @@ Partial Class militares
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(militares))
         Me.CheckAll = New System.Windows.Forms.CheckBox()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
+        Me.CheckRamo = New System.Windows.Forms.CheckBox()
+        Me.CheckBase = New System.Windows.Forms.CheckBox()
+        Me.CheckNasc = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TBpesquisa = New System.Windows.Forms.TextBox()
         Me.menuBar = New System.Windows.Forms.GroupBox()
         Me.homeBttn = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -37,16 +37,21 @@ Partial Class militares
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.totalTxtBox = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.CheckMissao = New System.Windows.Forms.CheckBox()
+        Me.pesquisaBttn = New System.Windows.Forms.PictureBox()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
+        CType(Me.pesquisaBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CheckAll
         '
         Me.CheckAll.AutoSize = True
-        Me.CheckAll.Location = New System.Drawing.Point(38, 353)
+        Me.CheckAll.Location = New System.Drawing.Point(31, 46)
         Me.CheckAll.Name = "CheckAll"
         Me.CheckAll.Size = New System.Drawing.Size(49, 24)
         Me.CheckAll.TabIndex = 18
@@ -62,35 +67,35 @@ Partial Class militares
         Me.ListBox1.Size = New System.Drawing.Size(437, 444)
         Me.ListBox1.TabIndex = 21
         '
-        'CheckBox1
+        'CheckRamo
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(118, 353)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(70, 24)
-        Me.CheckBox1.TabIndex = 22
-        Me.CheckBox1.Text = "Ramo"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.CheckRamo.AutoSize = True
+        Me.CheckRamo.Location = New System.Drawing.Point(31, 95)
+        Me.CheckRamo.Name = "CheckRamo"
+        Me.CheckRamo.Size = New System.Drawing.Size(70, 24)
+        Me.CheckRamo.TabIndex = 22
+        Me.CheckRamo.Text = "Ramo"
+        Me.CheckRamo.UseVisualStyleBackColor = True
         '
-        'CheckBox2
+        'CheckBase
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(234, 353)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(109, 24)
-        Me.CheckBox2.TabIndex = 23
-        Me.CheckBox2.Text = "Base Militar"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.CheckBase.AutoSize = True
+        Me.CheckBase.Location = New System.Drawing.Point(174, 46)
+        Me.CheckBase.Name = "CheckBase"
+        Me.CheckBase.Size = New System.Drawing.Size(109, 24)
+        Me.CheckBase.TabIndex = 23
+        Me.CheckBase.Text = "Base Militar"
+        Me.CheckBase.UseVisualStyleBackColor = True
         '
-        'CheckBox3
+        'CheckNasc
         '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(391, 353)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(128, 24)
-        Me.CheckBox3.TabIndex = 24
-        Me.CheckBox3.Text = "Nacionalidade"
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.CheckNasc.AutoSize = True
+        Me.CheckNasc.Location = New System.Drawing.Point(346, 46)
+        Me.CheckNasc.Name = "CheckNasc"
+        Me.CheckNasc.Size = New System.Drawing.Size(128, 24)
+        Me.CheckNasc.TabIndex = 24
+        Me.CheckNasc.Text = "Nacionalidade"
+        Me.CheckNasc.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -102,12 +107,12 @@ Partial Class militares
         Me.Label1.TabIndex = 25
         Me.Label1.Text = "PESQUISA"
         '
-        'TextBox1
+        'TBpesquisa
         '
-        Me.TextBox1.Location = New System.Drawing.Point(33, 233)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(501, 27)
-        Me.TextBox1.TabIndex = 26
+        Me.TBpesquisa.Location = New System.Drawing.Point(33, 233)
+        Me.TBpesquisa.Name = "TBpesquisa"
+        Me.TBpesquisa.Size = New System.Drawing.Size(467, 27)
+        Me.TBpesquisa.TabIndex = 26
         '
         'menuBar
         '
@@ -167,7 +172,7 @@ Partial Class militares
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(922, 603)
+        Me.Label4.Location = New System.Drawing.Point(922, 592)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(45, 20)
         Me.Label4.TabIndex = 34
@@ -175,45 +180,81 @@ Partial Class militares
         '
         'totalTxtBox
         '
-        Me.totalTxtBox.Location = New System.Drawing.Point(973, 600)
+        Me.totalTxtBox.Location = New System.Drawing.Point(973, 589)
         Me.totalTxtBox.Name = "totalTxtBox"
         Me.totalTxtBox.ReadOnly = True
         Me.totalTxtBox.Size = New System.Drawing.Size(58, 27)
         Me.totalTxtBox.TabIndex = 35
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.CheckMissao)
+        Me.GroupBox1.Controls.Add(Me.CheckAll)
+        Me.GroupBox1.Controls.Add(Me.CheckRamo)
+        Me.GroupBox1.Controls.Add(Me.CheckBase)
+        Me.GroupBox1.Controls.Add(Me.CheckNasc)
+        Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.GroupBox1.Location = New System.Drawing.Point(33, 341)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(501, 238)
+        Me.GroupBox1.TabIndex = 36
+        Me.GroupBox1.TabStop = False
+        '
+        'CheckMissao
+        '
+        Me.CheckMissao.AutoSize = True
+        Me.CheckMissao.Location = New System.Drawing.Point(174, 95)
+        Me.CheckMissao.Name = "CheckMissao"
+        Me.CheckMissao.Size = New System.Drawing.Size(125, 24)
+        Me.CheckMissao.TabIndex = 25
+        Me.CheckMissao.Text = "Nº de Missões"
+        Me.CheckMissao.UseVisualStyleBackColor = True
+        '
+        'pesquisaBttn
+        '
+        Me.pesquisaBttn.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pesquisaBttn.Image = CType(resources.GetObject("pesquisaBttn.Image"), System.Drawing.Image)
+        Me.pesquisaBttn.Location = New System.Drawing.Point(506, 233)
+        Me.pesquisaBttn.Name = "pesquisaBttn"
+        Me.pesquisaBttn.Size = New System.Drawing.Size(28, 27)
+        Me.pesquisaBttn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pesquisaBttn.TabIndex = 20
+        Me.pesquisaBttn.TabStop = False
         '
         'militares
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1071, 632)
+        Me.Controls.Add(Me.pesquisaBttn)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.totalTxtBox)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.menuBar)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.TBpesquisa)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.CheckBox3)
-        Me.Controls.Add(Me.CheckBox2)
-        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.ListBox1)
-        Me.Controls.Add(Me.CheckAll)
         Me.Name = "militares"
         Me.Text = " "
         Me.menuBar.ResumeLayout(False)
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        CType(Me.pesquisaBttn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents CheckAll As CheckBox
     Friend WithEvents ListBox1 As ListBox
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents CheckBox3 As CheckBox
+    Friend WithEvents CheckRamo As CheckBox
+    Friend WithEvents CheckBase As CheckBox
+    Friend WithEvents CheckNasc As CheckBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TBpesquisa As TextBox
     Friend WithEvents menuBar As GroupBox
     Friend WithEvents homeBttn As PictureBox
     Friend WithEvents PictureBox1 As PictureBox
@@ -221,4 +262,7 @@ Partial Class militares
     Friend WithEvents Label2 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents totalTxtBox As TextBox
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents CheckMissao As CheckBox
+    Friend WithEvents pesquisaBttn As PictureBox
 End Class

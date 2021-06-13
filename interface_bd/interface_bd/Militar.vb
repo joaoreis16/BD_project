@@ -180,7 +180,6 @@
         End Set
     End Property
     Overrides Function ToString() As String
-        Return _nCC & "     | " & _Pnome & " " & _Unome
-
+        Return _nCC & "     |     " & _Pnome & " " & _Unome
     End Function
 End Class

@@ -10,4 +10,10 @@
         mil.Show()
         Me.Close()
     End Sub
+
+    Private Sub ButtonBases_Click(sender As Object, e As EventArgs) Handles ButtonBases.Click
+        Dim base = New bases_militares
+        base.Show()
+        Me.Close()
+    End Sub
 End Class

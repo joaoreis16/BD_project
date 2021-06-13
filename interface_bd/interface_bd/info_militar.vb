@@ -1,10 +1,13 @@
 ﻿Public Class info_militar
 
     Private Sub CheckMissao_CheckedChanged(sender As Object, e As EventArgs) Handles CheckMissao.CheckedChanged
-        If CheckMissao.Checked = True Then
+
+        If militares.EmMissao Then
+            CheckMissao.Checked = True
             BoxMissao.Visible = True
 
         Else
+            CheckMissao.Checked = False
             BoxMissao.Visible = False
         End If
     End Sub

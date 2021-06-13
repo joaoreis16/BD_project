@@ -5,6 +5,7 @@ Public Class militares
     Dim CMD As SqlCommand
     Dim listaMilitares As New List(Of Militar)()
     Friend Shared militarSelected As Militar
+    Friend Shared EmMissao As Boolean
 
     Private Sub militares_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -22,8 +23,9 @@ Public Class militares
         CMD.Connection = CN
 
         CMD.CommandText = "SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, EXERCITO.cargo.cargo
-                            FROM EXERCITO.militar 
-                            JOIN EXERCITO.cargo ON militar.cargo = cargo.id"
+                           FROM EXERCITO.militar 
+                           JOIN EXERCITO.cargo 
+                           ON militar.cargo = cargo.id"
         CN.Open()
 
         Dim count As Integer = 0
@@ -44,10 +46,16 @@ Public Class militares
             M.nMissoes = Convert.ToString(RDR.Item("nMissoes"))
             M.ramo = Convert.ToString(RDR.Item("ramo"))
             M.base = Convert.ToString(RDR.Item("base"))
+            M.cargo = RDR.Item("cargo")
+
+            ' VERIFICAR SE O MILITAR ESTÁ EM MISSÃO    ---> PROBLEMA: como ver se um atributo é null?
+
+            'If If(RDR.IsDBNull("pelotao"), "", RDR.GetString("pelotao")) Then
+            'EmMissao = False
+            'Else
+            'EmMissao = True
             'M.pelotao = Convert.ToString(RDR.Item("pelotao"))
-
-            M.cargo = RDR.Item("cargo")         'temos 2 atributos com o mesmo nome!! como ir buscar o segundo
-
+            'End If
 
             listaMilitares.Add(M)
             ListBox1.Items.Add(M)
@@ -78,4 +86,57 @@ Public Class militares
         Me.Close()
     End Sub
 
+    Private Sub pesquisaBttn_Click(sender As Object, e As EventArgs) Handles pesquisaBttn.Click
+        Dim text = TBpesquisa.Text
+
+        Dim dbServer = "tcp:mednat.ieeta.pt\SQLSERVER,8101"
+        Dim dbName = "p9g6"
+        Dim userName = "p9g6"
+        Dim userPass = "-99745397@BD"
+
+        CN = New SqlConnection("data Source = " + dbServer + " ;" +
+                               "initial Catalog = " + dbName + ";" +
+                               "uid = " + userName + ";" +
+                               "password = " + userPass)
+
+        CMD = New SqlCommand
+        CMD.Connection = CN
+
+        CMD.CommandText = String.Format("SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, EXERCITO.cargo.cargo
+                           FROM EXERCITO.militar 
+                           JOIN EXERCITO.cargo 
+                           ON militar.cargo = cargo.id
+                           WHERE Pnome = '{0}' OR Unome = '{0}'", text)
+        CN.Open()
+        Dim RowsReturned = CMD.ExecuteScalar()
+        ListBox1.Items.Clear()
+
+        If RowsReturned = 0 Then
+            ListBox1.Items.Add("Não foram encontrados dados :(")
+            ListBox1.Enabled = False
+            totalTxtBox.Text = 0
+
+        Else
+            Dim count As Integer = 0
+            Dim RDR As SqlDataReader
+            RDR = CMD.ExecuteReader
+
+            For index As Integer = 1 To listaMilitares.Count
+                Dim militar = listaMilitares(index)
+                If militar.nCC = RDR.Item("nCC") Then ' dá erro aqui, ou não está a fazer bem o get do nCC do militar ou não há data na bd para aquela query
+                    ListBox1.Items.Add(militar)
+                    count = count + 1
+                End If
+            Next
+
+            totalTxtBox.Text = count
+        End If
+
+        CN.Close()
+
+    End Sub
+
+    Private Sub LoadMilitar()
+
+    End Sub
 End Class
