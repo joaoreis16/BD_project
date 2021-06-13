@@ -21,3 +21,10 @@ C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\obj\Debug\net5
 C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.Form1.resources
 C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.militares.resources
 C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.info_militar.resources
+C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\bin\Debug\net5.0-windows\System.Data.SqlClient.dll
+C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\bin\Debug\net5.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\bin\Debug\net5.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\bin\Debug\net5.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.vbproj.CopyComplete

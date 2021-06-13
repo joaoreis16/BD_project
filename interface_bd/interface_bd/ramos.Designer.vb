@@ -30,11 +30,15 @@ Partial Class ramos
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ButtonFM = New System.Windows.Forms.Button()
         Me.ButtonFA = New System.Windows.Forms.Button()
+        Me.menuBar = New System.Windows.Forms.GroupBox()
+        Me.homeBttn = New System.Windows.Forms.PictureBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.goBack = New System.Windows.Forms.PictureBox()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.menuBar.SuspendLayout()
+        CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -50,7 +54,7 @@ Partial Class ramos
         '
         'ButtonFT
         '
-        Me.ButtonFT.Location = New System.Drawing.Point(179, 473)
+        Me.ButtonFT.Location = New System.Drawing.Point(186, 450)
         Me.ButtonFT.Name = "ButtonFT"
         Me.ButtonFT.Size = New System.Drawing.Size(201, 43)
         Me.ButtonFT.TabIndex = 13
@@ -59,23 +63,28 @@ Partial Class ramos
         '
         'PictureBox3
         '
-        Me.PictureBox3.Location = New System.Drawing.Point(698, 241)
+        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
+        Me.PictureBox3.Location = New System.Drawing.Point(705, 198)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(201, 228)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox3.TabIndex = 12
         Me.PictureBox3.TabStop = False
         '
         'PictureBox2
         '
-        Me.PictureBox2.Location = New System.Drawing.Point(438, 241)
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Location = New System.Drawing.Point(445, 198)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(201, 228)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox2.TabIndex = 11
         Me.PictureBox2.TabStop = False
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(179, 241)
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(186, 198)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(201, 228)
         Me.PictureBox1.TabIndex = 10
@@ -83,7 +92,7 @@ Partial Class ramos
         '
         'ButtonFM
         '
-        Me.ButtonFM.Location = New System.Drawing.Point(698, 473)
+        Me.ButtonFM.Location = New System.Drawing.Point(705, 450)
         Me.ButtonFM.Name = "ButtonFM"
         Me.ButtonFM.Size = New System.Drawing.Size(201, 43)
         Me.ButtonFM.TabIndex = 9
@@ -92,32 +101,56 @@ Partial Class ramos
         '
         'ButtonFA
         '
-        Me.ButtonFA.Location = New System.Drawing.Point(438, 473)
+        Me.ButtonFA.Location = New System.Drawing.Point(445, 450)
         Me.ButtonFA.Name = "ButtonFA"
         Me.ButtonFA.Size = New System.Drawing.Size(201, 43)
         Me.ButtonFA.TabIndex = 8
         Me.ButtonFA.Text = "Força Aérea"
         Me.ButtonFA.UseVisualStyleBackColor = True
         '
+        'menuBar
+        '
+        Me.menuBar.BackColor = System.Drawing.SystemColors.Desktop
+        Me.menuBar.Controls.Add(Me.homeBttn)
+        Me.menuBar.Controls.Add(Me.PictureBox4)
+        Me.menuBar.Controls.Add(Me.goBack)
+        Me.menuBar.Location = New System.Drawing.Point(-6, -10)
+        Me.menuBar.Name = "menuBar"
+        Me.menuBar.Size = New System.Drawing.Size(1086, 92)
+        Me.menuBar.TabIndex = 31
+        Me.menuBar.TabStop = False
+        '
+        'homeBttn
+        '
+        Me.homeBttn.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.homeBttn.Image = CType(resources.GetObject("homeBttn.Image"), System.Drawing.Image)
+        Me.homeBttn.Location = New System.Drawing.Point(546, 34)
+        Me.homeBttn.Name = "homeBttn"
+        Me.homeBttn.Size = New System.Drawing.Size(47, 42)
+        Me.homeBttn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.homeBttn.TabIndex = 19
+        Me.homeBttn.TabStop = False
+        '
         'PictureBox4
         '
         Me.PictureBox4.Cursor = System.Windows.Forms.Cursors.Default
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(834, 50)
+        Me.PictureBox4.Location = New System.Drawing.Point(958, 26)
         Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(180, 105)
+        Me.PictureBox4.Size = New System.Drawing.Size(107, 59)
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox4.TabIndex = 18
         Me.PictureBox4.TabStop = False
         '
         'goBack
         '
+        Me.goBack.Cursor = System.Windows.Forms.Cursors.Hand
         Me.goBack.Image = CType(resources.GetObject("goBack.Image"), System.Drawing.Image)
-        Me.goBack.Location = New System.Drawing.Point(34, 32)
+        Me.goBack.Location = New System.Drawing.Point(40, 34)
         Me.goBack.Name = "goBack"
         Me.goBack.Size = New System.Drawing.Size(47, 42)
         Me.goBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.goBack.TabIndex = 19
+        Me.goBack.TabIndex = 14
         Me.goBack.TabStop = False
         '
         'ramos
@@ -126,8 +159,7 @@ Partial Class ramos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Menu
         Me.ClientSize = New System.Drawing.Size(1071, 632)
-        Me.Controls.Add(Me.goBack)
-        Me.Controls.Add(Me.PictureBox4)
+        Me.Controls.Add(Me.menuBar)
         Me.Controls.Add(Me.ButtonFT)
         Me.Controls.Add(Me.PictureBox3)
         Me.Controls.Add(Me.PictureBox2)
@@ -140,6 +172,8 @@ Partial Class ramos
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.menuBar.ResumeLayout(False)
+        CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -153,6 +187,8 @@ Partial Class ramos
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents ButtonFM As Button
     Friend WithEvents ButtonFA As Button
+    Friend WithEvents menuBar As GroupBox
+    Friend WithEvents homeBttn As PictureBox
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents goBack As PictureBox
 End Class
