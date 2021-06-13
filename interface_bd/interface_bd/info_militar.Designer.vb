@@ -139,7 +139,8 @@ Partial Class info_militar
         'CheckMissao
         '
         Me.CheckMissao.AutoSize = True
-        Me.CheckMissao.Location = New System.Drawing.Point(178, 391)
+        Me.CheckMissao.Enabled = False
+        Me.CheckMissao.Location = New System.Drawing.Point(173, 394)
         Me.CheckMissao.Name = "CheckMissao"
         Me.CheckMissao.Size = New System.Drawing.Size(18, 17)
         Me.CheckMissao.TabIndex = 30
@@ -148,7 +149,7 @@ Partial Class info_militar
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(79, 391)
+        Me.Label6.Location = New System.Drawing.Point(74, 391)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(80, 20)
         Me.Label6.TabIndex = 31
