@@ -1,6 +1,67 @@
 import pyodbc
 import random
 
+def generate_name(ramo):
+    ramo_t = {
+        1: ["Quartel ", "Base Combate Terrestre ", "Centro Militar "],
+        2: ["Base Aérea ", "Centro de Aviação ", "Aeródromo "],
+        3: ["Base Naval ", "Centro Naval ", "Ponto Apoio Naval ", "Doca ", "Quartel Naval "]
+    }
+
+    distritos = [
+        "de Aveiro",
+        "de Beja",
+        "de Braga",
+        "de Bragança",
+        "de Castelo Branco",
+        "de Coimbra",
+        "de Évora",
+        "de Faro",
+        "da Guarda",
+        "de Leiria",
+        "de Lisboa",
+        "de Portalegre",
+        "do Porto",
+        "de Santarém",
+        "de Setúbal",
+        "de Viana do Castelo",
+        "de Vila Real",
+        "de Viseu"
+    ]
+
+    return f"{ramo_t[ramo][random.randrange(0, len(ramo_t[ramo]))]}{distritos[random.randrange(0,len(distritos))]}"
+
+def name_bases():
+    assigned = []
+
+    cursor.execute("SELECT id FROM EXERCITO.base_militar")
+    bases = [row[0] for row in cursor.fetchall()]
+
+    for base in bases:
+        cursor.execute(f"""
+                        SELECT idRamo FROM EXERCITO.base_ramo
+                        WHERE idBase = {base} 
+                        """)
+
+        ramos = [row[0] for row in cursor.fetchall()]
+        
+        name = generate_name(ramos[random.randrange(0,len(ramos))])
+
+        while (name in assigned):
+            name = generate_name(ramos[random.randrange(0,len(ramos))])
+        
+        assigned.append(name)
+        cursor.execute(f"""
+                        UPDATE EXERCITO.base_militar
+                        SET nome='{name}'
+                        WHERE id={base}
+                        """)
+
+        print(f"ASSIGNED {name} to BASE {base}")
+
+    conn.commit()
+        
+
 def create_armas(num):
     modelos = {
         1:["Glock 17 Gen 5", "Heckler & Koch P30"],
@@ -31,29 +92,6 @@ def create_armas(num):
 
     conn.commit()
         
-
-def insert_base_ramo():
-    cursor.execute('''
-                SELECT id FROM EXERCITO.base_militar
-                ''')
-
-    baseids = [row[0] for row in cursor.fetchall()]
-
-    cursor.execute('''
-                    SELECT id from EXERCITO.ramo
-                    ''')
-
-    ramoids = [row[0] for row in cursor.fetchall()]
-
-    for base in baseids:
-        for ids in random.sample(ramoids,random.randint(1,len(ramoids))):
-            cursor.execute(f'''
-                            INSERT INTO EXERCITO.base_ramo(idBase, idRamo)
-                            VALUES ({base}, {ids})
-                            ''')
-
-    conn.commit()
-
 
 def create_veiculos(num):   
     modelos = {
@@ -222,5 +260,6 @@ if __name__ == '__main__':
 
     cursor = conn.cursor()
 
+    name_bases()
 
 
