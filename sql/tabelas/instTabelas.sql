@@ -171,7 +171,7 @@ CREATE TABLE EXERCITO.base_militar (
 ALTER TABLE EXERCITO.base_militar ADD nCC INT CONSTRAINT comandante_base FOREIGN KEY (nCC) REFERENCES EXERCITO.militar(nCC);
 ALTER TABLE EXERCITO.base_militar ADD CONSTRAINT zeroMilitares DEFAULT 0 FOR nMilitares
 ALTER TABLE EXERCITO.base_militar DROP CONSTRAINT comandante_base;
-
+ALTER TABLE EXERCITO.base_militar ADD nome VARCHAR(150);
 
 CREATE TABLE EXERCITO.base_ramo (
 	idBase INT,
@@ -244,7 +244,7 @@ CREATE TABLE EXERCITO.historico_base (
 	nCC INT,
 	base INT,
 	data_inicio	DATE,
-	data_fim	DATE,
+	data_fim	DATE DEFAULT GETDATE(),
 
 	PRIMARY KEY (nCC, base, data_inicio, data_fim),
 	FOREIGN KEY (nCC) REFERENCES EXERCITO.militar(nCC),
@@ -255,7 +255,7 @@ CREATE TABLE EXERCITO.historico_equipamento (
 	nCC INT,
 	equip INT,
 	data_inicio DATE,
-	data_fim DATE,
+	data_fim DATE DEFAULT GETDATE(),
 
 	PRIMARY KEY (nCC, equip, data_inicio, data_fim),
 	FOREIGN KEY (nCC) REFERENCES EXERCITO.militar(nCC),

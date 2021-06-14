@@ -75,6 +75,7 @@ GO
 /*
 *	ADICIONAR MILITAR A PELOTAO
 */
+EXEC EXERCITO.addToPelotao @nCC @pel
 CREATE PROC EXERCITO.addToPelotao @nCC INT, @pel INT
 AS
 	BEGIN
@@ -126,6 +127,7 @@ AS
 /*
 *	REMOVE UM PELOTAO 
 */
+DROP PROC EXERCITO.deletePelotao
 CREATE PROC EXERCITO.deletePelotao @pel INT
 AS
 	BEGIN

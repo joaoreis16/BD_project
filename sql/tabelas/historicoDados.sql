@@ -1,0 +1,19 @@
+CREATE TABLE EXERCITO.historico_ramo(
+	nCC INT NOT NULL,
+	ramo INT NOT NULL,
+	data_inicio DATE NOT NULL,
+	data_fim DATE DEFAULT GETDATE() NOT NULL,
+)
+
+CREATE TABLE EXERCITO.historico_ramo(
+	nCC INT NOT NULL,
+	base INT NOT NULL,
+	data_inicio DATE NOT NULL,
+	data_fim DATE DEFAULT GETDATE() NOT NULL,
+)
+
+CREATE TABLE EXERCITO.historico_missoes (
+	nome VARCHAR(150)
+)
+
+SELECT * FROM EXERCITO.militar
