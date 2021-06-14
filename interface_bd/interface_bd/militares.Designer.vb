@@ -40,6 +40,7 @@ Partial Class militares
         Me.RamoDD = New System.Windows.Forms.ComboBox()
         Me.BaseDD = New System.Windows.Forms.ComboBox()
         Me.pesquisaBttn = New System.Windows.Forms.PictureBox()
+        Me.ApplyFilters = New System.Windows.Forms.Button()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -148,6 +149,7 @@ Partial Class militares
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.ApplyFilters)
         Me.GroupBox1.Controls.Add(Me.MissoesDD)
         Me.GroupBox1.Controls.Add(Me.CargoDD)
         Me.GroupBox1.Controls.Add(Me.NacDD)
@@ -163,7 +165,7 @@ Partial Class militares
         'MissoesDD
         '
         Me.MissoesDD.FormattingEnabled = True
-        Me.MissoesDD.Location = New System.Drawing.Point(369, 116)
+        Me.MissoesDD.Location = New System.Drawing.Point(327, 87)
         Me.MissoesDD.Name = "MissoesDD"
         Me.MissoesDD.Size = New System.Drawing.Size(91, 28)
         Me.MissoesDD.TabIndex = 30
@@ -172,7 +174,7 @@ Partial Class militares
         'CargoDD
         '
         Me.CargoDD.FormattingEnabled = True
-        Me.CargoDD.Location = New System.Drawing.Point(369, 44)
+        Me.CargoDD.Location = New System.Drawing.Point(327, 36)
         Me.CargoDD.Name = "CargoDD"
         Me.CargoDD.Size = New System.Drawing.Size(91, 28)
         Me.CargoDD.TabIndex = 29
@@ -181,7 +183,7 @@ Partial Class militares
         'NacDD
         '
         Me.NacDD.FormattingEnabled = True
-        Me.NacDD.Location = New System.Drawing.Point(31, 182)
+        Me.NacDD.Location = New System.Drawing.Point(31, 138)
         Me.NacDD.Name = "NacDD"
         Me.NacDD.Size = New System.Drawing.Size(151, 28)
         Me.NacDD.TabIndex = 28
@@ -190,7 +192,7 @@ Partial Class militares
         'RamoDD
         '
         Me.RamoDD.FormattingEnabled = True
-        Me.RamoDD.Location = New System.Drawing.Point(31, 116)
+        Me.RamoDD.Location = New System.Drawing.Point(31, 87)
         Me.RamoDD.Name = "RamoDD"
         Me.RamoDD.Size = New System.Drawing.Size(262, 28)
         Me.RamoDD.TabIndex = 27
@@ -200,7 +202,7 @@ Partial Class militares
         '
         Me.BaseDD.AccessibleName = ""
         Me.BaseDD.FormattingEnabled = True
-        Me.BaseDD.Location = New System.Drawing.Point(31, 44)
+        Me.BaseDD.Location = New System.Drawing.Point(31, 36)
         Me.BaseDD.Name = "BaseDD"
         Me.BaseDD.Size = New System.Drawing.Size(262, 28)
         Me.BaseDD.TabIndex = 26
@@ -216,6 +218,15 @@ Partial Class militares
         Me.pesquisaBttn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pesquisaBttn.TabIndex = 20
         Me.pesquisaBttn.TabStop = False
+        '
+        'ApplyFilters
+        '
+        Me.ApplyFilters.Location = New System.Drawing.Point(176, 189)
+        Me.ApplyFilters.Name = "ApplyFilters"
+        Me.ApplyFilters.Size = New System.Drawing.Size(133, 29)
+        Me.ApplyFilters.TabIndex = 31
+        Me.ApplyFilters.Text = "Apply"
+        Me.ApplyFilters.UseVisualStyleBackColor = True
         '
         'militares
         '
@@ -260,4 +271,5 @@ Partial Class militares
     Friend WithEvents MissoesDD As ComboBox
     Friend WithEvents CargoDD As ComboBox
     Friend WithEvents NacDD As ComboBox
+    Friend WithEvents ApplyFilters As Button
 End Class

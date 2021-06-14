@@ -4,15 +4,16 @@ Public Class militares
     Dim CN As SqlConnection
     Dim CMD As SqlCommand
     Dim listaMilitares As New List(Of Militar)()
+    Dim StartingList As New List(Of Militar)()
     Friend Shared militarSelected As Militar
     Friend Shared EmMissao As Boolean
+    Dim dbServer = "tcp:mednat.ieeta.pt\SQLSERVER,8101"
+    Dim dbName = "p9g6"
+    Dim userName = "p9g6"
+    Dim userPass = "-99745397@BD"
 
     Private Sub militares_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Dim dbServer = "tcp:mednat.ieeta.pt\SQLSERVER,8101"
-        Dim dbName = "p9g6"
-        Dim userName = "p9g6"
-        Dim userPass = "-99745397@BD"
         Dim RDR As SqlDataReader
         Dim SQA As SqlDataAdapter
 
@@ -64,7 +65,7 @@ Public Class militares
             ListBox1.Items.Add(M)
             count = count + 1
         End While
-
+        StartingList.AddRange(listaMilitares.ToArray)
         totalTxtBox.Text = count
         CN.Close()
     End Sub
@@ -100,16 +101,6 @@ Public Class militares
         Dim count As Integer = 0
         Dim RDR As SqlDataReader
         Dim idx As Integer
-
-        Dim dbServer = "tcp:mednat.ieeta.pt\SQLSERVER,8101"
-        Dim dbName = "p9g6"
-        Dim userName = "p9g6"
-        Dim userPass = "-99745397@BD"
-
-
-
-
-
         CN = New SqlConnection("data Source = " + dbServer + " ;" +
                                "initial Catalog = " + dbName + ";" +
                                "uid = " + userName + ";" +
@@ -142,6 +133,7 @@ Public Class militares
             totalTxtBox.Text = 0
 
         Else
+            listaMilitares.AddRange(StartingList.ToArray)
             ListBox1.Enabled = True
 
 
@@ -149,8 +141,10 @@ Public Class militares
 
             While (RDR.Read)
                 idx = BinSrch(listaMilitares, 0, listaMilitares.Count - 1, RDR.Item("nCC"))
-                ListBox1.Items.Add(listaMilitares(idx))
-                count = count + 1
+                If idx > -1 Then
+                    ListBox1.Items.Add(listaMilitares(idx))
+                    count = count + 1
+                End If
             End While
 
             listaMilitares.Clear()
@@ -164,6 +158,110 @@ Public Class militares
 
     End Sub
 
+
+    Private Sub ApplyFilters_Click(sender As Object, e As EventArgs) Handles ApplyFilters.Click
+        Dim base = BaseDD.SelectedValue
+        Dim cargo = CargoDD.SelectedValue
+        Dim ramo = RamoDD.SelectedValue
+        Dim nacVal = NacDD.SelectedValue
+        Dim nac = NacDD.Text
+        Dim missoesVal = MissoesDD.SelectedValue
+        Dim missoes = MissoesDD.Text
+        Dim conds As New List(Of String)()
+
+
+        CN = New SqlConnection("data Source = " + dbServer + " ;" +
+                               "initial Catalog = " + dbName + ";" +
+                               "uid = " + userName + ";" +
+                               "password = " + userPass)
+        Dim cmd = "SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, cargo
+                           FROM EXERCITO.militar"
+
+        If base > -1 Then
+            conds.Add(String.Format("base = {0}", base))
+        End If
+
+        If cargo > -1 Then
+            conds.Add(String.Format("cargo = {0}", cargo))
+        End If
+
+        If ramo > -1 Then
+            conds.Add(String.Format("ramo = {0}", ramo))
+        End If
+
+        If nacVal > -1 Then
+            conds.Add(String.Format("nacionalidade = '{0}'", nac))
+        End If
+
+        If missoesVal > -1 Then
+            Debug.Print("é o quem")
+            If missoesVal = 5 Then
+                conds.Add(String.Format("nMissoes > 50"))
+            Else
+                Dim min = missoes.Split("-")(0)
+                Dim max = missoes.Split("-")(1)
+                conds.Add(String.Format("nMissoes > {0} AND nMissoes < {1}", min, max))
+            End If
+        End If
+
+        If conds.Count > 0 Then
+            cmd = cmd + " WHERE "
+            For idx As Integer = 0 To conds.Count - 1
+                cmd = cmd + conds(idx)
+                If Not (idx = conds.Count - 1) Then
+                    cmd = cmd + " AND "
+                End If
+            Next
+        End If
+
+
+        Dim count As Integer = 0
+        Dim RDR As SqlDataReader
+        Dim i As Integer
+        Dim SQLcmd As SqlCommand
+        CN = New SqlConnection("data Source = " + dbServer + " ;" +
+                               "initial Catalog = " + dbName + ";" +
+                               "uid = " + userName + ";" +
+                               "password = " + userPass)
+
+        SQLcmd = New SqlCommand
+        SQLcmd.Connection = CN
+        SQLcmd.CommandText = cmd
+        CN.Open()
+        ListBox1.Items.Clear()
+
+
+        listaMilitares.AddRange(ListBox1.Items.OfType(Of Militar).ToArray)
+
+        ListBox1.Enabled = True
+
+
+        RDR = SQLcmd.ExecuteReader
+
+        While (RDR.Read)
+            i = BinSrch(listaMilitares, 0, listaMilitares.Count - 1, RDR.Item("nCC"))
+            If i > -1 Then
+                ListBox1.Items.Add(listaMilitares(i))
+                count = count + 1
+            End If
+        End While
+
+        listaMilitares.Clear()
+        For it As Integer = 0 To ListBox1.Items.Count - 1
+            listaMilitares.Add(ListBox1.Items(it))
+        Next
+        totalTxtBox.Text = count
+
+        If count = 0 Then
+            ListBox1.Items.Add("Não foram encontrados dados :(")
+            ListBox1.Enabled = False
+            totalTxtBox.Text = 0
+        End If
+
+
+        CN.Close()
+
+    End Sub
     Private Sub LoadMilitar()
 
     End Sub
@@ -247,6 +345,19 @@ Public Class militares
         NacDD.DataSource = dt
         NacDD.DisplayMember = "nacionalidade"
         NacDD.ValueMember = "id"
+
+
+        Dim missDict As New Dictionary(Of Integer, String)()
+        missDict.Add(-1, "Missoes")
+        missDict.Add(1, "0-10")
+        missDict.Add(2, "11-20")
+        missDict.Add(3, "21-30")
+        missDict.Add(4, "30-50")
+        missDict.Add(5, "50+")
+
+        MissoesDD.DataSource = New BindingSource(missDict, Nothing)
+        MissoesDD.DisplayMember = "Value"
+        MissoesDD.ValueMember = "Key"
 
     End Function
 
