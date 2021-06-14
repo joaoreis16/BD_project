@@ -34,13 +34,13 @@ Partial Class militares
         Me.Label4 = New System.Windows.Forms.Label()
         Me.totalTxtBox = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ApplyFilters = New System.Windows.Forms.Button()
         Me.MissoesDD = New System.Windows.Forms.ComboBox()
         Me.CargoDD = New System.Windows.Forms.ComboBox()
         Me.NacDD = New System.Windows.Forms.ComboBox()
         Me.RamoDD = New System.Windows.Forms.ComboBox()
         Me.BaseDD = New System.Windows.Forms.ComboBox()
         Me.pesquisaBttn = New System.Windows.Forms.PictureBox()
-        Me.ApplyFilters = New System.Windows.Forms.Button()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -162,6 +162,15 @@ Partial Class militares
         Me.GroupBox1.TabIndex = 36
         Me.GroupBox1.TabStop = False
         '
+        'ApplyFilters
+        '
+        Me.ApplyFilters.Location = New System.Drawing.Point(176, 189)
+        Me.ApplyFilters.Name = "ApplyFilters"
+        Me.ApplyFilters.Size = New System.Drawing.Size(133, 29)
+        Me.ApplyFilters.TabIndex = 31
+        Me.ApplyFilters.Text = "Apply"
+        Me.ApplyFilters.UseVisualStyleBackColor = True
+        '
         'MissoesDD
         '
         Me.MissoesDD.FormattingEnabled = True
@@ -219,20 +228,11 @@ Partial Class militares
         Me.pesquisaBttn.TabIndex = 20
         Me.pesquisaBttn.TabStop = False
         '
-        'ApplyFilters
-        '
-        Me.ApplyFilters.Location = New System.Drawing.Point(176, 189)
-        Me.ApplyFilters.Name = "ApplyFilters"
-        Me.ApplyFilters.Size = New System.Drawing.Size(133, 29)
-        Me.ApplyFilters.TabIndex = 31
-        Me.ApplyFilters.Text = "Apply"
-        Me.ApplyFilters.UseVisualStyleBackColor = True
-        '
         'militares
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1354, 632)
+        Me.ClientSize = New System.Drawing.Size(1077, 632)
         Me.Controls.Add(Me.pesquisaBttn)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.totalTxtBox)

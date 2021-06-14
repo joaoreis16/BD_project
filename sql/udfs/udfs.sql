@@ -65,3 +65,37 @@ AS
 GO
 
 SELECT * FROM EXERCITO.getNacionalidades()
+
+CREATE FUNCTION EXERCITO.basesOfRamos(@r1 BIT, @r2 BIT, @r3 BIT) RETURNS @tab TABLE (id INT)
+AS
+	BEGIN
+		DECLARE @id INT
+		DECLARE @cnt INT
+
+		SELECT @cnt = 0
+
+		DECLARE cur CURSOR FAST_FORWARD 
+		FOR SELECT DISTINCT id FROM EXERCITO.base_militar
+		OPEN cur;
+
+		FETCH cur INTO @id
+
+		WHILE @@FETCH_STATUS = 0
+			BEGIN
+				IF NOT ( ((@r1 = 1) AND NOT EXISTS (SELECT * FROM EXERCITO.base_ramo WHERE idBase = @id AND idRamo = 1))
+					OR ((@r2 = 1) AND NOT EXISTS (SELECT * FROM EXERCITO.base_ramo WHERE idBase = @id AND idRamo = 2))
+					OR ((@r3 = 1) AND NOT EXISTS (SELECT * FROM EXERCITO.base_ramo WHERE idBase = @id AND idRamo = 3)) )
+					BEGIN
+						INSERT INTO @tab VALUES (@id)
+					END
+				FETCH cur INTO @id
+			END
+		CLOSE cur;
+		DEALLOCATE cur;
+
+		RETURN
+	END
+GO
+
+SELECT * FROM EXERCITO.basesOfRamos(1,1,0)
+SELECT idBase FROM EXERCITO.base_ramo  GROUP BY idBase HAVING COUNT(idBase) = 3

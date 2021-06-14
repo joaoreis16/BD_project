@@ -219,10 +219,6 @@ Public Class militares
         Dim RDR As SqlDataReader
         Dim i As Integer
         Dim SQLcmd As SqlCommand
-        CN = New SqlConnection("data Source = " + dbServer + " ;" +
-                               "initial Catalog = " + dbName + ";" +
-                               "uid = " + userName + ";" +
-                               "password = " + userPass)
 
         SQLcmd = New SqlCommand
         SQLcmd.Connection = CN
@@ -358,6 +354,9 @@ Public Class militares
         MissoesDD.DataSource = New BindingSource(missDict, Nothing)
         MissoesDD.DisplayMember = "Value"
         MissoesDD.ValueMember = "Key"
+
+
+        CN.Close()
 
     End Function
 
