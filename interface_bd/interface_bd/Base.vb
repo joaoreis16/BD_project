@@ -1,6 +1,7 @@
 ﻿Public Class Base
     Private _id As Integer
     Private _contacto As String
+    Private _nome As String
     Private _maxMilitares As Integer
     Private _morada As String
     Private _data_inicio As Date
@@ -27,6 +28,21 @@
                 Exit Property
             End If
             _contacto = value
+        End Set
+    End Property
+
+    Property nome() As String
+        Get
+            Return _nome
+
+        End Get
+
+        Set(ByVal value As String)
+            If value Is Nothing Or value = "" Then
+                Throw New Exception("This field can’t be empty")
+                Exit Property
+            End If
+            _nome = value
         End Set
     End Property
     Property morada() As String
@@ -73,6 +89,6 @@
     End Property
 
     Overrides Function ToString() As String
-        Return _id & "     |     " & _morada
+        Return String.Format("{0, -10}| {1, 10}", _id, _nome)
     End Function
 End Class

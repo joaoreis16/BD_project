@@ -41,6 +41,7 @@ Public Class bases_militares
         While RDR.Read
             Dim B As New Base
             B.id = Convert.ToString(RDR.Item("id"))
+            B.nome = RDR.Item("nome")
             B.contacto = RDR.Item("contacto")
             B.morada = RDR.Item("morada")
             'B.data_inicio = Convert.ToString(RDR.Item("data_inicio"))

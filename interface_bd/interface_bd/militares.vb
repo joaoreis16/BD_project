@@ -135,8 +135,4 @@ Public Class militares
         CN.Close()
 
     End Sub
-
-    Private Sub LoadMilitar()
-
-    End Sub
 End Class

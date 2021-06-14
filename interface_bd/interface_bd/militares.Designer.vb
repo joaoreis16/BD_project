@@ -111,7 +111,7 @@ Partial Class militares
         '
         Me.TBpesquisa.Location = New System.Drawing.Point(33, 233)
         Me.TBpesquisa.Name = "TBpesquisa"
-        Me.TBpesquisa.Size = New System.Drawing.Size(467, 27)
+        Me.TBpesquisa.Size = New System.Drawing.Size(460, 27)
         Me.TBpesquisa.TabIndex = 26
         '
         'menuBar
