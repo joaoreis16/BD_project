@@ -31,3 +31,37 @@ BEGIN
 		RETURN 0
 	RETURN 1
 END
+
+
+/*
+*
+*	RETORNA TABLE COM O CONJUNTO DE NACIONALIDADES DOS MILITARES
+*/
+CREATE FUNCTION EXERCITO.getNacionalidades() RETURNS @nac TABLE (id INT, nacionalidade VARCHAR(50))
+AS
+	BEGIN
+		DECLARE @id INT
+		DECLARE @nacionalidade VARCHAR(50)
+		
+		DECLARE cur CURSOR FAST_FORWARD 
+		FOR SELECT DISTINCT nacionalidade FROM EXERCITO.militar
+		OPEN cur;
+
+		FETCH cur INTO @nacionalidade
+		SELECT @id=1
+
+		WHILE @@FETCH_STATUS = 0
+			BEGIN
+				INSERT INTO @nac VALUES(@id, @nacionalidade)
+				SELECT @id = @id + 1
+				FETCH cur INTO @nacionalidade
+			END
+		CLOSE cur;
+		DEALLOCATE cur;
+
+		RETURN
+
+	END
+GO
+
+SELECT * FROM EXERCITO.getNacionalidades()
