@@ -15,3 +15,5 @@ CREATE TABLE EXERCITO.historico_ramo(
 CREATE TABLE EXERCITO.historico_missoes (
 	nome VARCHAR(150)
 )
+
+SELECT * FROM EXERCITO.militar

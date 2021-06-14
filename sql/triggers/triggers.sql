@@ -114,6 +114,9 @@ AS
 			SELECT @cargo = cargo FROM EXERCITO.militar WHERE nCC = @targetCC
 			SELECT @CCinCharge = nCC FROM EXERCITO.pelotao WHERE id = @pelID
 
+			IF (@pelID IS NULL)
+				RETURN
+
 			IF @cargo = 5
 				RETURN
 

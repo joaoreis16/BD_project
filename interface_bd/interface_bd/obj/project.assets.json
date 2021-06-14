@@ -454,19 +454,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Pc\\.nuget\\packages\\": {}
+    "C:\\Users\\VascoSousa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Pc\\Documents\\GitHub\\BD_project\\interface_bd\\interface_bd\\interface_bd.vbproj",
+      "projectUniqueName": "C:\\Users\\VascoSousa\\Desktop\\BD_project\\interface_bd\\interface_bd\\interface_bd.vbproj",
       "projectName": "interface_bd",
-      "projectPath": "C:\\Users\\Pc\\Documents\\GitHub\\BD_project\\interface_bd\\interface_bd\\interface_bd.vbproj",
-      "packagesPath": "C:\\Users\\Pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Pc\\Documents\\GitHub\\BD_project\\interface_bd\\interface_bd\\obj\\",
+      "projectPath": "C:\\Users\\VascoSousa\\Desktop\\BD_project\\interface_bd\\interface_bd\\interface_bd.vbproj",
+      "packagesPath": "C:\\Users\\VascoSousa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\VascoSousa\\Desktop\\BD_project\\interface_bd\\interface_bd\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\VascoSousa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

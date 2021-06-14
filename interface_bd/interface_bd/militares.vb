@@ -87,8 +87,12 @@ Public Class militares
     End Sub
 
     Private Sub pesquisaBttn_Click(sender As Object, e As EventArgs) Handles pesquisaBttn.Click
+        Dim num_search = False
         Dim text = TBpesquisa.Text
-
+        If IsNumeric(text) Then
+            num_search = True
+            text = Convert.ToInt32(text)
+        End If
         Dim dbServer = "tcp:mednat.ieeta.pt\SQLSERVER,8101"
         Dim dbName = "p9g6"
         Dim userName = "p9g6"
@@ -102,11 +106,20 @@ Public Class militares
         CMD = New SqlCommand
         CMD.Connection = CN
 
-        CMD.CommandText = String.Format("SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, EXERCITO.cargo.cargo
+        If num_search Then
+            CMD.CommandText = String.Format("SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, EXERCITO.cargo.cargo
                            FROM EXERCITO.militar 
                            JOIN EXERCITO.cargo 
                            ON militar.cargo = cargo.id
-                           WHERE Pnome = '{0}' OR Unome = '{0}'", text)
+                           WHERE nCC = {0}", text)
+
+        Else
+            CMD.CommandText = String.Format("SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, EXERCITO.cargo.cargo
+                                   FROM EXERCITO.militar 
+                                   JOIN EXERCITO.cargo 
+                                   ON militar.cargo = cargo.id
+                                   WHERE Pnome LIKE '%{0}%' OR Unome LIKE '%{0}%'", text)
+        End If
         CN.Open()
         Dim RowsReturned = CMD.ExecuteScalar()
         ListBox1.Items.Clear()
@@ -117,18 +130,23 @@ Public Class militares
             totalTxtBox.Text = 0
 
         Else
+            ListBox1.Enabled = True
             Dim count As Integer = 0
             Dim RDR As SqlDataReader
+            Dim idx As Integer
+
             RDR = CMD.ExecuteReader
 
-            For index As Integer = 1 To listaMilitares.Count
-                Dim militar = listaMilitares(index)
-                If militar.nCC = RDR.Item("nCC") Then ' dá erro aqui, ou não está a fazer bem o get do nCC do militar ou não há data na bd para aquela query
-                    ListBox1.Items.Add(militar)
-                    count = count + 1
-                End If
-            Next
+            While (RDR.Read)
+                idx = BinSrch(listaMilitares, 0, listaMilitares.Count - 1, RDR.Item("nCC"))
+                ListBox1.Items.Add(listaMilitares(idx))
+                count = count + 1
+            End While
 
+            listaMilitares.Clear()
+            For i As Integer = 0 To ListBox1.Items.Count - 1
+                listaMilitares.Add(ListBox1.Items(i))
+            Next
             totalTxtBox.Text = count
         End If
 
@@ -139,4 +157,24 @@ Public Class militares
     Private Sub LoadMilitar()
 
     End Sub
+
+
+    Function BinSrch(arr As List(Of Militar), l As Integer, r As Integer, nCC As Integer)
+
+        If (r >= l) Then
+            Dim mid As Integer = l + (r - l) / 2
+
+            If (arr(mid).nCC = nCC) Then
+                Return mid
+            End If
+
+            If arr(mid).nCC > nCC Then
+                Return BinSrch(arr, l, mid - 1, nCC)
+            End If
+
+            Return BinSrch(arr, mid + 1, r, nCC)
+        End If
+
+        Return -1
+    End Function
 End Class
