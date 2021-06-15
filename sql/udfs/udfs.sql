@@ -97,5 +97,27 @@ AS
 	END
 GO
 
-SELECT * FROM EXERCITO.basesOfRamos(1,1,0)
-SELECT idBase FROM EXERCITO.base_ramo  GROUP BY idBase HAVING COUNT(idBase) = 3
+/*
+* -1 -> MILITAR NAO EM MISSAO
+* idMissao -> MILITAR EM MISSAO
+*/
+
+CREATE FUNCTION EXERCITO.militarEmMissao (@nCC INT) RETURNS INT
+AS
+	BEGIN
+		DECLARE @id INT
+		SELECT @id = pelotao.idMissao FROM EXERCITO.militar JOIN EXERCITO.pelotao
+								ON	militar.pelotao = pelotao.id
+								WHERE militar.nCC = @nCC
+		IF @id IS NOT NULL
+			BEGIN
+				RETURN @id
+			END
+
+		RETURN -1
+	END
+
+PRINT EXERCITO.militarEmMissao(109279190)
+
+SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, cargo, pelotao
+                           FROM EXERCITO.militar WHERE EXERCITO.militarEmMissao(nCC) = -1

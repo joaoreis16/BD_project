@@ -35,11 +35,12 @@ Partial Class bases_militares
         Me.ListBox2 = New System.Windows.Forms.ListBox()
         Me.basePesquisa = New System.Windows.Forms.PictureBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.ApplyBases = New System.Windows.Forms.Button()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.FT = New System.Windows.Forms.CheckBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.FA = New System.Windows.Forms.CheckBox()
+        Me.ApplyBases = New System.Windows.Forms.Button()
         Me.FM = New System.Windows.Forms.CheckBox()
+        Me.baseReset = New System.Windows.Forms.Button()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -158,6 +159,7 @@ Partial Class bases_militares
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.baseReset)
         Me.GroupBox1.Controls.Add(Me.FT)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Controls.Add(Me.ApplyBases)
@@ -166,25 +168,6 @@ Partial Class bases_militares
         Me.GroupBox1.Size = New System.Drawing.Size(504, 238)
         Me.GroupBox1.TabIndex = 47
         Me.GroupBox1.TabStop = False
-        '
-        'ApplyBases
-        '
-        Me.ApplyBases.Location = New System.Drawing.Point(190, 187)
-        Me.ApplyBases.Name = "ApplyBases"
-        Me.ApplyBases.Size = New System.Drawing.Size(133, 29)
-        Me.ApplyBases.TabIndex = 1
-        Me.ApplyBases.Text = "Apply"
-        Me.ApplyBases.UseVisualStyleBackColor = True
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.FA)
-        Me.GroupBox2.Location = New System.Drawing.Point(26, 26)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(461, 66)
-        Me.GroupBox2.TabIndex = 2
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Ramos"
         '
         'FT
         '
@@ -196,6 +179,16 @@ Partial Class bases_militares
         Me.FT.Text = "Força Terrestre"
         Me.FT.UseVisualStyleBackColor = True
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.FA)
+        Me.GroupBox2.Location = New System.Drawing.Point(26, 26)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(461, 66)
+        Me.GroupBox2.TabIndex = 2
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Ramos"
+        '
         'FA
         '
         Me.FA.AutoSize = True
@@ -206,6 +199,15 @@ Partial Class bases_militares
         Me.FA.Text = "Força Aerea"
         Me.FA.UseVisualStyleBackColor = True
         '
+        'ApplyBases
+        '
+        Me.ApplyBases.Location = New System.Drawing.Point(280, 184)
+        Me.ApplyBases.Name = "ApplyBases"
+        Me.ApplyBases.Size = New System.Drawing.Size(133, 29)
+        Me.ApplyBases.TabIndex = 1
+        Me.ApplyBases.Text = "Apply"
+        Me.ApplyBases.UseVisualStyleBackColor = True
+        '
         'FM
         '
         Me.FM.AutoSize = True
@@ -215,6 +217,15 @@ Partial Class bases_militares
         Me.FM.TabIndex = 1
         Me.FM.Text = "Força Marítima"
         Me.FM.UseVisualStyleBackColor = True
+        '
+        'baseReset
+        '
+        Me.baseReset.Location = New System.Drawing.Point(94, 184)
+        Me.baseReset.Name = "baseReset"
+        Me.baseReset.Size = New System.Drawing.Size(133, 29)
+        Me.baseReset.TabIndex = 3
+        Me.baseReset.Text = "Reset"
+        Me.baseReset.UseVisualStyleBackColor = True
         '
         'bases_militares
         '
@@ -264,4 +275,5 @@ Partial Class bases_militares
     Friend WithEvents FT As CheckBox
     Friend WithEvents FM As CheckBox
     Friend WithEvents FA As CheckBox
+    Friend WithEvents baseReset As Button
 End Class

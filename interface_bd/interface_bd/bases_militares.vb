@@ -244,4 +244,11 @@ Public Class bases_militares
     Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles FM.CheckedChanged
 
     End Sub
+
+    Private Sub baseReset_Click(sender As Object, e As EventArgs) Handles baseReset.Click
+        listaBases.Clear()
+        listaBases.AddRange(StartingList.ToArray)
+        ListBox2.Items.Clear()
+        ListBox2.Items.AddRange(listaBases.ToArray)
+    End Sub
 End Class

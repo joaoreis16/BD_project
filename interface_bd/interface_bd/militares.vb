@@ -53,7 +53,7 @@ Public Class militares
             M.cargo = RDR.Item("cargo")
 
             ' VERIFICAR SE O MILITAR ESTÁ EM MISSÃO    ---> PROBLEMA: como ver se um atributo é null?
-
+            '
             'If If(RDR.IsDBNull("pelotao"), "", RDR.GetString("pelotao")) Then
             'EmMissao = False
             'Else
@@ -167,6 +167,7 @@ Public Class militares
         Dim nac = NacDD.Text
         Dim missoesVal = MissoesDD.SelectedValue
         Dim missoes = MissoesDD.Text
+        Dim dispon = DispDD.SelectedValue
         Dim conds As New List(Of String)()
 
 
@@ -204,6 +205,14 @@ Public Class militares
             End If
         End If
 
+        If Not (dispon = -1) Then
+            If dispon = 1 Then
+                conds.Add(String.Format("EXERCITO.militarEmMissao(nCC) > 0"))
+            Else
+                conds.Add(String.Format("EXERCITO.militarEmMissao(nCC) = -1"))
+            End If
+        End If
+
         If conds.Count > 0 Then
             cmd = cmd + " WHERE "
             For idx As Integer = 0 To conds.Count - 1
@@ -213,6 +222,7 @@ Public Class militares
                 End If
             Next
         End If
+
 
 
         Dim count As Integer = 0
@@ -253,7 +263,6 @@ Public Class militares
             ListBox1.Enabled = False
             totalTxtBox.Text = 0
         End If
-
 
         CN.Close()
 
@@ -355,9 +364,28 @@ Public Class militares
         MissoesDD.DisplayMember = "Value"
         MissoesDD.ValueMember = "Key"
 
+        Dim dispDict As New Dictionary(Of Integer, String)()
+        dispDict.Add(-1, "Disponibilidade")
+        dispDict.Add(1, "Em Missão")
+        dispDict.Add(2, "Disponível")
+
+        DispDD.DataSource = New BindingSource(dispDict, Nothing)
+        DispDD.DisplayMember = "Value"
+        DispDD.ValueMember = "Key"
+
 
         CN.Close()
 
     End Function
 
+    Private Sub MissoesDD_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MissoesDD.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles resetBttn.Click
+        listaMilitares.Clear()
+        listaMilitares.AddRange(StartingList.ToArray)
+        ListBox1.Items.Clear()
+        ListBox1.Items.AddRange(listaMilitares.ToArray)
+    End Sub
 End Class

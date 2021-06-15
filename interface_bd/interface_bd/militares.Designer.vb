@@ -34,6 +34,8 @@ Partial Class militares
         Me.Label4 = New System.Windows.Forms.Label()
         Me.totalTxtBox = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.resetBttn = New System.Windows.Forms.Button()
+        Me.DispDD = New System.Windows.Forms.ComboBox()
         Me.ApplyFilters = New System.Windows.Forms.Button()
         Me.MissoesDD = New System.Windows.Forms.ComboBox()
         Me.CargoDD = New System.Windows.Forms.ComboBox()
@@ -149,6 +151,8 @@ Partial Class militares
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.resetBttn)
+        Me.GroupBox1.Controls.Add(Me.DispDD)
         Me.GroupBox1.Controls.Add(Me.ApplyFilters)
         Me.GroupBox1.Controls.Add(Me.MissoesDD)
         Me.GroupBox1.Controls.Add(Me.CargoDD)
@@ -162,9 +166,28 @@ Partial Class militares
         Me.GroupBox1.TabIndex = 36
         Me.GroupBox1.TabStop = False
         '
+        'resetBttn
+        '
+        Me.resetBttn.Location = New System.Drawing.Point(77, 188)
+        Me.resetBttn.Name = "resetBttn"
+        Me.resetBttn.Size = New System.Drawing.Size(133, 29)
+        Me.resetBttn.TabIndex = 34
+        Me.resetBttn.Text = "Reset"
+        Me.resetBttn.UseVisualStyleBackColor = True
+        '
+        'DispDD
+        '
+        Me.DispDD.AutoCompleteCustomSource.AddRange(New String() {"Em Missão", "Disponível"})
+        Me.DispDD.FormattingEnabled = True
+        Me.DispDD.Location = New System.Drawing.Point(260, 138)
+        Me.DispDD.Name = "DispDD"
+        Me.DispDD.Size = New System.Drawing.Size(187, 28)
+        Me.DispDD.TabIndex = 33
+        Me.DispDD.Text = "Disponibilidade"
+        '
         'ApplyFilters
         '
-        Me.ApplyFilters.Location = New System.Drawing.Point(176, 189)
+        Me.ApplyFilters.Location = New System.Drawing.Point(260, 188)
         Me.ApplyFilters.Name = "ApplyFilters"
         Me.ApplyFilters.Size = New System.Drawing.Size(133, 29)
         Me.ApplyFilters.TabIndex = 31
@@ -176,16 +199,16 @@ Partial Class militares
         Me.MissoesDD.FormattingEnabled = True
         Me.MissoesDD.Location = New System.Drawing.Point(327, 87)
         Me.MissoesDD.Name = "MissoesDD"
-        Me.MissoesDD.Size = New System.Drawing.Size(91, 28)
+        Me.MissoesDD.Size = New System.Drawing.Size(120, 28)
         Me.MissoesDD.TabIndex = 30
-        Me.MissoesDD.Text = "Missoes"
+        Me.MissoesDD.Text = "Nº Missoes"
         '
         'CargoDD
         '
         Me.CargoDD.FormattingEnabled = True
         Me.CargoDD.Location = New System.Drawing.Point(327, 36)
         Me.CargoDD.Name = "CargoDD"
-        Me.CargoDD.Size = New System.Drawing.Size(91, 28)
+        Me.CargoDD.Size = New System.Drawing.Size(120, 28)
         Me.CargoDD.TabIndex = 29
         Me.CargoDD.Text = "Cargo"
         '
@@ -194,7 +217,7 @@ Partial Class militares
         Me.NacDD.FormattingEnabled = True
         Me.NacDD.Location = New System.Drawing.Point(31, 138)
         Me.NacDD.Name = "NacDD"
-        Me.NacDD.Size = New System.Drawing.Size(151, 28)
+        Me.NacDD.Size = New System.Drawing.Size(179, 28)
         Me.NacDD.TabIndex = 28
         Me.NacDD.Text = "Nacionalidade"
         '
@@ -272,4 +295,6 @@ Partial Class militares
     Friend WithEvents CargoDD As ComboBox
     Friend WithEvents NacDD As ComboBox
     Friend WithEvents ApplyFilters As Button
+    Friend WithEvents DispDD As ComboBox
+    Friend WithEvents resetBttn As Button
 End Class

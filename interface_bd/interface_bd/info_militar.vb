@@ -2,6 +2,8 @@
 
     Private Sub CheckMissao_CheckedChanged(sender As Object, e As EventArgs) Handles CheckMissao.CheckedChanged
 
+
+
         If militares.EmMissao Then
             CheckMissao.Checked = True
             BoxMissao.Visible = True
@@ -37,4 +39,6 @@
         militares.Show()
         Me.Close()
     End Sub
+
+
 End Class
