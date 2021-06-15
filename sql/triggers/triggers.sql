@@ -54,6 +54,11 @@ GO
 
 ----------------EQUIPAMENTO------------------------
 
+/*
+*	GUARDA NO HISTORICO UMA PARAGEM DE UTILIZAÇAO 
+*	DE EQUIPAMENTO
+*/
+
 ------------------MILITAR------------------------
 
 /*

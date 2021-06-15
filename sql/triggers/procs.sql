@@ -242,6 +242,12 @@ AS
 	END
 GO
 
+CREATE PROC EXERCITO.removeEquipamento @nCC INT, @id INT
+AS
+	BEGIN
+		UPDATE EXERCITO.utiliza_equipamento SET data_f = GETDATE() WHERE @nCC = soldado AND @id = equipamento AND data_f IS NULL
+	END
+
 /*
 *	CRIAR ARMA
 */
