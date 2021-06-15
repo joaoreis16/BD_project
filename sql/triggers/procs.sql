@@ -217,6 +217,7 @@ GO
 /*
 *	DAR EQUIPAMENTO A SOLDADO
 */
+DROP PROC EXERCITO.assignEquipamento
 CREATE PROC EXERCITO.assignEquipamento @nCC INT, @equi INT
 AS
 	BEGIN
@@ -224,7 +225,7 @@ AS
 			BEGIN
 				IF EXISTS (SELECT * FROM EXERCITO.equipamento WHERE id = @equi)
 					BEGIN
-						IF NOT EXISTS (SELECT * FROM EXERCITO.utiliza_equipamento WHERE equipamento = @equi)
+						IF NOT EXISTS (SELECT * FROM EXERCITO.utiliza_equipamento WHERE equipamento = @equi AND data_f IS NULL)
 							BEGIN
 								INSERT INTO EXERCITO.utiliza_equipamento(soldado, equipamento, data_i, data_f) VALUES (@nCC, @equi, GETDATE(), NULL)
 							END

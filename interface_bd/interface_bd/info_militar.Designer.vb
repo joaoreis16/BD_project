@@ -30,15 +30,17 @@ Partial Class info_militar
         Me.TBmorada = New System.Windows.Forms.TextBox()
         Me.TBtel = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.nomeMiss = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.CheckMissao = New System.Windows.Forms.CheckBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.Arma = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.Veic = New System.Windows.Forms.TextBox()
         Me.BoxMissao = New System.Windows.Forms.GroupBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.tipoMiss = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.TBcargo = New System.Windows.Forms.TextBox()
         Me.TBtipo = New System.Windows.Forms.TextBox()
@@ -53,8 +55,6 @@ Partial Class info_militar
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TBnMiss = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.BoxMissao.SuspendLayout()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -121,13 +121,13 @@ Partial Class info_militar
         Me.Label4.TabIndex = 27
         Me.Label4.Text = "Telefone"
         '
-        'TextBox4
+        'nomeMiss
         '
-        Me.TextBox4.Location = New System.Drawing.Point(160, 29)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.ReadOnly = True
-        Me.TextBox4.Size = New System.Drawing.Size(135, 27)
-        Me.TextBox4.TabIndex = 28
+        Me.nomeMiss.Location = New System.Drawing.Point(160, 29)
+        Me.nomeMiss.Name = "nomeMiss"
+        Me.nomeMiss.ReadOnly = True
+        Me.nomeMiss.Size = New System.Drawing.Size(135, 27)
+        Me.nomeMiss.TabIndex = 28
         '
         'Label5
         '
@@ -166,13 +166,13 @@ Partial Class info_militar
         Me.Label7.TabIndex = 32
         Me.Label7.Text = "Missão"
         '
-        'TextBox5
+        'Arma
         '
-        Me.TextBox5.Location = New System.Drawing.Point(161, 70)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.ReadOnly = True
-        Me.TextBox5.Size = New System.Drawing.Size(368, 27)
-        Me.TextBox5.TabIndex = 33
+        Me.Arma.Location = New System.Drawing.Point(161, 70)
+        Me.Arma.Name = "Arma"
+        Me.Arma.ReadOnly = True
+        Me.Arma.Size = New System.Drawing.Size(368, 27)
+        Me.Arma.TabIndex = 33
         '
         'Label8
         '
@@ -183,30 +183,47 @@ Partial Class info_militar
         Me.Label8.TabIndex = 34
         Me.Label8.Text = "Veículo usado"
         '
-        'TextBox6
+        'Veic
         '
-        Me.TextBox6.Location = New System.Drawing.Point(161, 108)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.ReadOnly = True
-        Me.TextBox6.Size = New System.Drawing.Size(368, 27)
-        Me.TextBox6.TabIndex = 35
+        Me.Veic.Location = New System.Drawing.Point(161, 108)
+        Me.Veic.Name = "Veic"
+        Me.Veic.ReadOnly = True
+        Me.Veic.Size = New System.Drawing.Size(368, 27)
+        Me.Veic.TabIndex = 35
         '
         'BoxMissao
         '
         Me.BoxMissao.Controls.Add(Me.Label13)
-        Me.BoxMissao.Controls.Add(Me.TextBox1)
+        Me.BoxMissao.Controls.Add(Me.tipoMiss)
         Me.BoxMissao.Controls.Add(Me.Label8)
-        Me.BoxMissao.Controls.Add(Me.TextBox6)
+        Me.BoxMissao.Controls.Add(Me.Veic)
         Me.BoxMissao.Controls.Add(Me.Label7)
-        Me.BoxMissao.Controls.Add(Me.TextBox5)
+        Me.BoxMissao.Controls.Add(Me.Arma)
         Me.BoxMissao.Controls.Add(Me.Label5)
-        Me.BoxMissao.Controls.Add(Me.TextBox4)
+        Me.BoxMissao.Controls.Add(Me.nomeMiss)
         Me.BoxMissao.Location = New System.Drawing.Point(93, 414)
         Me.BoxMissao.Name = "BoxMissao"
         Me.BoxMissao.Size = New System.Drawing.Size(582, 180)
         Me.BoxMissao.TabIndex = 36
         Me.BoxMissao.TabStop = False
         Me.BoxMissao.Visible = False
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(316, 33)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(55, 20)
+        Me.Label13.TabIndex = 37
+        Me.Label13.Text = "Missão"
+        '
+        'tipoMiss
+        '
+        Me.tipoMiss.Location = New System.Drawing.Point(394, 26)
+        Me.tipoMiss.Name = "tipoMiss"
+        Me.tipoMiss.ReadOnly = True
+        Me.tipoMiss.Size = New System.Drawing.Size(135, 27)
+        Me.tipoMiss.TabIndex = 36
         '
         'Label9
         '
@@ -337,23 +354,6 @@ Partial Class info_militar
         Me.Label12.TabIndex = 47
         Me.Label12.Text = "número de missões"
         '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(316, 33)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(55, 20)
-        Me.Label13.TabIndex = 37
-        Me.Label13.Text = "Missão"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(394, 26)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(135, 27)
-        Me.TextBox1.TabIndex = 36
-        '
         'info_militar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
@@ -399,14 +399,14 @@ Partial Class info_militar
     Friend WithEvents TBmorada As TextBox
     Friend WithEvents TBtel As TextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents nomeMiss As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents CheckMissao As CheckBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
-    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents Arma As TextBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents Veic As TextBox
     Friend WithEvents BoxMissao As GroupBox
     Friend WithEvents Label9 As Label
     Friend WithEvents TBcargo As TextBox
@@ -423,5 +423,5 @@ Partial Class info_militar
     Friend WithEvents TBnMiss As TextBox
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents tipoMiss As TextBox
 End Class

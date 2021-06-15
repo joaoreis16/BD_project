@@ -117,6 +117,8 @@ AS
 		RETURN -1
 	END
 
+PRINT EXERCITO.militarEmMissao(5)
+
 
 /*
 *	RETORNA TODOS OS MILITARES QUE PARTICIPARAM NA MISSAO @id
@@ -134,6 +136,62 @@ AS
 					
 		RETURN	
 
+	END
+
+
+/*
+*	VEICULO QUE nCC está a usar atualmente
+*/
+CREATE FUNCTION EXERCITO.aUsarVeiculo (@nCC INT) RETURNS INT
+AS
+	BEGIN
+		DECLARE @vid INT
+		SELECT @vid = veiculo.idEqui FROM EXERCITO.VEICULO
+						JOIN EXERCITO.utiliza_equipamento
+						ON veiculo.idEqui = utiliza_equipamento.equipamento
+						WHERE soldado = @nCC AND data_f IS NULL 
+		IF @vid IS NOT NULL
+			BEGIN
+				RETURN @vid
+			END
+		RETURN -1
+
+	END
+
+CREATE FUNCTION EXERCITO.aUsarArma (@nCC INT) RETURNS INT
+AS
+	BEGIN
+		DECLARE @aid INT
+		SELECT @aid = arma.idEqui FROM EXERCITO.arma
+						JOIN EXERCITO.utiliza_equipamento
+						ON arma.idEqui = utiliza_equipamento.equipamento
+						WHERE soldado = @nCC AND data_f IS NULL 
+		IF @aid IS NOT NULL
+			BEGIN
+				RETURN @aid
+			END
+		RETURN -1
+
+	END
+
+/*
+*	DADO nCC, retorna 'S' se for Soldado
+*					  'E' se for Eng
+*					  'M' se for Med
+*/
+CREATE FUNCTION EXERCITO.subclass(@nCC INT) RETURNS VARCHAR(50)
+AS
+	BEGIN
+		IF EXISTS (SELECT * FROM EXERCITO.soldado WHERE nCC = @nCC)
+			RETURN 'SOLDADO'
+
+		IF EXISTS ( SELECT * FROM EXERCITO.engenheiro WHERE nCC = @nCC)
+			RETURN 'ENGENHEIRO'
+
+		IF EXISTS ( SELECT * FROM EXERCITO.medico WHERE nCC = @nCC)
+			RETURN 'MEDICO'
+
+		RETURN NULL
 	END
 
 

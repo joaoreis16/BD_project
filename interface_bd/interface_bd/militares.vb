@@ -15,6 +15,7 @@ Public Class militares
     Private Sub militares_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim RDR As SqlDataReader
+
         Dim SQA As SqlDataAdapter
 
         CN = New SqlConnection("data Source = " + dbServer + " ;" +
@@ -27,7 +28,7 @@ Public Class militares
         CMD = New SqlCommand
         CMD.Connection = CN
 
-        CMD.CommandText = "SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, EXERCITO.cargo.cargo
+        CMD.CommandText = "SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, EXERCITO.cargo.cargo, EXERCITO.militarEmMissao(nCC) AS EmMissao, EXERCITO.subclass(nCC) AS tipo
                            FROM EXERCITO.militar 
                            JOIN EXERCITO.cargo 
                            ON militar.cargo = cargo.id"
@@ -51,6 +52,7 @@ Public Class militares
             M.ramo = Convert.ToString(RDR.Item("ramo"))
             M.base = Convert.ToString(RDR.Item("base"))
             M.cargo = RDR.Item("cargo")
+            M.tipo = RDR.Item("tipo")
 
             ' VERIFICAR SE O MILITAR ESTÁ EM MISSÃO    ---> PROBLEMA: como ver se um atributo é null?
             '
@@ -60,6 +62,8 @@ Public Class militares
             'EmMissao = True
             'M.pelotao = Convert.ToString(RDR.Item("pelotao"))
             'End If
+
+            M.missao = RDR.Item("EmMissao")
 
             listaMilitares.Add(M)
             ListBox1.Items.Add(M)
@@ -168,6 +172,7 @@ Public Class militares
         Dim missoesVal = MissoesDD.SelectedValue
         Dim missoes = MissoesDD.Text
         Dim dispon = DispDD.SelectedValue
+        Dim subcl = subclasse.SelectedValue
         Dim conds As New List(Of String)()
 
 
@@ -177,6 +182,10 @@ Public Class militares
                                "password = " + userPass)
         Dim cmd = "SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, cargo
                            FROM EXERCITO.militar"
+
+        If subcl IsNot "" Then
+            conds.Add(String.Format("EXERCITO.subclass(nCC) = '{0}'", subcl))
+        End If
 
         If base > -1 Then
             conds.Add(String.Format("base = {0}", base))
@@ -372,6 +381,16 @@ Public Class militares
         DispDD.DataSource = New BindingSource(dispDict, Nothing)
         DispDD.DisplayMember = "Value"
         DispDD.ValueMember = "Key"
+
+        Dim scDict As New Dictionary(Of String, String)()
+        scDict.Add("", "Tipo Militar")
+        scDict.Add("SOLDADO", "Soldado")
+        scDict.Add("MEDICO", "Medico")
+        scDict.Add("ENGENHEIRO", "Engenheiro")
+
+        subclasse.DataSource = New BindingSource(scDict, Nothing)
+        subclasse.DisplayMember = "Value"
+        subclasse.ValueMember = "Key"
 
 
         CN.Close()
