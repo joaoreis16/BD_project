@@ -62,3 +62,4 @@ C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\obj\Debug\net5
 C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.info_base.resources
 C:\Users\VascoSousa\Desktop\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.bases_militares.resources
 C:\Users\VascoSousa\Desktop\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.info_base.resources
+C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.equipamento.resources

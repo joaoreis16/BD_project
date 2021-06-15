@@ -16,4 +16,10 @@
         base.Show()
         Me.Close()
     End Sub
+
+    Private Sub Equipamento_Click(sender As Object, e As EventArgs) Handles Equipamento.Click
+        Dim equi = New equipamento
+        equi.Show()
+        Me.Close()
+    End Sub
 End Class
