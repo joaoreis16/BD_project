@@ -23,11 +23,7 @@ Partial Class militares
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(militares))
-        Me.CheckAll = New System.Windows.Forms.CheckBox()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.CheckRamo = New System.Windows.Forms.CheckBox()
-        Me.CheckBase = New System.Windows.Forms.CheckBox()
-        Me.CheckNasc = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TBpesquisa = New System.Windows.Forms.TextBox()
         Me.menuBar = New System.Windows.Forms.GroupBox()
@@ -38,7 +34,12 @@ Partial Class militares
         Me.Label4 = New System.Windows.Forms.Label()
         Me.totalTxtBox = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.CheckMissao = New System.Windows.Forms.CheckBox()
+        Me.ApplyFilters = New System.Windows.Forms.Button()
+        Me.MissoesDD = New System.Windows.Forms.ComboBox()
+        Me.CargoDD = New System.Windows.Forms.ComboBox()
+        Me.NacDD = New System.Windows.Forms.ComboBox()
+        Me.RamoDD = New System.Windows.Forms.ComboBox()
+        Me.BaseDD = New System.Windows.Forms.ComboBox()
         Me.pesquisaBttn = New System.Windows.Forms.PictureBox()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -48,16 +49,6 @@ Partial Class militares
         CType(Me.pesquisaBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'CheckAll
-        '
-        Me.CheckAll.AutoSize = True
-        Me.CheckAll.Location = New System.Drawing.Point(31, 46)
-        Me.CheckAll.Name = "CheckAll"
-        Me.CheckAll.Size = New System.Drawing.Size(49, 24)
-        Me.CheckAll.TabIndex = 18
-        Me.CheckAll.Text = "All"
-        Me.CheckAll.UseVisualStyleBackColor = True
-        '
         'ListBox1
         '
         Me.ListBox1.FormattingEnabled = True
@@ -66,36 +57,6 @@ Partial Class militares
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(437, 444)
         Me.ListBox1.TabIndex = 21
-        '
-        'CheckRamo
-        '
-        Me.CheckRamo.AutoSize = True
-        Me.CheckRamo.Location = New System.Drawing.Point(31, 95)
-        Me.CheckRamo.Name = "CheckRamo"
-        Me.CheckRamo.Size = New System.Drawing.Size(70, 24)
-        Me.CheckRamo.TabIndex = 22
-        Me.CheckRamo.Text = "Ramo"
-        Me.CheckRamo.UseVisualStyleBackColor = True
-        '
-        'CheckBase
-        '
-        Me.CheckBase.AutoSize = True
-        Me.CheckBase.Location = New System.Drawing.Point(174, 46)
-        Me.CheckBase.Name = "CheckBase"
-        Me.CheckBase.Size = New System.Drawing.Size(109, 24)
-        Me.CheckBase.TabIndex = 23
-        Me.CheckBase.Text = "Base Militar"
-        Me.CheckBase.UseVisualStyleBackColor = True
-        '
-        'CheckNasc
-        '
-        Me.CheckNasc.AutoSize = True
-        Me.CheckNasc.Location = New System.Drawing.Point(346, 46)
-        Me.CheckNasc.Name = "CheckNasc"
-        Me.CheckNasc.Size = New System.Drawing.Size(128, 24)
-        Me.CheckNasc.TabIndex = 24
-        Me.CheckNasc.Text = "Nacionalidade"
-        Me.CheckNasc.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -188,11 +149,12 @@ Partial Class militares
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.CheckMissao)
-        Me.GroupBox1.Controls.Add(Me.CheckAll)
-        Me.GroupBox1.Controls.Add(Me.CheckRamo)
-        Me.GroupBox1.Controls.Add(Me.CheckBase)
-        Me.GroupBox1.Controls.Add(Me.CheckNasc)
+        Me.GroupBox1.Controls.Add(Me.ApplyFilters)
+        Me.GroupBox1.Controls.Add(Me.MissoesDD)
+        Me.GroupBox1.Controls.Add(Me.CargoDD)
+        Me.GroupBox1.Controls.Add(Me.NacDD)
+        Me.GroupBox1.Controls.Add(Me.RamoDD)
+        Me.GroupBox1.Controls.Add(Me.BaseDD)
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.GroupBox1.Location = New System.Drawing.Point(33, 341)
         Me.GroupBox1.Name = "GroupBox1"
@@ -200,15 +162,60 @@ Partial Class militares
         Me.GroupBox1.TabIndex = 36
         Me.GroupBox1.TabStop = False
         '
-        'CheckMissao
+        'ApplyFilters
         '
-        Me.CheckMissao.AutoSize = True
-        Me.CheckMissao.Location = New System.Drawing.Point(174, 95)
-        Me.CheckMissao.Name = "CheckMissao"
-        Me.CheckMissao.Size = New System.Drawing.Size(125, 24)
-        Me.CheckMissao.TabIndex = 25
-        Me.CheckMissao.Text = "Nº de Missões"
-        Me.CheckMissao.UseVisualStyleBackColor = True
+        Me.ApplyFilters.Location = New System.Drawing.Point(176, 189)
+        Me.ApplyFilters.Name = "ApplyFilters"
+        Me.ApplyFilters.Size = New System.Drawing.Size(133, 29)
+        Me.ApplyFilters.TabIndex = 31
+        Me.ApplyFilters.Text = "Apply"
+        Me.ApplyFilters.UseVisualStyleBackColor = True
+        '
+        'MissoesDD
+        '
+        Me.MissoesDD.FormattingEnabled = True
+        Me.MissoesDD.Location = New System.Drawing.Point(327, 87)
+        Me.MissoesDD.Name = "MissoesDD"
+        Me.MissoesDD.Size = New System.Drawing.Size(91, 28)
+        Me.MissoesDD.TabIndex = 30
+        Me.MissoesDD.Text = "Missoes"
+        '
+        'CargoDD
+        '
+        Me.CargoDD.FormattingEnabled = True
+        Me.CargoDD.Location = New System.Drawing.Point(327, 36)
+        Me.CargoDD.Name = "CargoDD"
+        Me.CargoDD.Size = New System.Drawing.Size(91, 28)
+        Me.CargoDD.TabIndex = 29
+        Me.CargoDD.Text = "Cargo"
+        '
+        'NacDD
+        '
+        Me.NacDD.FormattingEnabled = True
+        Me.NacDD.Location = New System.Drawing.Point(31, 138)
+        Me.NacDD.Name = "NacDD"
+        Me.NacDD.Size = New System.Drawing.Size(151, 28)
+        Me.NacDD.TabIndex = 28
+        Me.NacDD.Text = "Nacionalidade"
+        '
+        'RamoDD
+        '
+        Me.RamoDD.FormattingEnabled = True
+        Me.RamoDD.Location = New System.Drawing.Point(31, 87)
+        Me.RamoDD.Name = "RamoDD"
+        Me.RamoDD.Size = New System.Drawing.Size(262, 28)
+        Me.RamoDD.TabIndex = 27
+        Me.RamoDD.Text = "Ramo"
+        '
+        'BaseDD
+        '
+        Me.BaseDD.AccessibleName = ""
+        Me.BaseDD.FormattingEnabled = True
+        Me.BaseDD.Location = New System.Drawing.Point(31, 36)
+        Me.BaseDD.Name = "BaseDD"
+        Me.BaseDD.Size = New System.Drawing.Size(262, 28)
+        Me.BaseDD.TabIndex = 26
+        Me.BaseDD.Text = "Base"
         '
         'pesquisaBttn
         '
@@ -225,7 +232,7 @@ Partial Class militares
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1071, 632)
+        Me.ClientSize = New System.Drawing.Size(1077, 632)
         Me.Controls.Add(Me.pesquisaBttn)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.totalTxtBox)
@@ -242,17 +249,12 @@ Partial Class militares
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         CType(Me.pesquisaBttn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents CheckAll As CheckBox
     Friend WithEvents ListBox1 As ListBox
-    Friend WithEvents CheckRamo As CheckBox
-    Friend WithEvents CheckBase As CheckBox
-    Friend WithEvents CheckNasc As CheckBox
     Friend WithEvents Label1 As Label
     Friend WithEvents TBpesquisa As TextBox
     Friend WithEvents menuBar As GroupBox
@@ -263,6 +265,11 @@ Partial Class militares
     Friend WithEvents Label4 As Label
     Friend WithEvents totalTxtBox As TextBox
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents CheckMissao As CheckBox
     Friend WithEvents pesquisaBttn As PictureBox
+    Friend WithEvents BaseDD As ComboBox
+    Friend WithEvents RamoDD As ComboBox
+    Friend WithEvents MissoesDD As ComboBox
+    Friend WithEvents CargoDD As ComboBox
+    Friend WithEvents NacDD As ComboBox
+    Friend WithEvents ApplyFilters As Button
 End Class

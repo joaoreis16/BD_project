@@ -30,17 +30,23 @@ Partial Class bases_militares
         Me.totalTxtBox = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.barraBases = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.CheckAll = New System.Windows.Forms.CheckBox()
+        Me.ListBox2 = New System.Windows.Forms.ListBox()
+        Me.basePesquisa = New System.Windows.Forms.PictureBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ApplyBases = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.FT = New System.Windows.Forms.CheckBox()
+        Me.FA = New System.Windows.Forms.CheckBox()
+        Me.FM = New System.Windows.Forms.CheckBox()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.basePesquisa, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'menuBar
@@ -115,12 +121,12 @@ Partial Class bases_militares
         Me.Label2.TabIndex = 43
         Me.Label2.Text = "FILTROS"
         '
-        'TextBox1
+        'barraBases
         '
-        Me.TextBox1.Location = New System.Drawing.Point(37, 231)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(501, 27)
-        Me.TextBox1.TabIndex = 42
+        Me.barraBases.Location = New System.Drawing.Point(37, 231)
+        Me.barraBases.Name = "barraBases"
+        Me.barraBases.Size = New System.Drawing.Size(452, 27)
+        Me.barraBases.TabIndex = 42
         '
         'Label1
         '
@@ -132,70 +138,98 @@ Partial Class bases_militares
         Me.Label1.TabIndex = 41
         Me.Label1.Text = "PESQUISA"
         '
-        'CheckBox3
+        'ListBox2
         '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(395, 351)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(128, 24)
-        Me.CheckBox3.TabIndex = 40
-        Me.CheckBox3.Text = "Nacionalidade"
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.ListBox2.FormattingEnabled = True
+        Me.ListBox2.ItemHeight = 20
+        Me.ListBox2.Location = New System.Drawing.Point(598, 133)
+        Me.ListBox2.Name = "ListBox2"
+        Me.ListBox2.Size = New System.Drawing.Size(437, 444)
+        Me.ListBox2.TabIndex = 37
         '
-        'CheckBox2
+        'basePesquisa
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(238, 351)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(109, 24)
-        Me.CheckBox2.TabIndex = 39
-        Me.CheckBox2.Text = "Base Militar"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.basePesquisa.BackColor = System.Drawing.SystemColors.MenuHighlight
+        Me.basePesquisa.Location = New System.Drawing.Point(540, 231)
+        Me.basePesquisa.Name = "basePesquisa"
+        Me.basePesquisa.Size = New System.Drawing.Size(47, 26)
+        Me.basePesquisa.TabIndex = 46
+        Me.basePesquisa.TabStop = False
         '
-        'CheckBox1
+        'GroupBox1
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(122, 351)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(70, 24)
-        Me.CheckBox1.TabIndex = 38
-        Me.CheckBox1.Text = "Ramo"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.GroupBox1.Controls.Add(Me.FT)
+        Me.GroupBox1.Controls.Add(Me.GroupBox2)
+        Me.GroupBox1.Controls.Add(Me.ApplyBases)
+        Me.GroupBox1.Location = New System.Drawing.Point(37, 339)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(504, 238)
+        Me.GroupBox1.TabIndex = 47
+        Me.GroupBox1.TabStop = False
         '
-        'ListBox1
+        'ApplyBases
         '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Location = New System.Drawing.Point(598, 133)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(437, 444)
-        Me.ListBox1.TabIndex = 37
+        Me.ApplyBases.Location = New System.Drawing.Point(190, 187)
+        Me.ApplyBases.Name = "ApplyBases"
+        Me.ApplyBases.Size = New System.Drawing.Size(133, 29)
+        Me.ApplyBases.TabIndex = 1
+        Me.ApplyBases.Text = "Apply"
+        Me.ApplyBases.UseVisualStyleBackColor = True
         '
-        'CheckAll
+        'GroupBox2
         '
-        Me.CheckAll.AutoSize = True
-        Me.CheckAll.Location = New System.Drawing.Point(42, 351)
-        Me.CheckAll.Name = "CheckAll"
-        Me.CheckAll.Size = New System.Drawing.Size(49, 24)
-        Me.CheckAll.TabIndex = 36
-        Me.CheckAll.Text = "All"
-        Me.CheckAll.UseVisualStyleBackColor = True
+        Me.GroupBox2.Controls.Add(Me.FA)
+        Me.GroupBox2.Location = New System.Drawing.Point(26, 26)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(461, 66)
+        Me.GroupBox2.TabIndex = 2
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Ramos"
+        '
+        'FT
+        '
+        Me.FT.AutoSize = True
+        Me.FT.Location = New System.Drawing.Point(44, 52)
+        Me.FT.Name = "FT"
+        Me.FT.Size = New System.Drawing.Size(128, 24)
+        Me.FT.TabIndex = 0
+        Me.FT.Text = "Força Terrestre"
+        Me.FT.UseVisualStyleBackColor = True
+        '
+        'FA
+        '
+        Me.FA.AutoSize = True
+        Me.FA.Location = New System.Drawing.Point(176, 26)
+        Me.FA.Name = "FA"
+        Me.FA.Size = New System.Drawing.Size(110, 24)
+        Me.FA.TabIndex = 0
+        Me.FA.Text = "Força Aerea"
+        Me.FA.UseVisualStyleBackColor = True
+        '
+        'FM
+        '
+        Me.FM.AutoSize = True
+        Me.FM.Location = New System.Drawing.Point(387, 391)
+        Me.FM.Name = "FM"
+        Me.FM.Size = New System.Drawing.Size(131, 24)
+        Me.FM.TabIndex = 1
+        Me.FM.Text = "Força Marítima"
+        Me.FM.UseVisualStyleBackColor = True
         '
         'bases_militares
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1071, 632)
+        Me.Controls.Add(Me.FM)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.basePesquisa)
         Me.Controls.Add(Me.totalTxtBox)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.barraBases)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.CheckBox3)
-        Me.Controls.Add(Me.CheckBox2)
-        Me.Controls.Add(Me.CheckBox1)
-        Me.Controls.Add(Me.ListBox1)
-        Me.Controls.Add(Me.CheckAll)
+        Me.Controls.Add(Me.ListBox2)
         Me.Controls.Add(Me.menuBar)
         Me.Name = "bases_militares"
         Me.Text = "bases_militares"
@@ -203,6 +237,11 @@ Partial Class bases_militares
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.basePesquisa, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -215,11 +254,14 @@ Partial Class bases_militares
     Friend WithEvents totalTxtBox As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents barraBases As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents CheckBox3 As CheckBox
-    Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents ListBox1 As ListBox
-    Friend WithEvents CheckAll As CheckBox
+    Friend WithEvents ListBox2 As ListBox
+    Friend WithEvents basePesquisa As PictureBox
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents ApplyBases As Button
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents FT As CheckBox
+    Friend WithEvents FM As CheckBox
+    Friend WithEvents FA As CheckBox
 End Class
