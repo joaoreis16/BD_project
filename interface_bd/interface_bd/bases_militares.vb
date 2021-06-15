@@ -60,7 +60,7 @@ Public Class bases_militares
 
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
         Dim index = ListBox1.SelectedIndex
-        baseSelected = listaBases(index)
+        baseSelected = listaBases(index) ' acabar
         Dim info = New info_base
         info.Show()
         Me.Close()
