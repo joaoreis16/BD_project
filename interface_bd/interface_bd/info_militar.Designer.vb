@@ -53,6 +53,8 @@ Partial Class info_militar
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TBnMiss = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.BoxMissao.SuspendLayout()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -121,16 +123,16 @@ Partial Class info_militar
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(131, 26)
+        Me.TextBox4.Location = New System.Drawing.Point(160, 29)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.ReadOnly = True
-        Me.TextBox4.Size = New System.Drawing.Size(368, 27)
+        Me.TextBox4.Size = New System.Drawing.Size(135, 27)
         Me.TextBox4.TabIndex = 28
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(19, 69)
+        Me.Label5.Location = New System.Drawing.Point(49, 73)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(88, 20)
         Me.Label5.TabIndex = 29
@@ -158,7 +160,7 @@ Partial Class info_militar
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(52, 32)
+        Me.Label7.Location = New System.Drawing.Point(82, 36)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(55, 20)
         Me.Label7.TabIndex = 32
@@ -166,7 +168,7 @@ Partial Class info_militar
         '
         'TextBox5
         '
-        Me.TextBox5.Location = New System.Drawing.Point(131, 66)
+        Me.TextBox5.Location = New System.Drawing.Point(161, 70)
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.ReadOnly = True
         Me.TextBox5.Size = New System.Drawing.Size(368, 27)
@@ -175,7 +177,7 @@ Partial Class info_militar
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(6, 104)
+        Me.Label8.Location = New System.Drawing.Point(36, 108)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(101, 20)
         Me.Label8.TabIndex = 34
@@ -183,7 +185,7 @@ Partial Class info_militar
         '
         'TextBox6
         '
-        Me.TextBox6.Location = New System.Drawing.Point(131, 104)
+        Me.TextBox6.Location = New System.Drawing.Point(161, 108)
         Me.TextBox6.Name = "TextBox6"
         Me.TextBox6.ReadOnly = True
         Me.TextBox6.Size = New System.Drawing.Size(368, 27)
@@ -191,6 +193,8 @@ Partial Class info_militar
         '
         'BoxMissao
         '
+        Me.BoxMissao.Controls.Add(Me.Label13)
+        Me.BoxMissao.Controls.Add(Me.TextBox1)
         Me.BoxMissao.Controls.Add(Me.Label8)
         Me.BoxMissao.Controls.Add(Me.TextBox6)
         Me.BoxMissao.Controls.Add(Me.Label7)
@@ -333,6 +337,23 @@ Partial Class info_militar
         Me.Label12.TabIndex = 47
         Me.Label12.Text = "número de missões"
         '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(316, 33)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(55, 20)
+        Me.Label13.TabIndex = 37
+        Me.Label13.Text = "Missão"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(394, 26)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(135, 27)
+        Me.TextBox1.TabIndex = 36
+        '
         'info_militar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
@@ -401,4 +422,6 @@ Partial Class info_militar
     Friend WithEvents Label11 As Label
     Friend WithEvents TBnMiss As TextBox
     Friend WithEvents Label12 As Label
+    Friend WithEvents Label13 As Label
+    Friend WithEvents TextBox1 As TextBox
 End Class

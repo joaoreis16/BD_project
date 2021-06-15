@@ -28,6 +28,13 @@ Partial Class info_base
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.goBack = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.TBnome = New System.Windows.Forms.TextBox()
+        Me.TBmorada = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TBtel = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TBcapacidade = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -82,17 +89,83 @@ Partial Class info_base
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(244, 220)
+        Me.Label1.Location = New System.Drawing.Point(96, 213)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(53, 20)
+        Me.Label1.Size = New System.Drawing.Size(50, 20)
         Me.Label1.TabIndex = 33
-        Me.Label1.Text = "Label1"
+        Me.Label1.Text = "Nome"
+        '
+        'TBnome
+        '
+        Me.TBnome.Location = New System.Drawing.Point(178, 213)
+        Me.TBnome.Name = "TBnome"
+        Me.TBnome.ReadOnly = True
+        Me.TBnome.Size = New System.Drawing.Size(398, 27)
+        Me.TBnome.TabIndex = 34
+        '
+        'TBmorada
+        '
+        Me.TBmorada.Location = New System.Drawing.Point(178, 274)
+        Me.TBmorada.Name = "TBmorada"
+        Me.TBmorada.ReadOnly = True
+        Me.TBmorada.Size = New System.Drawing.Size(398, 27)
+        Me.TBmorada.TabIndex = 36
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(85, 274)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(61, 20)
+        Me.Label2.TabIndex = 35
+        Me.Label2.Text = "Morada"
+        '
+        'TBtel
+        '
+        Me.TBtel.Location = New System.Drawing.Point(178, 334)
+        Me.TBtel.Name = "TBtel"
+        Me.TBtel.ReadOnly = True
+        Me.TBtel.Size = New System.Drawing.Size(398, 27)
+        Me.TBtel.TabIndex = 38
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(80, 334)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(66, 20)
+        Me.Label3.TabIndex = 37
+        Me.Label3.Text = "Telefone"
+        '
+        'TBcapacidade
+        '
+        Me.TBcapacidade.Location = New System.Drawing.Point(178, 389)
+        Me.TBcapacidade.Name = "TBcapacidade"
+        Me.TBcapacidade.ReadOnly = True
+        Me.TBcapacidade.Size = New System.Drawing.Size(113, 27)
+        Me.TBcapacidade.TabIndex = 40
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(58, 389)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(88, 20)
+        Me.Label4.TabIndex = 39
+        Me.Label4.Text = "Capacidade"
         '
         'info_base
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1077, 632)
+        Me.Controls.Add(Me.TBcapacidade)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.TBtel)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.TBmorada)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.TBnome)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.menuBar)
         Me.Name = "info_base"
@@ -111,4 +184,11 @@ Partial Class info_base
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents goBack As PictureBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents TBnome As TextBox
+    Friend WithEvents TBmorada As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents TBtel As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents TBcapacidade As TextBox
+    Friend WithEvents Label4 As Label
 End Class

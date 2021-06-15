@@ -58,74 +58,12 @@ Public Class bases_militares
         CN.Close()
     End Sub
 
-    Private Sub ListBox2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListBox2.SelectedIndexChanged
+    Private Sub ListBox2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListBox2.DoubleClick
         Dim index = ListBox2.SelectedIndex
         baseSelected = listaBases(index)
         Dim info = New info_base
         info.Show()
         Me.Close()
-    End Sub
-
-    Private Sub pesquisaBttn_Click(sender As Object, e As EventArgs) Handles basePesquisa.Click
-        Dim num_search = False
-        Dim text = barraBases.Text
-        If IsNumeric(text) Then
-            num_search = True
-            text = Convert.ToInt32(text)
-        End If
-
-        Dim count As Integer = 0
-        Dim RDR As SqlDataReader
-        Dim idx As Integer
-        CN = New SqlConnection("data Source = " + dbServer + " ;" +
-                               "initial Catalog = " + dbName + ";" +
-                               "uid = " + userName + ";" +
-                               "password = " + userPass)
-
-        CMD = New SqlCommand
-        CMD.Connection = CN
-
-        If num_search Then
-            CMD.CommandText = String.Format("SELECT * FROM EXERCITO.base_militar
-                                             WHERE id = {0}", text)
-
-        Else
-            CMD.CommandText = String.Format("SELECT * FROM EXERCITO.base_militar
-                                             WHERE nome LIKE '%{0}%'", text)
-        End If
-        CN.Open()
-        Dim RowsReturned = CMD.ExecuteScalar()
-        ListBox2.Items.Clear()
-
-        If RowsReturned = 0 Then
-            ListBox2.Items.Add("Não foram encontrados dados :(")
-            ListBox2.Enabled = False
-            totalTxtBox.Text = 0
-
-        Else
-            listaBases.AddRange(StartingList.ToArray)
-            ListBox2.Enabled = True
-
-
-            RDR = CMD.ExecuteReader
-
-            While (RDR.Read)
-                idx = BinSrch(listaBases, 0, listaBases.Count - 1, RDR.Item("id"))
-                If idx > -1 Then
-                    ListBox2.Items.Add(listaBases(idx))
-                    count = count + 1
-                End If
-            End While
-
-            listaBases.Clear()
-            For i As Integer = 0 To ListBox2.Items.Count - 1
-                listaBases.Add(ListBox2.Items(i))
-            Next
-            totalTxtBox.Text = count
-        End If
-
-        CN.Close()
-
     End Sub
 
     Private Sub ApplyFilters_Click(sender As Object, e As EventArgs) Handles ApplyBases.Click
@@ -233,16 +171,65 @@ Public Class bases_militares
         Return -1
     End Function
 
-    'Function PopulateBoxes(CN As SqlConnection)
-    '
-    'End Function
+    Private Sub pesquisaBttn_Click(sender As Object, e As EventArgs) Handles pesquisaBttn.Click
+        Dim num_search = False
+        Dim text = barraBases.Text
+        If IsNumeric(text) Then
+            num_search = True
+            text = Convert.ToInt32(text)
+        End If
 
-    Private Sub GroupBox2_Enter(sender As Object, e As EventArgs) Handles GroupBox2.Enter
+        Dim count As Integer = 0
+        Dim RDR As SqlDataReader
+        Dim idx As Integer
+        CN = New SqlConnection("data Source = " + dbServer + " ;" +
+                               "initial Catalog = " + dbName + ";" +
+                               "uid = " + userName + ";" +
+                               "password = " + userPass)
 
-    End Sub
+        CMD = New SqlCommand
+        CMD.Connection = CN
 
-    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles FM.CheckedChanged
+        If num_search Then
+            CMD.CommandText = String.Format("SELECT * FROM EXERCITO.base_militar
+                                             WHERE id = {0}", text)
 
+        Else
+            CMD.CommandText = String.Format("SELECT * FROM EXERCITO.base_militar
+                                             WHERE nome LIKE '%{0}%'", text)
+        End If
+        CN.Open()
+        Dim RowsReturned = CMD.ExecuteScalar()
+        ListBox2.Items.Clear()
+
+        If RowsReturned = 0 Then
+            ListBox2.Items.Add("Não foram encontrados dados :(")
+            ListBox2.Enabled = False
+            totalTxtBox.Text = 0
+
+        Else
+            listaBases.AddRange(StartingList.ToArray)
+            ListBox2.Enabled = True
+
+
+            RDR = CMD.ExecuteReader
+
+            While (RDR.Read)
+                idx = BinSrch(listaBases, 0, listaBases.Count - 1, RDR.Item("id"))
+                If idx > -1 Then
+                    ListBox2.Items.Add(listaBases(idx))
+                    count = count + 1
+                End If
+            End While
+
+            listaBases.Clear()
+            For i As Integer = 0 To ListBox2.Items.Count - 1
+                listaBases.Add(ListBox2.Items(i))
+            Next
+            totalTxtBox.Text = count
+        End If
+
+        CN.Close()
     End Sub
 
     Private Sub baseReset_Click(sender As Object, e As EventArgs) Handles baseReset.Click
@@ -251,4 +238,8 @@ Public Class bases_militares
         ListBox2.Items.Clear()
         ListBox2.Items.AddRange(listaBases.ToArray)
     End Sub
+    'Function PopulateBoxes(CN As SqlConnection)
+    '
+    'End Function
+
 End Class

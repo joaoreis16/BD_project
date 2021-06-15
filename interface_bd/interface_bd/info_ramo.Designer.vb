@@ -31,18 +31,22 @@ Partial Class info_ramo
         Me.goBack = New System.Windows.Forms.PictureBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.TBmote = New System.Windows.Forms.TextBox()
-        Me.TBdia = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.fax = New System.Windows.Forms.Label()
         Me.TBmorada = New System.Windows.Forms.TextBox()
         Me.contacto = New System.Windows.Forms.Label()
-        Me.TBcontacto = New System.Windows.Forms.TextBox()
         Me.morada = New System.Windows.Forms.Label()
         Me.TBfax = New System.Windows.Forms.TextBox()
         Me.menuBar = New System.Windows.Forms.GroupBox()
         Me.homeBttn = New System.Windows.Forms.PictureBox()
+        Me.TBsigla = New System.Windows.Forms.TextBox()
+        Me.sigla = New System.Windows.Forms.Label()
+        Me.TBdia = New System.Windows.Forms.TextBox()
+        Me.TBcontacto = New System.Windows.Forms.TextBox()
+        Me.totalTxtBox = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.brasao, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -52,7 +56,7 @@ Partial Class info_ramo
         '
         'brasao
         '
-        Me.brasao.Location = New System.Drawing.Point(135, 180)
+        Me.brasao.Location = New System.Drawing.Point(135, 156)
         Me.brasao.Name = "brasao"
         Me.brasao.Size = New System.Drawing.Size(201, 226)
         Me.brasao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -63,7 +67,7 @@ Partial Class info_ramo
         '
         Me.tipoRamo.AutoSize = True
         Me.tipoRamo.Font = New System.Drawing.Font("Century", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.tipoRamo.Location = New System.Drawing.Point(135, 125)
+        Me.tipoRamo.Location = New System.Drawing.Point(135, 101)
         Me.tipoRamo.Name = "tipoRamo"
         Me.tipoRamo.Size = New System.Drawing.Size(229, 33)
         Me.tipoRamo.TabIndex = 5
@@ -72,17 +76,17 @@ Partial Class info_ramo
         'dia_unidade
         '
         Me.dia_unidade.AutoSize = True
-        Me.dia_unidade.Location = New System.Drawing.Point(362, 271)
+        Me.dia_unidade.Location = New System.Drawing.Point(658, 245)
         Me.dia_unidade.Name = "dia_unidade"
-        Me.dia_unidade.Size = New System.Drawing.Size(109, 20)
+        Me.dia_unidade.Size = New System.Drawing.Size(113, 20)
         Me.dia_unidade.TabIndex = 6
-        Me.dia_unidade.Text = "dia da unidade"
+        Me.dia_unidade.Text = "Dia da Unidade"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label2.Location = New System.Drawing.Point(135, 444)
+        Me.Label2.Location = New System.Drawing.Point(135, 416)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(135, 20)
         Me.Label2.TabIndex = 12
@@ -92,7 +96,7 @@ Partial Class info_ramo
         '
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Location = New System.Drawing.Point(135, 477)
+        Me.ListBox1.Location = New System.Drawing.Point(135, 449)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(809, 164)
         Me.ListBox1.TabIndex = 13
@@ -121,25 +125,16 @@ Partial Class info_ramo
         '
         'TBmote
         '
-        Me.TBmote.Location = New System.Drawing.Point(475, 180)
+        Me.TBmote.Location = New System.Drawing.Point(446, 156)
         Me.TBmote.Name = "TBmote"
-        Me.TBmote.PlaceholderText = "mote"
         Me.TBmote.ReadOnly = True
-        Me.TBmote.Size = New System.Drawing.Size(469, 27)
+        Me.TBmote.Size = New System.Drawing.Size(498, 27)
         Me.TBmote.TabIndex = 20
-        '
-        'TBdia
-        '
-        Me.TBdia.Location = New System.Drawing.Point(475, 264)
-        Me.TBdia.Name = "TBdia"
-        Me.TBdia.ReadOnly = True
-        Me.TBdia.Size = New System.Drawing.Size(154, 27)
-        Me.TBdia.TabIndex = 21
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(360, 225)
+        Me.Label3.Location = New System.Drawing.Point(360, 201)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(47, 20)
         Me.Label3.TabIndex = 25
@@ -148,70 +143,62 @@ Partial Class info_ramo
         'TextBox3
         '
         Me.TextBox3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.TextBox3.Location = New System.Drawing.Point(475, 222)
+        Me.TextBox3.Location = New System.Drawing.Point(446, 198)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.ReadOnly = True
-        Me.TextBox3.Size = New System.Drawing.Size(469, 27)
+        Me.TextBox3.Size = New System.Drawing.Size(498, 27)
         Me.TextBox3.TabIndex = 26
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(360, 180)
+        Me.Label1.Location = New System.Drawing.Point(363, 156)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(44, 20)
         Me.Label1.TabIndex = 29
-        Me.Label1.Text = "mote"
+        Me.Label1.Text = "Mote"
         '
         'fax
         '
         Me.fax.AutoSize = True
-        Me.fax.Location = New System.Drawing.Point(362, 384)
+        Me.fax.Location = New System.Drawing.Point(362, 360)
         Me.fax.Name = "fax"
-        Me.fax.Size = New System.Drawing.Size(29, 20)
+        Me.fax.Size = New System.Drawing.Size(30, 20)
         Me.fax.TabIndex = 11
-        Me.fax.Text = "fax"
+        Me.fax.Text = "Fax"
         '
         'TBmorada
         '
-        Me.TBmorada.Location = New System.Drawing.Point(475, 335)
+        Me.TBmorada.Location = New System.Drawing.Point(446, 311)
         Me.TBmorada.Name = "TBmorada"
         Me.TBmorada.ReadOnly = True
-        Me.TBmorada.Size = New System.Drawing.Size(469, 27)
+        Me.TBmorada.Size = New System.Drawing.Size(498, 27)
         Me.TBmorada.TabIndex = 22
         '
         'contacto
         '
         Me.contacto.AutoSize = True
-        Me.contacto.Location = New System.Drawing.Point(644, 384)
+        Me.contacto.Location = New System.Drawing.Point(629, 360)
         Me.contacto.Name = "contacto"
-        Me.contacto.Size = New System.Drawing.Size(138, 20)
+        Me.contacto.Size = New System.Drawing.Size(142, 20)
         Me.contacto.TabIndex = 8
-        Me.contacto.Text = "contacto telefónico"
-        '
-        'TBcontacto
-        '
-        Me.TBcontacto.Location = New System.Drawing.Point(790, 381)
-        Me.TBcontacto.Name = "TBcontacto"
-        Me.TBcontacto.ReadOnly = True
-        Me.TBcontacto.Size = New System.Drawing.Size(154, 27)
-        Me.TBcontacto.TabIndex = 23
+        Me.contacto.Text = "Contacto Telefónico"
         '
         'morada
         '
         Me.morada.AutoSize = True
-        Me.morada.Location = New System.Drawing.Point(360, 338)
+        Me.morada.Location = New System.Drawing.Point(360, 314)
         Me.morada.Name = "morada"
         Me.morada.Size = New System.Drawing.Size(61, 20)
         Me.morada.TabIndex = 7
-        Me.morada.Text = "morada"
+        Me.morada.Text = "Morada"
         '
         'TBfax
         '
-        Me.TBfax.Location = New System.Drawing.Point(475, 381)
+        Me.TBfax.Location = New System.Drawing.Point(446, 357)
         Me.TBfax.Name = "TBfax"
         Me.TBfax.ReadOnly = True
-        Me.TBfax.Size = New System.Drawing.Size(154, 27)
+        Me.TBfax.Size = New System.Drawing.Size(167, 27)
         Me.TBfax.TabIndex = 24
         '
         'menuBar
@@ -237,11 +224,67 @@ Partial Class info_ramo
         Me.homeBttn.TabIndex = 19
         Me.homeBttn.TabStop = False
         '
+        'TBsigla
+        '
+        Me.TBsigla.Location = New System.Drawing.Point(446, 242)
+        Me.TBsigla.Name = "TBsigla"
+        Me.TBsigla.ReadOnly = True
+        Me.TBsigla.Size = New System.Drawing.Size(167, 27)
+        Me.TBsigla.TabIndex = 32
+        '
+        'sigla
+        '
+        Me.sigla.AutoSize = True
+        Me.sigla.Location = New System.Drawing.Point(362, 249)
+        Me.sigla.Name = "sigla"
+        Me.sigla.Size = New System.Drawing.Size(42, 20)
+        Me.sigla.TabIndex = 31
+        Me.sigla.Text = "Sigla"
+        '
+        'TBdia
+        '
+        Me.TBdia.Location = New System.Drawing.Point(777, 242)
+        Me.TBdia.Name = "TBdia"
+        Me.TBdia.ReadOnly = True
+        Me.TBdia.Size = New System.Drawing.Size(167, 27)
+        Me.TBdia.TabIndex = 34
+        '
+        'TBcontacto
+        '
+        Me.TBcontacto.Location = New System.Drawing.Point(777, 357)
+        Me.TBcontacto.Name = "TBcontacto"
+        Me.TBcontacto.ReadOnly = True
+        Me.TBcontacto.Size = New System.Drawing.Size(167, 27)
+        Me.TBcontacto.TabIndex = 33
+        '
+        'totalTxtBox
+        '
+        Me.totalTxtBox.Location = New System.Drawing.Point(886, 416)
+        Me.totalTxtBox.Name = "totalTxtBox"
+        Me.totalTxtBox.ReadOnly = True
+        Me.totalTxtBox.Size = New System.Drawing.Size(58, 27)
+        Me.totalTxtBox.TabIndex = 47
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(835, 419)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(45, 20)
+        Me.Label4.TabIndex = 46
+        Me.Label4.Text = "Total:"
+        '
         'info_ramo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1071, 632)
+        Me.Controls.Add(Me.totalTxtBox)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.TBdia)
+        Me.Controls.Add(Me.TBcontacto)
+        Me.Controls.Add(Me.TBsigla)
+        Me.Controls.Add(Me.sigla)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.menuBar)
@@ -249,9 +292,7 @@ Partial Class info_ramo
         Me.Controls.Add(Me.tipoRamo)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.morada)
-        Me.Controls.Add(Me.TBcontacto)
         Me.Controls.Add(Me.contacto)
-        Me.Controls.Add(Me.TBdia)
         Me.Controls.Add(Me.TBmorada)
         Me.Controls.Add(Me.fax)
         Me.Controls.Add(Me.TBmote)
@@ -279,16 +320,20 @@ Partial Class info_ramo
     Friend WithEvents goBack As PictureBox
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents TBmote As TextBox
-    Friend WithEvents TBdia As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents fax As Label
     Friend WithEvents TBmorada As TextBox
     Friend WithEvents contacto As Label
-    Friend WithEvents TBcontacto As TextBox
     Friend WithEvents morada As Label
     Friend WithEvents TBfax As TextBox
     Friend WithEvents menuBar As GroupBox
     Friend WithEvents homeBttn As PictureBox
+    Friend WithEvents TBsigla As TextBox
+    Friend WithEvents sigla As Label
+    Friend WithEvents TBdia As TextBox
+    Friend WithEvents TBcontacto As TextBox
+    Friend WithEvents totalTxtBox As TextBox
+    Friend WithEvents Label4 As Label
 End Class

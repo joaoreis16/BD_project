@@ -33,7 +33,6 @@ Partial Class bases_militares
         Me.barraBases = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ListBox2 = New System.Windows.Forms.ListBox()
-        Me.basePesquisa = New System.Windows.Forms.PictureBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.FT = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -41,13 +40,14 @@ Partial Class bases_militares
         Me.ApplyBases = New System.Windows.Forms.Button()
         Me.FM = New System.Windows.Forms.CheckBox()
         Me.baseReset = New System.Windows.Forms.Button()
+        Me.pesquisaBttn = New System.Windows.Forms.PictureBox()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.basePesquisa, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.pesquisaBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'menuBar
@@ -126,7 +126,7 @@ Partial Class bases_militares
         '
         Me.barraBases.Location = New System.Drawing.Point(37, 231)
         Me.barraBases.Name = "barraBases"
-        Me.barraBases.Size = New System.Drawing.Size(452, 27)
+        Me.barraBases.Size = New System.Drawing.Size(456, 27)
         Me.barraBases.TabIndex = 42
         '
         'Label1
@@ -147,15 +147,6 @@ Partial Class bases_militares
         Me.ListBox2.Name = "ListBox2"
         Me.ListBox2.Size = New System.Drawing.Size(437, 444)
         Me.ListBox2.TabIndex = 37
-        '
-        'basePesquisa
-        '
-        Me.basePesquisa.BackColor = System.Drawing.SystemColors.MenuHighlight
-        Me.basePesquisa.Location = New System.Drawing.Point(540, 231)
-        Me.basePesquisa.Name = "basePesquisa"
-        Me.basePesquisa.Size = New System.Drawing.Size(47, 26)
-        Me.basePesquisa.TabIndex = 46
-        Me.basePesquisa.TabStop = False
         '
         'GroupBox1
         '
@@ -218,23 +209,25 @@ Partial Class bases_militares
         Me.FM.Text = "Força Marítima"
         Me.FM.UseVisualStyleBackColor = True
         '
-        'baseReset
+        'pesquisaBttn
         '
-        Me.baseReset.Location = New System.Drawing.Point(94, 184)
-        Me.baseReset.Name = "baseReset"
-        Me.baseReset.Size = New System.Drawing.Size(133, 29)
-        Me.baseReset.TabIndex = 3
-        Me.baseReset.Text = "Reset"
-        Me.baseReset.UseVisualStyleBackColor = True
+        Me.pesquisaBttn.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pesquisaBttn.Image = CType(resources.GetObject("pesquisaBttn.Image"), System.Drawing.Image)
+        Me.pesquisaBttn.Location = New System.Drawing.Point(513, 231)
+        Me.pesquisaBttn.Name = "pesquisaBttn"
+        Me.pesquisaBttn.Size = New System.Drawing.Size(28, 27)
+        Me.pesquisaBttn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pesquisaBttn.TabIndex = 48
+        Me.pesquisaBttn.TabStop = False
         '
         'bases_militares
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1071, 632)
+        Me.Controls.Add(Me.pesquisaBttn)
         Me.Controls.Add(Me.FM)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.basePesquisa)
         Me.Controls.Add(Me.totalTxtBox)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label2)
@@ -248,11 +241,11 @@ Partial Class bases_militares
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.basePesquisa, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.pesquisaBttn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -268,7 +261,6 @@ Partial Class bases_militares
     Friend WithEvents barraBases As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents ListBox2 As ListBox
-    Friend WithEvents basePesquisa As PictureBox
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents ApplyBases As Button
     Friend WithEvents GroupBox2 As GroupBox
@@ -276,4 +268,5 @@ Partial Class bases_militares
     Friend WithEvents FM As CheckBox
     Friend WithEvents FA As CheckBox
     Friend WithEvents baseReset As Button
+    Friend WithEvents pesquisaBttn As PictureBox
 End Class

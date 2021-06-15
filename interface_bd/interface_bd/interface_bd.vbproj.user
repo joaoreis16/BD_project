@@ -4,6 +4,9 @@
     <Compile Update="bases_militares.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="equipamento.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="info_base.vb">
       <SubType>Form</SubType>
     </Compile>
