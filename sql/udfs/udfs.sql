@@ -117,7 +117,24 @@ AS
 		RETURN -1
 	END
 
-PRINT EXERCITO.militarEmMissao(109279190)
 
-SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, cargo, pelotao
-                           FROM EXERCITO.militar WHERE EXERCITO.militarEmMissao(nCC) = -1
+/*
+*	RETORNA TODOS OS MILITARES QUE PARTICIPARAM NA MISSAO @id
+*/
+
+CREATE FUNCTION EXERCITO.militaresDaMissao (@id INT) RETURNS @mils TABLE (nCC INT)
+AS
+	BEGIN
+		DECLARE @nCC INT
+		
+		Insert into @mils SELECT militar.nCC FROM EXERCITO.militar JOIN
+					EXERCITO.pelotao ON pelotao = pelotao.id
+					JOIN EXERCItO.missao ON pelotao.idMissao = missao.id
+					WHERE missao.id = 5	
+					
+		RETURN	
+
+	END
+
+
+

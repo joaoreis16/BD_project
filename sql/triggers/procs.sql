@@ -3,7 +3,7 @@
 *	UMA BASE OU UM RAMO.
 */
 DROP PROC EXERCITO.deleteMilitar
-CREATE PROC EXERCITO.deleteMilitar @nCC INT
+CREATE PROC EXERCITO.retireMilitar @nCC INT
 AS
 	BEGIN		
 		IF EXISTS (SELECT * FROM EXERCITO.militar WHERE nCC = @nCC)
@@ -27,7 +27,7 @@ AS
 				DELETE FROM EXERCITO.medico WHERE nCC = @nCC
 				DELETE FROM EXERCITO.engenheiro WHERE nCC = @nCC
 
-				DELETE FROM EXERCITO.militar WHERE nCC = @nCC
+				UPDATE EXERCITO.militar SET estado=3 WHERE nCC = @nCC
 				RETURN 1
 			END
 		ELSE
@@ -293,7 +293,7 @@ AS
 	BEGIN
 		UPDATE EXERCITO.pelotao SET idMissao = NULL WHERE idMissao = @id
 		UPDATE EXERCITO.veiculo SET idMissao = NULL WHERE idMissao = @id
-		DELETE FROM EXERCITO.missao WHERE id = @id
+		UPDATE EXERCITO.missao SET estado = 2
 	END
 GO
 
