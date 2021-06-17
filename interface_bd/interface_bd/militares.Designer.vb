@@ -34,6 +34,7 @@ Partial Class militares
         Me.Label4 = New System.Windows.Forms.Label()
         Me.totalTxtBox = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.subclasse = New System.Windows.Forms.ComboBox()
         Me.resetBttn = New System.Windows.Forms.Button()
         Me.DispDD = New System.Windows.Forms.ComboBox()
         Me.ApplyFilters = New System.Windows.Forms.Button()
@@ -43,7 +44,7 @@ Partial Class militares
         Me.RamoDD = New System.Windows.Forms.ComboBox()
         Me.BaseDD = New System.Windows.Forms.ComboBox()
         Me.pesquisaBttn = New System.Windows.Forms.PictureBox()
-        Me.subclasse = New System.Windows.Forms.ComboBox()
+        Me.stateDD = New System.Windows.Forms.ComboBox()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -152,6 +153,7 @@ Partial Class militares
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.stateDD)
         Me.GroupBox1.Controls.Add(Me.subclasse)
         Me.GroupBox1.Controls.Add(Me.resetBttn)
         Me.GroupBox1.Controls.Add(Me.DispDD)
@@ -167,6 +169,15 @@ Partial Class militares
         Me.GroupBox1.Size = New System.Drawing.Size(501, 257)
         Me.GroupBox1.TabIndex = 36
         Me.GroupBox1.TabStop = False
+        '
+        'subclasse
+        '
+        Me.subclasse.FormattingEnabled = True
+        Me.subclasse.Location = New System.Drawing.Point(31, 26)
+        Me.subclasse.Name = "subclasse"
+        Me.subclasse.Size = New System.Drawing.Size(179, 28)
+        Me.subclasse.TabIndex = 35
+        Me.subclasse.Text = "Funcao"
         '
         'resetBttn
         '
@@ -253,14 +264,14 @@ Partial Class militares
         Me.pesquisaBttn.TabIndex = 20
         Me.pesquisaBttn.TabStop = False
         '
-        'subclasse
+        'stateDD
         '
-        Me.subclasse.FormattingEnabled = True
-        Me.subclasse.Location = New System.Drawing.Point(176, 26)
-        Me.subclasse.Name = "subclasse"
-        Me.subclasse.Size = New System.Drawing.Size(150, 28)
-        Me.subclasse.TabIndex = 35
-        Me.subclasse.Text = "Funcao"
+        Me.stateDD.FormattingEnabled = True
+        Me.stateDD.Location = New System.Drawing.Point(260, 26)
+        Me.stateDD.Name = "stateDD"
+        Me.stateDD.Size = New System.Drawing.Size(187, 28)
+        Me.stateDD.TabIndex = 36
+        Me.stateDD.Text = "Estado"
         '
         'militares
         '
@@ -309,4 +320,5 @@ Partial Class militares
     Friend WithEvents DispDD As ComboBox
     Friend WithEvents resetBttn As Button
     Friend WithEvents subclasse As ComboBox
+    Friend WithEvents stateDD As ComboBox
 End Class

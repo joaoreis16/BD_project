@@ -173,6 +173,7 @@ Public Class militares
         Dim missoes = MissoesDD.Text
         Dim dispon = DispDD.SelectedValue
         Dim subcl = subclasse.SelectedValue
+        Dim state = stateDD.SelectedValue
         Dim conds As New List(Of String)()
 
 
@@ -203,8 +204,11 @@ Public Class militares
             conds.Add(String.Format("nacionalidade = '{0}'", nac))
         End If
 
+        If state > -1 Then
+            conds.Add(String.Format("estado = {0}", state))
+        End If
+
         If missoesVal > -1 Then
-            Debug.Print("é o quem")
             If missoesVal = 5 Then
                 conds.Add(String.Format("nMissoes > 50"))
             Else
@@ -360,6 +364,19 @@ Public Class militares
         NacDD.DisplayMember = "nacionalidade"
         NacDD.ValueMember = "id"
 
+        SQA = New SqlDataAdapter("SELECT id, estado FROM EXERCITO.estado_militar", CN)
+        dt = New DataTable()
+        SQA.Fill(dt)
+
+        row = dt.NewRow()
+        row(0) = -1
+        row(1) = "Estado"
+        dt.Rows.InsertAt(row, 0)
+
+        stateDD.DataSource = dt
+        stateDD.DisplayMember = "estado"
+        stateDD.ValueMember = "id"
+
 
         Dim missDict As New Dictionary(Of Integer, String)()
         missDict.Add(-1, "Missoes")
@@ -407,4 +424,5 @@ Public Class militares
         ListBox1.Items.Clear()
         ListBox1.Items.AddRange(listaMilitares.ToArray)
     End Sub
+
 End Class

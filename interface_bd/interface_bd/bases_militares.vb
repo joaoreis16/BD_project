@@ -60,7 +60,7 @@ Public Class bases_militares
 
     Private Sub ListBox2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListBox2.DoubleClick
         Dim index = ListBox2.SelectedIndex
-        baseSelected = listaBases(index)
+        GlobalVariables.baseSelected = listaBases(index)
         Dim info = New info_base
         info.Show()
         Me.Close()

@@ -27,7 +27,7 @@ Partial Class info_ramo
         Me.tipoRamo = New System.Windows.Forms.Label()
         Me.dia_unidade = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.ramoLB1 = New System.Windows.Forms.ListBox()
         Me.goBack = New System.Windows.Forms.PictureBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.TBmote = New System.Windows.Forms.TextBox()
@@ -92,14 +92,14 @@ Partial Class info_ramo
         Me.Label2.TabIndex = 12
         Me.Label2.Text = "BASES MILITARES"
         '
-        'ListBox1
+        'ramoLB1
         '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Location = New System.Drawing.Point(135, 449)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(809, 164)
-        Me.ListBox1.TabIndex = 13
+        Me.ramoLB1.FormattingEnabled = True
+        Me.ramoLB1.ItemHeight = 20
+        Me.ramoLB1.Location = New System.Drawing.Point(135, 449)
+        Me.ramoLB1.Name = "ramoLB1"
+        Me.ramoLB1.Size = New System.Drawing.Size(809, 164)
+        Me.ramoLB1.TabIndex = 13
         '
         'goBack
         '
@@ -296,7 +296,7 @@ Partial Class info_ramo
         Me.Controls.Add(Me.TBmorada)
         Me.Controls.Add(Me.fax)
         Me.Controls.Add(Me.TBmote)
-        Me.Controls.Add(Me.ListBox1)
+        Me.Controls.Add(Me.ramoLB1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.dia_unidade)
         Me.Controls.Add(Me.brasao)
@@ -316,7 +316,7 @@ Partial Class info_ramo
     Friend WithEvents tipoRamo As Label
     Friend WithEvents dia_unidade As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents ramoLB1 As ListBox
     Friend WithEvents goBack As PictureBox
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents TBmote As TextBox
