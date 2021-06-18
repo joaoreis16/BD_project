@@ -232,7 +232,7 @@ Partial Class militares
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1077, 632)
+        Me.ClientSize = New System.Drawing.Size(1071, 632)
         Me.Controls.Add(Me.pesquisaBttn)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.totalTxtBox)

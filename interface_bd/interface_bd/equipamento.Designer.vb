@@ -54,9 +54,7 @@ Partial Class equipamento
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.pesquisaBox = New System.Windows.Forms.GroupBox()
-        Me.armabttn = New System.Windows.Forms.Button()
         Me.infoBox = New System.Windows.Forms.GroupBox()
-        Me.veiculobttn = New System.Windows.Forms.Button()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -359,32 +357,20 @@ Partial Class equipamento
         '
         'pesquisaBox
         '
-        Me.pesquisaBox.Controls.Add(Me.armabttn)
         Me.pesquisaBox.Controls.Add(Me.ListBox1)
         Me.pesquisaBox.Controls.Add(Me.Label1)
         Me.pesquisaBox.Controls.Add(Me.TBpesquisa)
         Me.pesquisaBox.Controls.Add(Me.Label2)
         Me.pesquisaBox.Controls.Add(Me.GroupBox1)
         Me.pesquisaBox.Controls.Add(Me.pesquisaBttn)
-        Me.pesquisaBox.Location = New System.Drawing.Point(12, 88)
+        Me.pesquisaBox.Location = New System.Drawing.Point(11, 88)
         Me.pesquisaBox.Name = "pesquisaBox"
         Me.pesquisaBox.Size = New System.Drawing.Size(511, 540)
         Me.pesquisaBox.TabIndex = 55
         Me.pesquisaBox.TabStop = False
-        Me.pesquisaBox.Visible = False
-        '
-        'armabttn
-        '
-        Me.armabttn.Location = New System.Drawing.Point(238, 203)
-        Me.armabttn.Name = "armabttn"
-        Me.armabttn.Size = New System.Drawing.Size(233, 116)
-        Me.armabttn.TabIndex = 42
-        Me.armabttn.Text = "Arma"
-        Me.armabttn.UseVisualStyleBackColor = True
         '
         'infoBox
         '
-        Me.infoBox.Controls.Add(Me.veiculobttn)
         Me.infoBox.Controls.Add(Me.ListBox2)
         Me.infoBox.Controls.Add(Me.armaBox)
         Me.infoBox.Controls.Add(Me.Label3)
@@ -398,16 +384,6 @@ Partial Class equipamento
         Me.infoBox.Size = New System.Drawing.Size(511, 540)
         Me.infoBox.TabIndex = 56
         Me.infoBox.TabStop = False
-        Me.infoBox.Visible = False
-        '
-        'veiculobttn
-        '
-        Me.veiculobttn.Location = New System.Drawing.Point(37, 203)
-        Me.veiculobttn.Name = "veiculobttn"
-        Me.veiculobttn.Size = New System.Drawing.Size(233, 116)
-        Me.veiculobttn.TabIndex = 57
-        Me.veiculobttn.Text = "Veículo"
-        Me.veiculobttn.UseVisualStyleBackColor = True
         '
         'equipamento
         '
@@ -470,8 +446,6 @@ Partial Class equipamento
     Friend WithEvents Label8 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents pesquisaBox As GroupBox
-    Friend WithEvents armabttn As Button
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents veiculobttn As Button
     Friend WithEvents infoBox As GroupBox
 End Class
