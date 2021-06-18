@@ -59,17 +59,25 @@ Partial Class info_militar
         Me.TipoSol = New System.Windows.Forms.TextBox()
         Me.EspecLabel = New System.Windows.Forms.Label()
         Me.TpSolLabel = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.State = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.BoxMissao.SuspendLayout()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(109, 164)
+        Me.Label1.Location = New System.Drawing.Point(109, 207)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(50, 20)
         Me.Label1.TabIndex = 21
@@ -77,7 +85,7 @@ Partial Class info_militar
         '
         'TBnome
         '
-        Me.TBnome.Location = New System.Drawing.Point(173, 162)
+        Me.TBnome.Location = New System.Drawing.Point(173, 205)
         Me.TBnome.Name = "TBnome"
         Me.TBnome.ReadOnly = True
         Me.TBnome.Size = New System.Drawing.Size(308, 27)
@@ -86,7 +94,7 @@ Partial Class info_militar
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(104, 219)
+        Me.Label2.Location = New System.Drawing.Point(104, 262)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(0, 20)
         Me.Label2.TabIndex = 23
@@ -94,7 +102,7 @@ Partial Class info_militar
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(98, 211)
+        Me.Label3.Location = New System.Drawing.Point(98, 254)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(61, 20)
         Me.Label3.TabIndex = 24
@@ -102,7 +110,7 @@ Partial Class info_militar
         '
         'TBmorada
         '
-        Me.TBmorada.Location = New System.Drawing.Point(173, 208)
+        Me.TBmorada.Location = New System.Drawing.Point(173, 251)
         Me.TBmorada.Name = "TBmorada"
         Me.TBmorada.ReadOnly = True
         Me.TBmorada.Size = New System.Drawing.Size(308, 27)
@@ -110,7 +118,7 @@ Partial Class info_militar
         '
         'TBtel
         '
-        Me.TBtel.Location = New System.Drawing.Point(173, 252)
+        Me.TBtel.Location = New System.Drawing.Point(173, 295)
         Me.TBtel.Name = "TBtel"
         Me.TBtel.ReadOnly = True
         Me.TBtel.Size = New System.Drawing.Size(308, 27)
@@ -119,7 +127,7 @@ Partial Class info_militar
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(93, 255)
+        Me.Label4.Location = New System.Drawing.Point(93, 298)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(66, 20)
         Me.Label4.TabIndex = 27
@@ -127,7 +135,7 @@ Partial Class info_militar
         '
         'nomeMiss
         '
-        Me.nomeMiss.Location = New System.Drawing.Point(160, 29)
+        Me.nomeMiss.Location = New System.Drawing.Point(117, 29)
         Me.nomeMiss.Name = "nomeMiss"
         Me.nomeMiss.ReadOnly = True
         Me.nomeMiss.Size = New System.Drawing.Size(135, 27)
@@ -136,7 +144,7 @@ Partial Class info_militar
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(49, 73)
+        Me.Label5.Location = New System.Drawing.Point(23, 73)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(88, 20)
         Me.Label5.TabIndex = 29
@@ -146,7 +154,7 @@ Partial Class info_militar
         '
         Me.CheckMissao.AutoSize = True
         Me.CheckMissao.Enabled = False
-        Me.CheckMissao.Location = New System.Drawing.Point(173, 348)
+        Me.CheckMissao.Location = New System.Drawing.Point(120, 413)
         Me.CheckMissao.Name = "CheckMissao"
         Me.CheckMissao.Size = New System.Drawing.Size(18, 17)
         Me.CheckMissao.TabIndex = 30
@@ -155,7 +163,7 @@ Partial Class info_militar
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(74, 345)
+        Me.Label6.Location = New System.Drawing.Point(34, 410)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(80, 20)
         Me.Label6.TabIndex = 31
@@ -164,7 +172,7 @@ Partial Class info_militar
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(82, 36)
+        Me.Label7.Location = New System.Drawing.Point(56, 36)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(55, 20)
         Me.Label7.TabIndex = 32
@@ -172,7 +180,7 @@ Partial Class info_militar
         '
         'Arma
         '
-        Me.Arma.Location = New System.Drawing.Point(161, 70)
+        Me.Arma.Location = New System.Drawing.Point(117, 70)
         Me.Arma.Name = "Arma"
         Me.Arma.ReadOnly = True
         Me.Arma.Size = New System.Drawing.Size(368, 27)
@@ -181,7 +189,7 @@ Partial Class info_militar
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(36, 108)
+        Me.Label8.Location = New System.Drawing.Point(10, 108)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(101, 20)
         Me.Label8.TabIndex = 34
@@ -189,7 +197,7 @@ Partial Class info_militar
         '
         'Veic
         '
-        Me.Veic.Location = New System.Drawing.Point(161, 108)
+        Me.Veic.Location = New System.Drawing.Point(117, 108)
         Me.Veic.Name = "Veic"
         Me.Veic.ReadOnly = True
         Me.Veic.Size = New System.Drawing.Size(368, 27)
@@ -205,9 +213,9 @@ Partial Class info_militar
         Me.BoxMissao.Controls.Add(Me.Arma)
         Me.BoxMissao.Controls.Add(Me.Label5)
         Me.BoxMissao.Controls.Add(Me.nomeMiss)
-        Me.BoxMissao.Location = New System.Drawing.Point(93, 368)
+        Me.BoxMissao.Location = New System.Drawing.Point(34, 433)
         Me.BoxMissao.Name = "BoxMissao"
-        Me.BoxMissao.Size = New System.Drawing.Size(582, 180)
+        Me.BoxMissao.Size = New System.Drawing.Size(520, 180)
         Me.BoxMissao.TabIndex = 36
         Me.BoxMissao.TabStop = False
         Me.BoxMissao.Visible = False
@@ -215,7 +223,7 @@ Partial Class info_militar
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(316, 33)
+        Me.Label13.Location = New System.Drawing.Point(286, 33)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(55, 20)
         Me.Label13.TabIndex = 37
@@ -223,7 +231,7 @@ Partial Class info_militar
         '
         'tipoMiss
         '
-        Me.tipoMiss.Location = New System.Drawing.Point(394, 26)
+        Me.tipoMiss.Location = New System.Drawing.Point(347, 30)
         Me.tipoMiss.Name = "tipoMiss"
         Me.tipoMiss.ReadOnly = True
         Me.tipoMiss.Size = New System.Drawing.Size(135, 27)
@@ -310,7 +318,7 @@ Partial Class info_militar
         '
         'TBnCC
         '
-        Me.TBnCC.Location = New System.Drawing.Point(173, 117)
+        Me.TBnCC.Location = New System.Drawing.Point(173, 160)
         Me.TBnCC.Name = "TBnCC"
         Me.TBnCC.ReadOnly = True
         Me.TBnCC.Size = New System.Drawing.Size(308, 27)
@@ -319,7 +327,7 @@ Partial Class info_militar
         'nCC
         '
         Me.nCC.AutoSize = True
-        Me.nCC.Location = New System.Drawing.Point(124, 117)
+        Me.nCC.Location = New System.Drawing.Point(124, 160)
         Me.nCC.Name = "nCC"
         Me.nCC.Size = New System.Drawing.Size(35, 20)
         Me.nCC.TabIndex = 43
@@ -327,7 +335,7 @@ Partial Class info_militar
         '
         'TBnac
         '
-        Me.TBnac.Location = New System.Drawing.Point(173, 293)
+        Me.TBnac.Location = New System.Drawing.Point(173, 336)
         Me.TBnac.Name = "TBnac"
         Me.TBnac.ReadOnly = True
         Me.TBnac.Size = New System.Drawing.Size(308, 27)
@@ -336,7 +344,7 @@ Partial Class info_militar
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(53, 296)
+        Me.Label11.Location = New System.Drawing.Point(53, 339)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(106, 20)
         Me.Label11.TabIndex = 45
@@ -344,7 +352,8 @@ Partial Class info_militar
         '
         'TBnMiss
         '
-        Me.TBnMiss.Location = New System.Drawing.Point(943, 342)
+        Me.TBnMiss.ImeMode = System.Windows.Forms.ImeMode.Disable
+        Me.TBnMiss.Location = New System.Drawing.Point(340, 206)
         Me.TBnMiss.Name = "TBnMiss"
         Me.TBnMiss.Size = New System.Drawing.Size(70, 27)
         Me.TBnMiss.TabIndex = 46
@@ -352,7 +361,7 @@ Partial Class info_militar
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(800, 342)
+        Me.Label12.Location = New System.Drawing.Point(197, 209)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(137, 20)
         Me.Label12.TabIndex = 47
@@ -392,17 +401,82 @@ Partial Class info_militar
         Me.TpSolLabel.TabIndex = 51
         Me.TpSolLabel.Text = "Tipo de Soldado"
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Location = New System.Drawing.Point(34, 130)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(520, 255)
+        Me.GroupBox1.TabIndex = 52
+        Me.GroupBox1.TabStop = False
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(34, 116)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(110, 20)
+        Me.Label14.TabIndex = 53
+        Me.Label14.Text = "Dados Pessoais"
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.Label16)
+        Me.GroupBox2.Controls.Add(Me.State)
+        Me.GroupBox2.Controls.Add(Me.TBnMiss)
+        Me.GroupBox2.Controls.Add(Me.Label12)
+        Me.GroupBox2.Location = New System.Drawing.Point(596, 130)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(446, 255)
+        Me.GroupBox2.TabIndex = 54
+        Me.GroupBox2.TabStop = False
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(74, 168)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(54, 20)
+        Me.Label16.TabIndex = 48
+        Me.Label16.Text = "Estado"
+        '
+        'State
+        '
+        Me.State.Location = New System.Drawing.Point(134, 165)
+        Me.State.Name = "State"
+        Me.State.ReadOnly = True
+        Me.State.Size = New System.Drawing.Size(284, 27)
+        Me.State.TabIndex = 47
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(596, 116)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(101, 20)
+        Me.Label15.TabIndex = 55
+        Me.Label15.Text = "Espicificacoes"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(645, 493)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(139, 47)
+        Me.Button1.TabIndex = 56
+        Me.Button1.Text = "Reformar"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'info_militar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1077, 632)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Label15)
+        Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.TpSolLabel)
         Me.Controls.Add(Me.EspecLabel)
         Me.Controls.Add(Me.TipoSol)
         Me.Controls.Add(Me.Espec)
-        Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.TBnMiss)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.TBnac)
         Me.Controls.Add(Me.nCC)
@@ -422,6 +496,8 @@ Partial Class info_militar
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TBnome)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Name = "info_militar"
         Me.Text = "info_militar"
         Me.BoxMissao.ResumeLayout(False)
@@ -430,6 +506,8 @@ Partial Class info_militar
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -470,4 +548,11 @@ Partial Class info_militar
     Friend WithEvents TipoSol As TextBox
     Friend WithEvents EspecLabel As Label
     Friend WithEvents TpSolLabel As Label
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Label16 As Label
+    Friend WithEvents State As TextBox
 End Class

@@ -1,7 +1,10 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class info_militar
-
+    Dim dbServer = "tcp:mednat.ieeta.pt\SQLSERVER,8101"
+    Dim dbName = "p9g6"
+    Dim userName = "p9g6"
+    Dim userPass = "-99745397@BD"
     Private Sub CheckMissao_CheckedChanged(sender As Object, e As EventArgs) Handles CheckMissao.CheckedChanged
 
 
@@ -24,12 +27,12 @@ Public Class info_militar
         TBnac.Text = militar.nacionalidade
         TBnMiss.Text = militar.nMissoes
         TBtipo.Text = militar.tipo
+        State.Text = militar.estado
 
+        If militar.estado = "Reformado" Then
+            Button1.Enabled = False
+        End If
 
-        Dim dbServer = "tcp:mednat.ieeta.pt\SQLSERVER,8101"
-        Dim dbName = "p9g6"
-        Dim userName = "p9g6"
-        Dim userPass = "-99745397@BD"
         Dim CN As SqlConnection
         Dim CMD As SqlCommand
         Dim RDR As SqlDataReader
@@ -131,8 +134,24 @@ Public Class info_militar
         Me.Close()
     End Sub
 
-    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
-
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim CN As SqlConnection
+        Dim CMD As SqlCommand
+        Dim RDR As SqlDataReader
+        CN = New SqlConnection("data Source = " + dbServer + " ;" +
+                                   "initial Catalog = " + dbName + ";" +
+                                   "uid = " + userName + ";" +
+                                   "password = " + userPass)
+        CN.Open()
+        CMD = New SqlCommand("EXERCITO.retire")
+        CMD.Connection = CN
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Add(New SqlParameter("@nCC", militares.militarSelected.nCC))
+        CMD.ExecuteNonQuery()
+        militares.militarSelected.estado = "Reformado"
+        Dim info = New info_militar
+        info.Show()
+        Me.Close()
     End Sub
 
 End Class

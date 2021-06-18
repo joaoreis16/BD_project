@@ -333,3 +333,19 @@ AS
 		DELETE FROM EXERCITO.base_ramo WHERE idBase = @base
 		DELETE FROM EXERCITO.base_militar WHERE id = @base
 	END
+
+/*
+*	REFORMAR MILITAR
+*/
+CREATE PROC EXERCITO.retire @nCC INT
+AS
+	BEGIN
+		DECLARE @cur INT
+		DECLARE @pel INT
+		SELECT @cur = estado, @pel = pelotao FROM EXERCITO.militar WHERE nCC = @nCC
+		IF (@cur != 2 AND @pel IS NULL)
+			UPDATE EXERCITO.militar SET estado = 3 WHERE nCC = @nCC
+	END
+
+EXEC EXERCITO.retire 100829784
+SELECT * FROM EXERCITO.militar WHERE nCC = 100829784
