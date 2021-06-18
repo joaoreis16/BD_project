@@ -87,7 +87,7 @@ Public Class info_ramo
                                         WHERE idRamo = {0}", ramos.id)
 
         RDR = CMD.ExecuteReader
-        ListBox1.Items.Clear()
+        ramoLB1.Items.Clear()
         Dim count As Integer = 0
         While RDR.Read
             Dim B As New Base
@@ -100,7 +100,7 @@ Public Class info_ramo
             B.maxMilitares = Convert.ToString(RDR.Item("maxMilitares"))
 
             listaBases.Add(B)
-            ListBox1.Items.Add(B)
+            ramoLB1.Items.Add(B)
             count = count + 1
         End While
 
@@ -120,9 +120,10 @@ Public Class info_ramo
         Me.Close()
     End Sub
 
-    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
-        Dim index = ListBox1.SelectedIndex
-        baseSelected = listaBases(index)
+    Private Sub ramoLB1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ramoLB1.DoubleClick
+        Dim index = ramoLB1.SelectedIndex
+        Debug.Print(index)
+        GlobalVariables.baseSelected = listaBases(index)
         Dim info = New info_base
         info.Show()
         Me.Close()

@@ -3,7 +3,7 @@
 *	UMA BASE OU UM RAMO.
 */
 DROP PROC EXERCITO.deleteMilitar
-CREATE PROC EXERCITO.deleteMilitar @nCC INT
+CREATE PROC EXERCITO.retireMilitar @nCC INT
 AS
 	BEGIN		
 		IF EXISTS (SELECT * FROM EXERCITO.militar WHERE nCC = @nCC)
@@ -27,7 +27,7 @@ AS
 				DELETE FROM EXERCITO.medico WHERE nCC = @nCC
 				DELETE FROM EXERCITO.engenheiro WHERE nCC = @nCC
 
-				DELETE FROM EXERCITO.militar WHERE nCC = @nCC
+				UPDATE EXERCITO.militar SET estado=3 WHERE nCC = @nCC
 				RETURN 1
 			END
 		ELSE
@@ -217,6 +217,7 @@ GO
 /*
 *	DAR EQUIPAMENTO A SOLDADO
 */
+DROP PROC EXERCITO.assignEquipamento
 CREATE PROC EXERCITO.assignEquipamento @nCC INT, @equi INT
 AS
 	BEGIN
@@ -224,7 +225,7 @@ AS
 			BEGIN
 				IF EXISTS (SELECT * FROM EXERCITO.equipamento WHERE id = @equi)
 					BEGIN
-						IF NOT EXISTS (SELECT * FROM EXERCITO.utiliza_equipamento WHERE equipamento = @equi)
+						IF NOT EXISTS (SELECT * FROM EXERCITO.utiliza_equipamento WHERE equipamento = @equi AND data_f IS NULL)
 							BEGIN
 								INSERT INTO EXERCITO.utiliza_equipamento(soldado, equipamento, data_i, data_f) VALUES (@nCC, @equi, GETDATE(), NULL)
 							END
@@ -241,6 +242,12 @@ AS
 			RETURN
 	END
 GO
+
+CREATE PROC EXERCITO.removeEquipamento @nCC INT, @id INT
+AS
+	BEGIN
+		UPDATE EXERCITO.utiliza_equipamento SET data_f = GETDATE() WHERE @nCC = soldado AND @id = equipamento AND data_f IS NULL
+	END
 
 /*
 *	CRIAR ARMA
@@ -293,7 +300,7 @@ AS
 	BEGIN
 		UPDATE EXERCITO.pelotao SET idMissao = NULL WHERE idMissao = @id
 		UPDATE EXERCITO.veiculo SET idMissao = NULL WHERE idMissao = @id
-		DELETE FROM EXERCITO.missao WHERE id = @id
+		UPDATE EXERCITO.missao SET estado = 2
 	END
 GO
 

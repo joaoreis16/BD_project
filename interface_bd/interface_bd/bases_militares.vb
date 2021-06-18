@@ -60,7 +60,7 @@ Public Class bases_militares
 
     Private Sub ListBox2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListBox2.DoubleClick
         Dim index = ListBox2.SelectedIndex
-        baseSelected = listaBases(index)
+        GlobalVariables.baseSelected = listaBases(index)
         Dim info = New info_base
         info.Show()
         Me.Close()
@@ -232,6 +232,12 @@ Public Class bases_militares
         CN.Close()
     End Sub
 
+    Private Sub baseReset_Click(sender As Object, e As EventArgs) Handles baseReset.Click
+        listaBases.Clear()
+        listaBases.AddRange(StartingList.ToArray)
+        ListBox2.Items.Clear()
+        ListBox2.Items.AddRange(listaBases.ToArray)
+    End Sub
     'Function PopulateBoxes(CN As SqlConnection)
     '
     'End Function

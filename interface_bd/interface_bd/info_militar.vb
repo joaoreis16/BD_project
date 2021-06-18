@@ -1,15 +1,10 @@
-﻿Public Class info_militar
+﻿Imports System.Data.SqlClient
+
+Public Class info_militar
 
     Private Sub CheckMissao_CheckedChanged(sender As Object, e As EventArgs) Handles CheckMissao.CheckedChanged
 
-        If militares.EmMissao Then
-            CheckMissao.Checked = True
-            BoxMissao.Visible = True
 
-        Else
-            CheckMissao.Checked = False
-            BoxMissao.Visible = False
-        End If
     End Sub
 
     Private Sub homeBttn_Click(sender As Object, e As EventArgs) Handles homeBttn.Click
@@ -28,7 +23,105 @@
         TBtel.Text = militar.tel
         TBnac.Text = militar.nacionalidade
         TBnMiss.Text = militar.nMissoes
-        'TBtipo.Text = militar.tipo
+        TBtipo.Text = militar.tipo
+
+
+        Dim dbServer = "tcp:mednat.ieeta.pt\SQLSERVER,8101"
+        Dim dbName = "p9g6"
+        Dim userName = "p9g6"
+        Dim userPass = "-99745397@BD"
+        Dim CN As SqlConnection
+        Dim CMD As SqlCommand
+        Dim RDR As SqlDataReader
+        CN = New SqlConnection("data Source = " + dbServer + " ;" +
+                                   "initial Catalog = " + dbName + ";" +
+                                   "uid = " + userName + ";" +
+                                   "password = " + userPass)
+
+        CMD = New SqlCommand
+        CN.Open()
+
+        If militar.missao = -1 Then
+            CheckMissao.Checked = False
+            BoxMissao.Visible = False
+        Else
+            CheckMissao.Checked = True
+            BoxMissao.Visible = True
+
+            CMD.Connection = CN
+
+            CMD.CommandText = String.Format("	select nome, tipo_missao.tipo from exercito.missao
+				            JOIN exercito.tipo_missao
+				            ON missao.tipo = tipo_missao.id
+				            where missao.id = {0}", militar.missao)
+            RDR = CMD.ExecuteReader
+
+            While RDR.Read
+                nomeMiss.Text = RDR.Item("nome")
+                tipoMiss.Text = RDR.Item("tipo")
+            End While
+            RDR.Close()
+            CMD.CommandText = String.Format("	SELECT equipamento.modelo
+                           FROM EXERCITO.militar 
+						   JOIN EXERCITO.arma
+						   ON EXERCITO.aUsarArma(nCC) = EXERCITO.arma.idEqui
+						   JOIN EXERCITO.equipamento
+						   ON arma.idEqui = equipamento.id
+						   WHERE nCC = {0}", militar.nCC)
+            RDR = CMD.ExecuteReader
+            While RDR.Read
+                Arma.Text = RDR.Item("modelo")
+            End While
+
+            RDR.Close()
+
+            CMD.CommandText = String.Format("	SELECT equipamento.modelo
+                           FROM EXERCITO.militar 
+						   JOIN EXERCITO.veiculo
+						   ON EXERCITO.aUsarVeiculo(nCC) = EXERCITO.veiculo.idEqui
+						   JOIN EXERCITO.equipamento
+						   ON veiculo.idEqui = equipamento.id
+						   WHERE nCC = {0}", militar.nCC)
+            RDR = CMD.ExecuteReader
+            While RDR.Read
+                Veic.Text = RDR.Item("modelo")
+            End While
+
+            RDR.Close()
+        End If
+        CMD.Connection = CN
+        If militar.tipo = "SOLDADO" Then
+            Espec.Hide()
+            EspecLabel.Hide()
+
+            CMD.CommandText = String.Format("SELECT tipo_soldado.tipo FROM EXERCITO.soldado
+                                            JOIN EXERCITO.tipo_soldado ON tipo_soldado.id = soldado.tipo
+                                            WHERE nCC = {0}", militar.nCC)
+
+            RDR = CMD.ExecuteReader
+            While RDR.Read
+                TipoSol.Text = RDR.Item("tipo")
+            End While
+        ElseIf militar.tipo = "MEDICO" Then
+            TipoSol.Hide()
+            TpSolLabel.Hide()
+
+            CMD.CommandText = String.Format("SELECT especialidade.especialidade FROM EXERCITO.medico
+                                            JOIN EXERCITO.especialidade ON especialidade.id = medico.especialidade
+                                            WHERE nCC = {0}", militar.nCC)
+            RDR = CMD.ExecuteReader
+            While RDR.Read
+                Espec.Text = RDR.Item("especialidade")
+            End While
+
+        Else
+            TipoSol.Hide()
+            TpSolLabel.Hide()
+            Espec.Hide()
+            EspecLabel.Hide()
+        End If
+
+        CN.Close()
 
     End Sub
 
@@ -38,31 +131,7 @@
         Me.Close()
     End Sub
 
-    Private Sub TBnome_TextChanged(sender As Object, e As EventArgs) Handles TBnome.TextChanged
-
-    End Sub
-
-    Private Sub TBtel_TextChanged(sender As Object, e As EventArgs) Handles TBtel.TextChanged
-
-    End Sub
-
-    Private Sub TBmorada_TextChanged(sender As Object, e As EventArgs) Handles TBmorada.TextChanged
-
-    End Sub
-
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-
-    End Sub
-
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-
-    End Sub
-
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
-
-    End Sub
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
 
     End Sub
 

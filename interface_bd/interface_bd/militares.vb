@@ -15,6 +15,7 @@ Public Class militares
     Private Sub militares_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim RDR As SqlDataReader
+
         Dim SQA As SqlDataAdapter
 
         CN = New SqlConnection("data Source = " + dbServer + " ;" +
@@ -27,7 +28,7 @@ Public Class militares
         CMD = New SqlCommand
         CMD.Connection = CN
 
-        CMD.CommandText = "SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, EXERCITO.cargo.cargo
+        CMD.CommandText = "SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, EXERCITO.cargo.cargo, EXERCITO.militarEmMissao(nCC) AS EmMissao, EXERCITO.subclass(nCC) AS tipo
                            FROM EXERCITO.militar 
                            JOIN EXERCITO.cargo 
                            ON militar.cargo = cargo.id"
@@ -51,15 +52,18 @@ Public Class militares
             M.ramo = Convert.ToString(RDR.Item("ramo"))
             M.base = Convert.ToString(RDR.Item("base"))
             M.cargo = RDR.Item("cargo")
+            M.tipo = RDR.Item("tipo")
 
             ' VERIFICAR SE O MILITAR ESTÁ EM MISSÃO    ---> PROBLEMA: como ver se um atributo é null?
-
+            '
             'If If(RDR.IsDBNull("pelotao"), "", RDR.GetString("pelotao")) Then
             'EmMissao = False
             'Else
             'EmMissao = True
             'M.pelotao = Convert.ToString(RDR.Item("pelotao"))
             'End If
+
+            M.missao = RDR.Item("EmMissao")
 
             listaMilitares.Add(M)
             ListBox1.Items.Add(M)
@@ -167,6 +171,9 @@ Public Class militares
         Dim nac = NacDD.Text
         Dim missoesVal = MissoesDD.SelectedValue
         Dim missoes = MissoesDD.Text
+        Dim dispon = DispDD.SelectedValue
+        Dim subcl = subclasse.SelectedValue
+        Dim state = stateDD.SelectedValue
         Dim conds As New List(Of String)()
 
 
@@ -176,6 +183,10 @@ Public Class militares
                                "password = " + userPass)
         Dim cmd = "SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, cargo
                            FROM EXERCITO.militar"
+
+        If subcl IsNot "" Then
+            conds.Add(String.Format("EXERCITO.subclass(nCC) = '{0}'", subcl))
+        End If
 
         If base > -1 Then
             conds.Add(String.Format("base = {0}", base))
@@ -193,14 +204,25 @@ Public Class militares
             conds.Add(String.Format("nacionalidade = '{0}'", nac))
         End If
 
+        If state > -1 Then
+            conds.Add(String.Format("estado = {0}", state))
+        End If
+
         If missoesVal > -1 Then
-            Debug.Print("é o quem")
             If missoesVal = 5 Then
                 conds.Add(String.Format("nMissoes > 50"))
             Else
                 Dim min = missoes.Split("-")(0)
                 Dim max = missoes.Split("-")(1)
                 conds.Add(String.Format("nMissoes > {0} AND nMissoes < {1}", min, max))
+            End If
+        End If
+
+        If Not (dispon = -1) Then
+            If dispon = 1 Then
+                conds.Add(String.Format("EXERCITO.militarEmMissao(nCC) > 0"))
+            Else
+                conds.Add(String.Format("EXERCITO.militarEmMissao(nCC) = -1"))
             End If
         End If
 
@@ -213,6 +235,7 @@ Public Class militares
                 End If
             Next
         End If
+
 
 
         Dim count As Integer = 0
@@ -253,7 +276,6 @@ Public Class militares
             ListBox1.Enabled = False
             totalTxtBox.Text = 0
         End If
-
 
         CN.Close()
 
@@ -342,6 +364,19 @@ Public Class militares
         NacDD.DisplayMember = "nacionalidade"
         NacDD.ValueMember = "id"
 
+        SQA = New SqlDataAdapter("SELECT id, estado FROM EXERCITO.estado_militar", CN)
+        dt = New DataTable()
+        SQA.Fill(dt)
+
+        row = dt.NewRow()
+        row(0) = -1
+        row(1) = "Estado"
+        dt.Rows.InsertAt(row, 0)
+
+        stateDD.DataSource = dt
+        stateDD.DisplayMember = "estado"
+        stateDD.ValueMember = "id"
+
 
         Dim missDict As New Dictionary(Of Integer, String)()
         missDict.Add(-1, "Missoes")
@@ -355,9 +390,39 @@ Public Class militares
         MissoesDD.DisplayMember = "Value"
         MissoesDD.ValueMember = "Key"
 
+        Dim dispDict As New Dictionary(Of Integer, String)()
+        dispDict.Add(-1, "Disponibilidade")
+        dispDict.Add(1, "Em Missão")
+        dispDict.Add(2, "Disponível")
+
+        DispDD.DataSource = New BindingSource(dispDict, Nothing)
+        DispDD.DisplayMember = "Value"
+        DispDD.ValueMember = "Key"
+
+        Dim scDict As New Dictionary(Of String, String)()
+        scDict.Add("", "Tipo Militar")
+        scDict.Add("SOLDADO", "Soldado")
+        scDict.Add("MEDICO", "Medico")
+        scDict.Add("ENGENHEIRO", "Engenheiro")
+
+        subclasse.DataSource = New BindingSource(scDict, Nothing)
+        subclasse.DisplayMember = "Value"
+        subclasse.ValueMember = "Key"
+
 
         CN.Close()
 
     End Function
+
+    Private Sub MissoesDD_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MissoesDD.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles resetBttn.Click
+        listaMilitares.Clear()
+        listaMilitares.AddRange(StartingList.ToArray)
+        ListBox1.Items.Clear()
+        ListBox1.Items.AddRange(listaMilitares.ToArray)
+    End Sub
 
 End Class

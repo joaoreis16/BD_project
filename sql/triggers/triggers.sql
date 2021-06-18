@@ -10,16 +10,20 @@ INSTEAD OF UPDATE
 AS
 	SET NOCOUNT ON;
 	DECLARE @targetCC INT
+	DECLARE @curCC INT
 	DECLARE @cargo	INT
 	DECLARE @base	INT
 	DECLARE @mil_base INT
+	DECLARE @di DATE
 	IF UPDATE(nCC)
 		BEGIN
 		SELECT @targetCC = nCC, @base = id FROM INSERTED
+		SELECT @di = data_inicio, @curCC = nCC FROM EXERCITO.base_militar WHERE @base = id
 		SELECT @cargo = cargo, @mil_base = base FROM EXERCITO.militar WHERE nCC = @targetCC
 		PRINT @targetCC
 		IF (@targetCC IS NULL)
 			BEGIN
+				INSERT INTO EXERCITO.historico_base(nCC, base, data_inicio) VALUES (@curCC, @base, @di)
 				UPDATE EXERCITO.base_militar
 				/*TODO : GUARDAR RECORD DE GENERAL ANTIGO */
 				SET nCC = NULL, data_inicio = NULL, data_fim = NULL
@@ -39,6 +43,7 @@ AS
 					ROLLBACK TRANSACTION
 				END
 			ELSE
+				INSERT INTO EXERCITO.historico_base(nCC, base, data_inicio) VALUES (@curCC, @base, @di)
 				UPDATE EXERCITO.base_militar
 				/*TODO : GUARDAR RECORD DE CAPITAO ANTIGO */
 				SET nCC = @targetCC, data_inicio = GETDATE(), data_fim = NULL
@@ -48,6 +53,11 @@ AS
 GO
 
 ----------------EQUIPAMENTO------------------------
+
+/*
+*	GUARDA NO HISTORICO UMA PARAGEM DE UTILIZAÇAO 
+*	DE EQUIPAMENTO
+*/
 
 ------------------MILITAR------------------------
 
@@ -179,11 +189,15 @@ AS
 	DECLARE @cargo	INT
 	DECLARE @ramo	INT
 	DECLARE @mil_ramo INT
+	DECLARE @cur_CC INT
+	DECLARE @di DATE
 	IF UPDATE(nCC)
 		BEGIN			
 		SELECT @targetCC = nCC, @ramo = id FROM INSERTED
+		SELECT @cur_CC = nCC, @di = data_inicio FROM EXERCITO.ramo WHERE id = @ramo
 		IF (@targetCC IS NULL)
 			BEGIN
+				INSERT INTO EXERCITO.historico_ramo(nCC, ramo, data_inicio) VALUES (@cur_CC, @ramo, @di)
 				UPDATE EXERCITO.ramo
 				/*TODO : GUARDAR RECORD DE GENERAL ANTIGO */
 				SET nCC = NULL, data_inicio = NULL, data_fim = NULL
@@ -210,6 +224,7 @@ AS
 				ROLLBACK TRANSACTION
 				END
 			ELSE
+				INSERT INTO EXERCITO.historico_ramo(nCC, ramo, data_inicio) VALUES (@cur_CC, @ramo, @di)
 				UPDATE EXERCITO.ramo
 				/*TODO : GUARDAR RECORD DE GENERAL ANTIGO */
 				SET nCC = @targetCC, data_inicio = GETDATE(), data_fim = NULL
@@ -280,3 +295,9 @@ SELECT matricula, tipo, modelo FROM EXERCITO.veiculo
 							ON idEqui = EXERCITO.equipamento.id
 							JOIN EXERCITO.tipo_veiculo
 							ON idTipo = EXERCITO.tipo_veiculo.id
+
+
+/*
+*	GUARDA REGISTO DA MISSAO
+*/
+		

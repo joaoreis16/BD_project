@@ -20,6 +20,15 @@ CREATE TABLE EXERCITO.militar (
 	FOREIGN KEY (pelotao) REFERENCES EXERCITO.pelotao(id),
 	FOREIGN KEY (cargo) REFERENCES EXERCITO.cargo(id));
 
+ALTER TABLE EXERCITO.militar ADD estado INT CONSTRAINT FKestado FOREIGN KEY(estado) REFERENCES EXERCITO.estado_militar(id)
+ALTER TABLE EXERCITO.militar ADD Constraint defMilState DEFAULT 1 for estado
+
+CREATE TABLE EXERCITO.estado_militar (
+	id INT IDENTITY(1,1) PRIMARY KEY,
+	estado VARCHAR(50) NOT NULL
+)
+
+
 ALTER TABLE EXERCITO.militar ADD CONSTRAINT curDate DEFAULT GETDATE() FOR dInsc
 ALTER TABLE EXERCITO.militar ALTER COLUMN base INT NULL
 -- 
@@ -98,6 +107,16 @@ CREATE TABLE EXERCITO.missao (
 	FOREIGN KEY (tipo) REFERENCES EXERCITO.tipo_missao(id));
 
 ALTER TABLE EXERCITO.missao ADD brief VARCHAR(1024);
+SELECT * FROM EXERCITO.estado_missao
+SELECT * FROM EXERCITO.missao
+ALTER TABLE EXERCITO.missao ADD estado INT CONSTRAINT FK FOREIGN KEY(estado) REFERENCES EXERCITO.estado_missao(id)
+ALTER TABLE EXERCITO.missao ADD Constraint defState DEFAULT 1 for estado
+
+CREATE TABLE EXERCITO.estado_missao (
+	id INT IDENTITY(1,1) PRIMARY KEY,
+	estado VARCHAR(50) NOT NULL
+)
+
 
 
 CREATE TABLE EXERCITO.tipo_missao (
@@ -233,12 +252,16 @@ SELECT * FROM EXERCITO.equipamento
 
 CREATE TABLE EXERCITO.historico_ramo (
 	nCC INT,
+	ramo INT,
 	data_inicio	DATE,
-	data_fim	DATE,
+	data_fim	DATE DEFAULT GETDATE(),
 
-	PRIMARY KEY (nCC, data_inicio, data_fim),
-	FOREIGN KEY (nCC) REFERENCES EXERCITO.militar(nCC)
+	PRIMARY KEY (nCC, ramo, data_inicio),
+	FOREIGN KEY (nCC) REFERENCES EXERCITO.militar(nCC),
+	FOREIGN KEY (ramo) REFERENCES EXERCITO.ramo(id)
 )
+
+DROP TABLE EXERCITO.historico_ramo
 
 CREATE TABLE EXERCITO.historico_base (
 	nCC INT,
@@ -246,7 +269,7 @@ CREATE TABLE EXERCITO.historico_base (
 	data_inicio	DATE,
 	data_fim	DATE DEFAULT GETDATE(),
 
-	PRIMARY KEY (nCC, base, data_inicio, data_fim),
+	PRIMARY KEY (nCC, base, data_inicio),
 	FOREIGN KEY (nCC) REFERENCES EXERCITO.militar(nCC),
 	FOREIGN KEY (base) REFERENCES EXERCITO.base_militar(id)
 )
@@ -257,11 +280,19 @@ CREATE TABLE EXERCITO.historico_equipamento (
 	data_inicio DATE,
 	data_fim DATE DEFAULT GETDATE(),
 
-	PRIMARY KEY (nCC, equip, data_inicio, data_fim),
+	PRIMARY KEY (nCC, equip, data_inicio),
 	FOREIGN KEY (nCC) REFERENCES EXERCITO.militar(nCC),
 	FOREIGN KEY (equip) REFERENCES EXERCITO.equipamento(id)
 )
 
 CREATE TABLE EXERCITO.historico_missao (
-	
+	missao INT,
+	militar INT,
+	data_fim DATE DEFAULT GETDATE()
+
+	PRIMARY KEY (missao, militar),
+	FOREIGN KEY (missao) REFERENCES EXERCITO.missao(id),
+	FOREIGN KEY (militar) REFERENCES EXERCITO.militar(nCC)
 )
+
+select * from EXERCITO.historico_missao

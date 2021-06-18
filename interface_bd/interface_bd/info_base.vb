@@ -14,7 +14,7 @@
     Private Sub info_base_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' tá foda aqui porque esta base pode vir de dois Forms: ou de bases_militares ou de info_ramo
-        Dim base As Base = bases_militares.baseSelected
+        Dim base As Base = GlobalVariables.baseSelected
         TBcapacidade.Text = base.maxMilitares
         TBmorada.Text = base.morada
         TBnome.Text = base.nome

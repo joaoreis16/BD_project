@@ -39,6 +39,7 @@ Partial Class bases_militares
         Me.FA = New System.Windows.Forms.CheckBox()
         Me.ApplyBases = New System.Windows.Forms.Button()
         Me.FM = New System.Windows.Forms.CheckBox()
+        Me.baseReset = New System.Windows.Forms.Button()
         Me.pesquisaBttn = New System.Windows.Forms.PictureBox()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -149,6 +150,7 @@ Partial Class bases_militares
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.baseReset)
         Me.GroupBox1.Controls.Add(Me.FT)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Controls.Add(Me.ApplyBases)
@@ -190,7 +192,7 @@ Partial Class bases_militares
         '
         'ApplyBases
         '
-        Me.ApplyBases.Location = New System.Drawing.Point(190, 187)
+        Me.ApplyBases.Location = New System.Drawing.Point(280, 184)
         Me.ApplyBases.Name = "ApplyBases"
         Me.ApplyBases.Size = New System.Drawing.Size(133, 29)
         Me.ApplyBases.TabIndex = 1
@@ -265,5 +267,6 @@ Partial Class bases_militares
     Friend WithEvents FT As CheckBox
     Friend WithEvents FM As CheckBox
     Friend WithEvents FA As CheckBox
+    Friend WithEvents baseReset As Button
     Friend WithEvents pesquisaBttn As PictureBox
 End Class
