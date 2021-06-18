@@ -34,6 +34,7 @@ Partial Class militares
         Me.Label4 = New System.Windows.Forms.Label()
         Me.totalTxtBox = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.stateDD = New System.Windows.Forms.ComboBox()
         Me.subclasse = New System.Windows.Forms.ComboBox()
         Me.resetBttn = New System.Windows.Forms.Button()
@@ -45,7 +46,7 @@ Partial Class militares
         Me.RamoDD = New System.Windows.Forms.ComboBox()
         Me.BaseDD = New System.Windows.Forms.ComboBox()
         Me.pesquisaBttn = New System.Windows.Forms.PictureBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.register = New System.Windows.Forms.Button()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -172,6 +173,15 @@ Partial Class militares
         Me.GroupBox1.TabIndex = 36
         Me.GroupBox1.TabStop = False
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 289)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(501, 45)
+        Me.GroupBox2.TabIndex = 37
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "GroupBox2"
+        '
         'stateDD
         '
         Me.stateDD.FormattingEnabled = True
@@ -275,20 +285,21 @@ Partial Class militares
         Me.pesquisaBttn.TabIndex = 20
         Me.pesquisaBttn.TabStop = False
         '
-        'GroupBox2
+        'register
         '
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 289)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(501, 45)
-        Me.GroupBox2.TabIndex = 37
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "GroupBox2"
+        Me.register.Location = New System.Drawing.Point(33, 532)
+        Me.register.Name = "register"
+        Me.register.Size = New System.Drawing.Size(105, 66)
+        Me.register.TabIndex = 37
+        Me.register.Text = "Registar Militar"
+        Me.register.UseVisualStyleBackColor = True
         '
         'militares
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1077, 632)
+        Me.Controls.Add(Me.register)
         Me.Controls.Add(Me.pesquisaBttn)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.totalTxtBox)
@@ -333,4 +344,5 @@ Partial Class militares
     Friend WithEvents subclasse As ComboBox
     Friend WithEvents stateDD As ComboBox
     Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents register As Button
 End Class

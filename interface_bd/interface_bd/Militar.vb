@@ -148,7 +148,6 @@
             _ramo = value
         End Set
     End Property
-
     Property base() As Integer
         Get
             Return _base
@@ -158,7 +157,6 @@
             _base = value
         End Set
     End Property
-
     Property pelotao() As Integer
         Get
             Return _pelotao

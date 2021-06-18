@@ -52,7 +52,11 @@ Public Class militares
             M.nacionalidade = RDR.Item("nacionalidade")
             M.nMissoes = Convert.ToString(RDR.Item("nMissoes"))
             M.ramo = Convert.ToString(RDR.Item("ramo"))
-            M.base = Convert.ToString(RDR.Item("base"))
+            If IsDBNull(RDR.Item("base")) Then
+                M.base = Nothing
+            Else
+                M.base = Convert.ToString(RDR.Item("base"))
+            End If
             M.cargo = RDR.Item("cargo")
             M.tipo = RDR.Item("tipo")
             M.estado = RDR.Item("estado")
@@ -116,8 +120,8 @@ Public Class militares
         CMD.Connection = CN
 
         If num_search Then
-            CMD.CommandText = String.Format("SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, EXERCITO.cargo.cargo
-                           FROM EXERCITO.militar 
+            CMD.CommandText = String.Format("SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, Ramo, Base, EXERCITO.cargo.cargo
+                           From EXERCITO.militar 
                            JOIN EXERCITO.cargo 
                            ON militar.cargo = cargo.id
                            WHERE nCC = {0}", text)

@@ -344,7 +344,7 @@ AS
 		DECLARE @pel INT
 		SELECT @cur = estado, @pel = pelotao FROM EXERCITO.militar WHERE nCC = @nCC
 		IF (@cur != 2 AND @pel IS NULL)
-			UPDATE EXERCITO.militar SET estado = 3 WHERE nCC = @nCC
+			UPDATE EXERCITO.militar SET estado = 3, base = NULL WHERE nCC = @nCC
 	END
 
 EXEC EXERCITO.retire 100829784

@@ -18,7 +18,6 @@ Public Class info_militar
 
     Private Sub info_militar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim militar = militares.militarSelected
-
         TBcargo.Text = militar.cargo
         TBmorada.Text = militar.morada
         TBnCC.Text = militar.nCC
@@ -28,6 +27,7 @@ Public Class info_militar
         TBnMiss.Text = militar.nMissoes
         TBtipo.Text = militar.tipo
         State.Text = militar.estado
+        dnascTB.Text = militar.dNasc
 
         If militar.estado = "Reformado" Then
             Button1.Enabled = False
@@ -42,7 +42,30 @@ Public Class info_militar
                                    "password = " + userPass)
 
         CMD = New SqlCommand
+
+
+
+        CMD.Connection = CN
+        CMD.CommandText = String.Format("SELECT design, nome FROM
+                                         EXERCITO.militar
+                                         JOIN EXERCITO.base_militar
+                                         ON militar.base = base_militar.id
+                                         JOIN EXERCITO.ramo
+                                         ON militar.ramo = ramo.id
+                                         JOIN EXERCITO.tipo_ramo
+                                         ON tipo_ramo.id = ramo.tipo")
+
         CN.Open()
+        RDR = CMD.ExecuteReader
+        While RDR.Read
+            baseTT.Text = RDR.Item("nome")
+            ramoTT.Text = RDR.Item("design")
+        End While
+
+        If militar.base = Nothing Then
+            baseTT.Hide()
+            Label19.Hide()
+        End If
 
         If militar.missao = -1 Then
             CheckMissao.Checked = False
