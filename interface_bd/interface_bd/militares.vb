@@ -431,4 +431,10 @@ Public Class militares
         ListBox1.Items.AddRange(listaMilitares.ToArray)
     End Sub
 
+    Private Sub register_Click(sender As Object, e As EventArgs) Handles register.Click
+        GlobalVariables.inserting = True
+        Dim pag_init = New info_militar
+        pag_init.Show()
+        Me.Close()
+    End Sub
 End Class

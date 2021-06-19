@@ -349,3 +349,39 @@ AS
 
 EXEC EXERCITO.retire 100829784
 SELECT * FROM EXERCITO.militar WHERE nCC = 100829784
+
+/*
+*	CRIA MILITAR->SOLDADO 
+*/
+CREATE PROC EXERCITO.createSoldadoAndM
+@nCC INT, @fname VARCHAR(25), @lname VARCHAR(25),@morada VARCHAR(100), @email VARCHAR(100), @dnasc DATE, 
+@tel VARCHAR(9), @nac VARCHAR(50),
+@ramo INT, @base INT, @cargo INT, @tipo INT
+AS
+	BEGIN
+		INSERT INTO EXERCITO.militar(nCC, Pnome, Unome, morada, email, dNasc, tel, nacionalidade, ramo, base, pelotao, cargo) 
+		values (@nCC, @fname, @lname, @morada, @email, @dnasc, @tel, @nac, @ramo, @base, null, @cargo);
+		INSERT INTO EXERCITO.soldado(nCC, tipo) VALUES (@nCC, @tipo)
+	END
+
+CREATE PROC EXERCITO.createMedicoAndM
+@nCC INT, @fname VARCHAR(25), @lname VARCHAR(25),@morada VARCHAR(100), @email VARCHAR(100), @dnasc DATE, 
+@tel VARCHAR(9), @nac VARCHAR(50),
+@ramo INT, @base INT, @cargo INT, @tipo INT
+AS
+	BEGIN
+		INSERT INTO EXERCITO.militar(nCC, Pnome, Unome, morada, email, dNasc, tel, nacionalidade, ramo, base, pelotao, cargo) 
+		values (@nCC, @fname, @lname, @morada, @email, @dnasc, @tel, @nac, @ramo, @base, null, @cargo);
+		INSERT INTO EXERCITO.medico(nCC, especialidade) VALUES (@nCC, @tipo)
+	END
+
+CREATE PROC EXERCITO.createEngenheiroAndM
+@nCC INT, @fname VARCHAR(25), @lname VARCHAR(25),@morada VARCHAR(100), @email VARCHAR(100), @dnasc DATE, 
+@tel VARCHAR(9), @nac VARCHAR(50),
+@ramo INT, @base INT, @cargo INT
+AS
+	BEGIN
+		INSERT INTO EXERCITO.militar(nCC, Pnome, Unome, morada, email, dNasc, tel, nacionalidade, ramo, base, pelotao, cargo) 
+		values (@nCC, @fname, @lname, @morada, @email, @dnasc, @tel, @nac, @ramo, @base, null, @cargo);
+		INSERT INTO EXERCITO.engenheiro(nCC) VALUES (@nCC)
+	END
