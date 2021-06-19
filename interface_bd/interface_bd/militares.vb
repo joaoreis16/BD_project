@@ -28,10 +28,12 @@ Public Class militares
         CMD = New SqlCommand
         CMD.Connection = CN
 
-        CMD.CommandText = "SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, EXERCITO.cargo.cargo, EXERCITO.militarEmMissao(nCC) AS EmMissao, EXERCITO.subclass(nCC) AS tipo
+        CMD.CommandText = "SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, EXERCITO.cargo.cargo, EXERCITO.militarEmMissao(nCC) AS EmMissao, EXERCITO.subclass(nCC) AS tipo, estado_militar.estado
                            FROM EXERCITO.militar 
                            JOIN EXERCITO.cargo 
-                           ON militar.cargo = cargo.id"
+                           ON militar.cargo = cargo.id
+                           JOIN EXERCITO.estado_militar
+                           ON militar.estado = estado_militar.id"
         CN.Open()
 
         Dim count As Integer = 0
@@ -50,10 +52,14 @@ Public Class militares
             M.nacionalidade = RDR.Item("nacionalidade")
             M.nMissoes = Convert.ToString(RDR.Item("nMissoes"))
             M.ramo = Convert.ToString(RDR.Item("ramo"))
-            M.base = Convert.ToString(RDR.Item("base"))
+            If IsDBNull(RDR.Item("base")) Then
+                M.base = Nothing
+            Else
+                M.base = Convert.ToString(RDR.Item("base"))
+            End If
             M.cargo = RDR.Item("cargo")
             M.tipo = RDR.Item("tipo")
-
+            M.estado = RDR.Item("estado")
             ' VERIFICAR SE O MILITAR ESTÁ EM MISSÃO    ---> PROBLEMA: como ver se um atributo é null?
             '
             'If If(RDR.IsDBNull("pelotao"), "", RDR.GetString("pelotao")) Then
@@ -114,8 +120,8 @@ Public Class militares
         CMD.Connection = CN
 
         If num_search Then
-            CMD.CommandText = String.Format("SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, EXERCITO.cargo.cargo
-                           FROM EXERCITO.militar 
+            CMD.CommandText = String.Format("SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, Ramo, Base, EXERCITO.cargo.cargo
+                           From EXERCITO.militar 
                            JOIN EXERCITO.cargo 
                            ON militar.cargo = cargo.id
                            WHERE nCC = {0}", text)
@@ -425,4 +431,10 @@ Public Class militares
         ListBox1.Items.AddRange(listaMilitares.ToArray)
     End Sub
 
+    Private Sub register_Click(sender As Object, e As EventArgs) Handles register.Click
+        GlobalVariables.inserting = True
+        Dim pag_init = New info_militar
+        pag_init.Show()
+        Me.Close()
+    End Sub
 End Class

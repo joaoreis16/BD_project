@@ -15,6 +15,7 @@
     Private _cargo As String
     Private _missao As Integer
     Private _tipo As String
+    Private _estado As String
 
     Property nCC() As Integer
         Get
@@ -147,7 +148,6 @@
             _ramo = value
         End Set
     End Property
-
     Property base() As Integer
         Get
             Return _base
@@ -157,7 +157,6 @@
             _base = value
         End Set
     End Property
-
     Property pelotao() As Integer
         Get
             Return _pelotao
@@ -200,6 +199,16 @@
 
         Set(ByVal value As String)
             _tipo = value
+        End Set
+    End Property
+
+    Property estado() As String
+        Get
+            Return _estado
+        End Get
+
+        Set(ByVal value As String)
+            _estado = value
         End Set
     End Property
     Overrides Function ToString() As String

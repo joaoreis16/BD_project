@@ -34,6 +34,8 @@ Partial Class militares
         Me.Label4 = New System.Windows.Forms.Label()
         Me.totalTxtBox = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.stateDD = New System.Windows.Forms.ComboBox()
         Me.subclasse = New System.Windows.Forms.ComboBox()
         Me.resetBttn = New System.Windows.Forms.Button()
         Me.DispDD = New System.Windows.Forms.ComboBox()
@@ -44,7 +46,7 @@ Partial Class militares
         Me.RamoDD = New System.Windows.Forms.ComboBox()
         Me.BaseDD = New System.Windows.Forms.ComboBox()
         Me.pesquisaBttn = New System.Windows.Forms.PictureBox()
-        Me.stateDD = New System.Windows.Forms.ComboBox()
+        Me.register = New System.Windows.Forms.Button()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -57,16 +59,16 @@ Partial Class militares
         '
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Location = New System.Drawing.Point(594, 135)
+        Me.ListBox1.Location = New System.Drawing.Point(594, 115)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(437, 444)
+        Me.ListBox1.Size = New System.Drawing.Size(437, 464)
         Me.ListBox1.TabIndex = 21
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(33, 189)
+        Me.Label1.Location = New System.Drawing.Point(33, 121)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(80, 20)
         Me.Label1.TabIndex = 25
@@ -74,7 +76,7 @@ Partial Class militares
         '
         'TBpesquisa
         '
-        Me.TBpesquisa.Location = New System.Drawing.Point(33, 233)
+        Me.TBpesquisa.Location = New System.Drawing.Point(33, 154)
         Me.TBpesquisa.Name = "TBpesquisa"
         Me.TBpesquisa.Size = New System.Drawing.Size(460, 27)
         Me.TBpesquisa.TabIndex = 26
@@ -128,7 +130,7 @@ Partial Class militares
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label2.Location = New System.Drawing.Point(33, 299)
+        Me.Label2.Location = New System.Drawing.Point(33, 208)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(67, 20)
         Me.Label2.TabIndex = 32
@@ -153,6 +155,7 @@ Partial Class militares
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Controls.Add(Me.stateDD)
         Me.GroupBox1.Controls.Add(Me.subclasse)
         Me.GroupBox1.Controls.Add(Me.resetBttn)
@@ -164,11 +167,29 @@ Partial Class militares
         Me.GroupBox1.Controls.Add(Me.RamoDD)
         Me.GroupBox1.Controls.Add(Me.BaseDD)
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBox1.Location = New System.Drawing.Point(33, 322)
+        Me.GroupBox1.Location = New System.Drawing.Point(33, 231)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(501, 257)
         Me.GroupBox1.TabIndex = 36
         Me.GroupBox1.TabStop = False
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 289)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(501, 45)
+        Me.GroupBox2.TabIndex = 37
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "GroupBox2"
+        '
+        'stateDD
+        '
+        Me.stateDD.FormattingEnabled = True
+        Me.stateDD.Location = New System.Drawing.Point(260, 26)
+        Me.stateDD.Name = "stateDD"
+        Me.stateDD.Size = New System.Drawing.Size(187, 28)
+        Me.stateDD.TabIndex = 36
+        Me.stateDD.Text = "Estado"
         '
         'subclasse
         '
@@ -257,27 +278,28 @@ Partial Class militares
         '
         Me.pesquisaBttn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pesquisaBttn.Image = CType(resources.GetObject("pesquisaBttn.Image"), System.Drawing.Image)
-        Me.pesquisaBttn.Location = New System.Drawing.Point(506, 233)
+        Me.pesquisaBttn.Location = New System.Drawing.Point(506, 154)
         Me.pesquisaBttn.Name = "pesquisaBttn"
         Me.pesquisaBttn.Size = New System.Drawing.Size(28, 27)
         Me.pesquisaBttn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pesquisaBttn.TabIndex = 20
         Me.pesquisaBttn.TabStop = False
         '
-        'stateDD
+        'register
         '
-        Me.stateDD.FormattingEnabled = True
-        Me.stateDD.Location = New System.Drawing.Point(260, 26)
-        Me.stateDD.Name = "stateDD"
-        Me.stateDD.Size = New System.Drawing.Size(187, 28)
-        Me.stateDD.TabIndex = 36
-        Me.stateDD.Text = "Estado"
+        Me.register.Location = New System.Drawing.Point(33, 532)
+        Me.register.Name = "register"
+        Me.register.Size = New System.Drawing.Size(105, 66)
+        Me.register.TabIndex = 37
+        Me.register.Text = "Registar Militar"
+        Me.register.UseVisualStyleBackColor = True
         '
         'militares
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1071, 632)
+        Me.ClientSize = New System.Drawing.Size(1077, 632)
+        Me.Controls.Add(Me.register)
         Me.Controls.Add(Me.pesquisaBttn)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.totalTxtBox)
@@ -321,4 +343,6 @@ Partial Class militares
     Friend WithEvents resetBttn As Button
     Friend WithEvents subclasse As ComboBox
     Friend WithEvents stateDD As ComboBox
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents register As Button
 End Class
