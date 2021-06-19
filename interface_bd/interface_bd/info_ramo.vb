@@ -79,7 +79,6 @@ Public Class info_ramo
         TBdia.Text = R.dia
         TBfax.Text = R.fax
 
-
         ' BASE MILITARES DE DETERMINADO RAMO
         CMD.CommandText = String.Format("SELECT * FROM EXERCITO.base_militar 
                                         JOIN EXERCITO.base_ramo 
@@ -106,11 +105,6 @@ Public Class info_ramo
 
         totalTxtBox.Text = count
         CN.Close()
-
-    End Sub
-
-    Sub ShowRamo()
-
 
     End Sub
 

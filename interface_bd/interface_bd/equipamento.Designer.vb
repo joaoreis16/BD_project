@@ -48,11 +48,8 @@ Partial Class equipamento
         Me.TBmodelo = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.armaBox = New System.Windows.Forms.GroupBox()
-        Me.veiculoBox = New System.Windows.Forms.GroupBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TBmissao = New System.Windows.Forms.TextBox()
+        Me.missao = New System.Windows.Forms.Label()
         Me.pesquisaBox = New System.Windows.Forms.GroupBox()
         Me.infoBox = New System.Windows.Forms.GroupBox()
         Me.menuBar.SuspendLayout()
@@ -63,7 +60,6 @@ Partial Class equipamento
         Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.armaBox.SuspendLayout()
-        Me.veiculoBox.SuspendLayout()
         Me.pesquisaBox.SuspendLayout()
         Me.infoBox.SuspendLayout()
         Me.SuspendLayout()
@@ -266,25 +262,25 @@ Partial Class equipamento
         '
         'TBserie
         '
-        Me.TBserie.Enabled = False
         Me.TBserie.Location = New System.Drawing.Point(112, 23)
         Me.TBserie.Name = "TBserie"
+        Me.TBserie.ReadOnly = True
         Me.TBserie.Size = New System.Drawing.Size(125, 27)
         Me.TBserie.TabIndex = 48
         '
         'TBtipo
         '
-        Me.TBtipo.Enabled = False
         Me.TBtipo.Location = New System.Drawing.Point(120, 134)
         Me.TBtipo.Name = "TBtipo"
+        Me.TBtipo.ReadOnly = True
         Me.TBtipo.Size = New System.Drawing.Size(353, 27)
         Me.TBtipo.TabIndex = 49
         '
         'TBmodelo
         '
-        Me.TBmodelo.Enabled = False
         Me.TBmodelo.Location = New System.Drawing.Point(120, 181)
         Me.TBmodelo.Name = "TBmodelo"
+        Me.TBmodelo.ReadOnly = True
         Me.TBmodelo.Size = New System.Drawing.Size(353, 27)
         Me.TBmodelo.TabIndex = 50
         '
@@ -300,7 +296,8 @@ Partial Class equipamento
         '
         'armaBox
         '
-        Me.armaBox.Controls.Add(Me.veiculoBox)
+        Me.armaBox.Controls.Add(Me.TBmissao)
+        Me.armaBox.Controls.Add(Me.missao)
         Me.armaBox.Controls.Add(Me.Label5)
         Me.armaBox.Controls.Add(Me.TBserie)
         Me.armaBox.Location = New System.Drawing.Point(8, 57)
@@ -309,51 +306,22 @@ Partial Class equipamento
         Me.armaBox.TabIndex = 52
         Me.armaBox.TabStop = False
         '
-        'veiculoBox
+        'TBmissao
         '
-        Me.veiculoBox.Controls.Add(Me.Label9)
-        Me.veiculoBox.Controls.Add(Me.TextBox2)
-        Me.veiculoBox.Controls.Add(Me.Label8)
-        Me.veiculoBox.Controls.Add(Me.TextBox1)
-        Me.veiculoBox.Location = New System.Drawing.Point(0, 0)
-        Me.veiculoBox.Name = "veiculoBox"
-        Me.veiculoBox.Size = New System.Drawing.Size(486, 63)
-        Me.veiculoBox.TabIndex = 53
-        Me.veiculoBox.TabStop = False
+        Me.TBmissao.Location = New System.Drawing.Point(340, 23)
+        Me.TBmissao.Name = "TBmissao"
+        Me.TBmissao.ReadOnly = True
+        Me.TBmissao.Size = New System.Drawing.Size(125, 27)
+        Me.TBmissao.TabIndex = 50
         '
-        'Label9
+        'missao
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(263, 27)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(55, 20)
-        Me.Label9.TabIndex = 49
-        Me.Label9.Text = "Missão"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Enabled = False
-        Me.TextBox2.Location = New System.Drawing.Point(340, 26)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(125, 27)
-        Me.TextBox2.TabIndex = 50
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(12, 23)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(71, 20)
-        Me.Label8.TabIndex = 45
-        Me.Label8.Text = "Matrícula"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(112, 24)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(125, 27)
-        Me.TextBox1.TabIndex = 48
+        Me.missao.AutoSize = True
+        Me.missao.Location = New System.Drawing.Point(279, 26)
+        Me.missao.Name = "missao"
+        Me.missao.Size = New System.Drawing.Size(55, 20)
+        Me.missao.TabIndex = 49
+        Me.missao.Text = "Missão"
         '
         'pesquisaBox
         '
@@ -405,8 +373,6 @@ Partial Class equipamento
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.armaBox.ResumeLayout(False)
         Me.armaBox.PerformLayout()
-        Me.veiculoBox.ResumeLayout(False)
-        Me.veiculoBox.PerformLayout()
         Me.pesquisaBox.ResumeLayout(False)
         Me.pesquisaBox.PerformLayout()
         Me.infoBox.ResumeLayout(False)
@@ -440,11 +406,8 @@ Partial Class equipamento
     Friend WithEvents TBmodelo As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents armaBox As GroupBox
-    Friend WithEvents veiculoBox As GroupBox
-    Friend WithEvents Label9 As Label
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Label8 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents missao As Label
+    Friend WithEvents TBmissao As TextBox
     Friend WithEvents pesquisaBox As GroupBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents infoBox As GroupBox

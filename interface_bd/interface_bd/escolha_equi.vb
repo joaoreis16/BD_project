@@ -14,4 +14,10 @@
         equi.Show()
         Me.Close()
     End Sub
+
+    Private Sub goBack_Click(sender As Object, e As EventArgs) Handles goBack.Click
+        Dim pag_init = New Form1
+        pag_init.Show()
+        Me.Close()
+    End Sub
 End Class
