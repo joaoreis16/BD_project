@@ -116,7 +116,7 @@ Public Class militares
                                    FROM EXERCITO.militar 
                                    JOIN EXERCITO.cargo 
                                    ON militar.cargo = cargo.id
-                                   WHERE Pnome LIKE '%{0}%' OR Unome LIKE '%{0}%'", text)
+                                   WHERE Concat (Pnome, ' ', Unome) LIKE '%{0}%'", text)
         End If
         CN.Open()
         Dim RowsReturned = CMD.ExecuteScalar()

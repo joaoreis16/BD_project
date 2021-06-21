@@ -72,3 +72,5 @@ C:\Users\VascoSousa\Desktop\BD_project\interface_bd\interface_bd\obj\Debug\net5.
 C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.info_missao.resources
 C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.pelotao.resources
 C:\Users\Pc\Documents\GitHub\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.assing_equipamento.resources
+C:\Users\VascoSousa\Desktop\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.info_missao.resources
+C:\Users\VascoSousa\Desktop\BD_project\interface_bd\interface_bd\obj\Debug\net5.0-windows\interface_bd.pelotao.resources
