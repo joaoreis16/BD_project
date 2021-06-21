@@ -323,7 +323,7 @@ Partial Class militares
         Me.Controls.Add(Me.ListBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "militares"
-        Me.Text = " "
+        Me.Text = " Força de Combate Portuguesa"
         Me.menuBar.ResumeLayout(False)
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

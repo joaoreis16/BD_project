@@ -717,7 +717,7 @@ Partial Class info_militar
         Me.Controls.Add(Me.GroupBox2)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "info_militar"
-        Me.Text = "info_militar"
+        Me.Text = "Força de Combate Portuguesa"
         Me.BoxMissao.ResumeLayout(False)
         Me.BoxMissao.PerformLayout()
         Me.menuBar.ResumeLayout(False)

@@ -302,7 +302,7 @@ Partial Class info_ramo
         Me.Controls.Add(Me.brasao)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "info_ramo"
-        Me.Text = "info_ramo"
+        Me.Text = "Força de Combate Portuguesa"
         CType(Me.brasao, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()

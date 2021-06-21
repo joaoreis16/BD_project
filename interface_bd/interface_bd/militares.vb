@@ -49,6 +49,9 @@ Public Class militares
             Dim M = GlobalVariables.listaMilitares(index)
             ListBox1.Items.Add(M)
             count = count + 1
+            If index = GlobalVariables.listaMilitares.Count Then
+                Exit While
+            End If
             index = index + 1
         End While
         StartingList.AddRange(GlobalVariables.listaMilitares.ToArray)

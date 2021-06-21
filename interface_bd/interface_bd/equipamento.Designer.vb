@@ -364,7 +364,7 @@ Partial Class equipamento
         Me.Controls.Add(Me.infoBox)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "equipamento"
-        Me.Text = "equipamento"
+        Me.Text = "Força de Combate Portuguesa"
         Me.menuBar.ResumeLayout(False)
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()

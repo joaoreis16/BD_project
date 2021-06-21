@@ -41,15 +41,15 @@ Public Class info_ramo
         'Debug.Print(ramos.id)
         If (ramos.id = 1) Then
             CMD.CommandText = "SELECT * FROM EXERCITO.ramo JOIN EXERCITO.tipo_ramo ON ramo.tipo = tipo_ramo.id  WHERE design = 'Força Terrestre'"
-            brasao.ImageLocation = "imagens\FT.png"
+            brasao.ImageLocation = "..\imagens\FT.png"
 
         ElseIf (ramos.id = 2) Then
             CMD.CommandText = "SELECT * FROM EXERCITO.ramo JOIN EXERCITO.tipo_ramo ON ramo.tipo = tipo_ramo.id  WHERE design = 'Força Aérea'"
-            brasao.ImageLocation = "imagens\FA.png"
+            brasao.ImageLocation = "..\imagens\FA.png"
 
         ElseIf (ramos.id = 3) Then
             CMD.CommandText = "SELECT * FROM EXERCITO.ramo JOIN EXERCITO.tipo_ramo ON ramo.tipo = tipo_ramo.id  WHERE design = 'Força Marítima'"
-            brasao.ImageLocation = "imagens\FM.jpg"
+            brasao.ImageLocation = "..\imagens\FM.png"
 
         End If
 

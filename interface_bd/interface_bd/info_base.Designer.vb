@@ -170,7 +170,7 @@ Partial Class info_base
         Me.Controls.Add(Me.menuBar)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "info_base"
-        Me.Text = "info_base"
+        Me.Text = "Força de Combate Portuguesa"
         Me.menuBar.ResumeLayout(False)
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

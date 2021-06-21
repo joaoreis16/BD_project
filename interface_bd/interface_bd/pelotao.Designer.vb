@@ -274,7 +274,7 @@ Partial Class pelotao
         Me.Controls.Add(Me.menuBar)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "pelotao"
-        Me.Text = "pelotao"
+        Me.Text = "Força de Combate Portuguesa"
         Me.menuBar.ResumeLayout(False)
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()

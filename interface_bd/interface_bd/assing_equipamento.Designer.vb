@@ -170,6 +170,7 @@ Partial Class assing_equipamento
         Me.Controls.Add(Me.menuBar)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "assing_equipamento"
+        Me.Text = "Força de Combate Portuguesa"
         Me.menuBar.ResumeLayout(False)
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
