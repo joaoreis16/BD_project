@@ -167,6 +167,8 @@ Public Class info_militar
         Else
             GlobalVariables.inserting = False
             Label16.Hide()
+            useArmaBttn.Hide()
+            useVeiculoBttn.Hide()
             State.Hide()
             TipoSol.Hide()
             Espec.Hide()
@@ -401,9 +403,11 @@ Public Class info_militar
         CMD.Parameters.Add(New SqlParameter("@cargo", cargo))
 
         CMD.ExecuteNonQuery()
-        Dim info = New militares
-        info.Show()
-        Me.Close()
+        'Dim info = New militares
+        'info.Show()
+        'Me.Close()
+        MsgBox("Militar Adicionado!")
+        submit.Enabled = False
     End Sub
 
     Private Sub useArmaBttn_Click(sender As Object, e As EventArgs) Handles useArmaBttn.Click
