@@ -22,4 +22,10 @@
         equi.Show()
         Me.Close()
     End Sub
+
+    Private Sub ButtonMissao_Click(sender As Object, e As EventArgs) Handles ButtonMissao.Click
+        Dim mis = New missoes
+        mis.Show()
+        Me.Close()
+    End Sub
 End Class

@@ -34,12 +34,12 @@ Partial Class bases_militares
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ListBox2 = New System.Windows.Forms.ListBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.baseReset = New System.Windows.Forms.Button()
         Me.FT = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.FA = New System.Windows.Forms.CheckBox()
         Me.ApplyBases = New System.Windows.Forms.Button()
         Me.FM = New System.Windows.Forms.CheckBox()
-        Me.baseReset = New System.Windows.Forms.Button()
         Me.pesquisaBttn = New System.Windows.Forms.PictureBox()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -159,6 +159,13 @@ Partial Class bases_militares
         Me.GroupBox1.Size = New System.Drawing.Size(504, 238)
         Me.GroupBox1.TabIndex = 47
         Me.GroupBox1.TabStop = False
+        '
+        'baseReset
+        '
+        Me.baseReset.Location = New System.Drawing.Point(0, 0)
+        Me.baseReset.Name = "baseReset"
+        Me.baseReset.Size = New System.Drawing.Size(75, 23)
+        Me.baseReset.TabIndex = 0
         '
         'FT
         '

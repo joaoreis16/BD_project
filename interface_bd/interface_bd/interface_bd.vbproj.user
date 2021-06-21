@@ -7,6 +7,9 @@
     <Compile Update="equipamento.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="missoes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="info_base.vb">
       <SubType>Form</SubType>
     </Compile>

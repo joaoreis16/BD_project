@@ -369,8 +369,16 @@ Public Class info_militar
         End If
         Dim parsing = dNasc.Split("/")
         Dim gformat = parsing(1) + "/" + parsing(0) + "/" + parsing(2)
-        Debug.Print(IsDate(gformat))
-        If (String.IsNullOrEmpty(nCC) Or String.IsNullOrEmpty(Pnome) Or String.IsNullOrEmpty(Unome) Or String.IsNullOrEmpty(morada) Or String.IsNullOrEmpty(email) Or String.IsNullOrEmpty(dNasc) Or String.IsNullOrEmpty(tel) Or String.IsNullOrEmpty(nac) Or (Not IsDate(dNasc))) Then
+        If (String.IsNullOrEmpty(nCC) Or String.IsNullOrEmpty(Pnome) Or String.IsNullOrEmpty(Unome) Or String.IsNullOrEmpty(morada) Or String.IsNullOrEmpty(email) Or String.IsNullOrEmpty(dNasc) Or String.IsNullOrEmpty(tel) Or String.IsNullOrEmpty(nac) Or (Not IsDate(gformat))) Then
+            Debug.Print(String.IsNullOrEmpty(nCC))
+            Debug.Print(String.IsNullOrEmpty(Pnome))
+            Debug.Print(String.IsNullOrEmpty(Unome))
+            Debug.Print(String.IsNullOrEmpty(morada))
+            Debug.Print(String.IsNullOrEmpty(email))
+            Debug.Print(String.IsNullOrEmpty(dNasc))
+            Debug.Print(String.IsNullOrEmpty(tel))
+            Debug.Print(String.IsNullOrEmpty(nac))
+            Debug.Print(Not IsDate(dNasc))
             Return
         End If
         gformat = parsing(2) + parsing(0) + parsing(1)

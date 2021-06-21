@@ -238,6 +238,7 @@ Public Class bases_militares
         ListBox2.Items.Clear()
         ListBox2.Items.AddRange(listaBases.ToArray)
     End Sub
+
     'Function PopulateBoxes(CN As SqlConnection)
     '
     'End Function
