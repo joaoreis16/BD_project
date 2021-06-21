@@ -47,6 +47,7 @@ Partial Class militares
         Me.BaseDD = New System.Windows.Forms.ComboBox()
         Me.pesquisaBttn = New System.Windows.Forms.PictureBox()
         Me.register = New System.Windows.Forms.Button()
+        Me.Add2Pelotao = New System.Windows.Forms.Button()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -289,16 +290,27 @@ Partial Class militares
         '
         Me.register.Location = New System.Drawing.Point(33, 540)
         Me.register.Name = "register"
-        Me.register.Size = New System.Drawing.Size(153, 39)
+        Me.register.Size = New System.Drawing.Size(174, 39)
         Me.register.TabIndex = 37
         Me.register.Text = "Registar Militar"
         Me.register.UseVisualStyleBackColor = True
+        '
+        'Add2Pelotao
+        '
+        Me.Add2Pelotao.Location = New System.Drawing.Point(360, 540)
+        Me.Add2Pelotao.Name = "Add2Pelotao"
+        Me.Add2Pelotao.Size = New System.Drawing.Size(174, 39)
+        Me.Add2Pelotao.TabIndex = 38
+        Me.Add2Pelotao.Text = "Adicionar ao pelotão"
+        Me.Add2Pelotao.UseVisualStyleBackColor = True
+        Me.Add2Pelotao.Visible = False
         '
         'militares
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1077, 632)
+        Me.Controls.Add(Me.Add2Pelotao)
         Me.Controls.Add(Me.register)
         Me.Controls.Add(Me.pesquisaBttn)
         Me.Controls.Add(Me.GroupBox1)
@@ -309,6 +321,7 @@ Partial Class militares
         Me.Controls.Add(Me.TBpesquisa)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ListBox1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "militares"
         Me.Text = " "
         Me.menuBar.ResumeLayout(False)
@@ -345,4 +358,5 @@ Partial Class militares
     Friend WithEvents stateDD As ComboBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents register As Button
+    Friend WithEvents Add2Pelotao As Button
 End Class

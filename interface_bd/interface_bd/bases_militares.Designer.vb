@@ -242,6 +242,7 @@ Partial Class bases_militares
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ListBox2)
         Me.Controls.Add(Me.menuBar)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "bases_militares"
         Me.Text = "bases_militares"
         Me.menuBar.ResumeLayout(False)
