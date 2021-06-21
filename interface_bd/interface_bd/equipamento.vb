@@ -49,7 +49,7 @@ Public Class equipamento
         Dim RDR As SqlDataReader
         RDR = CMD.ExecuteReader
 
-        ListBox2.Items.Clear()
+        ListBox1.Items.Clear()
         While RDR.Read
             Dim equipamento As New Equi
             If escolha_equi.arma Then
@@ -88,4 +88,5 @@ Public Class equipamento
             TBmissao.Text = Equi.missao
         End If
     End Sub
+
 End Class

@@ -29,6 +29,7 @@ Partial Class escolha_equi
         Me.goBack = New System.Windows.Forms.PictureBox()
         Me.veiculobttn = New System.Windows.Forms.Button()
         Me.armabttn = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -98,11 +99,22 @@ Partial Class escolha_equi
         Me.armabttn.Text = "Arma"
         Me.armabttn.UseVisualStyleBackColor = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label1.Location = New System.Drawing.Point(359, 224)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(388, 31)
+        Me.Label1.TabIndex = 60
+        Me.Label1.Text = "Escolha o equipamento pretendido"
+        '
         'escolha_equi
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1071, 632)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.armabttn)
         Me.Controls.Add(Me.veiculobttn)
         Me.Controls.Add(Me.menuBar)
@@ -113,6 +125,7 @@ Partial Class escolha_equi
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.goBack, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -122,4 +135,5 @@ Partial Class escolha_equi
     Friend WithEvents goBack As PictureBox
     Friend WithEvents veiculobttn As Button
     Friend WithEvents armabttn As Button
+    Friend WithEvents Label1 As Label
 End Class
