@@ -35,21 +35,25 @@ Public Class missao
         CMD = New SqlCommand
         CMD.Connection = CN
 
-        CMD.CommandText = "SELECT * FROM EXERCITO.missao"
+        CMD.CommandText = "SELECT missao.id,nome, tipo_missao.tipo, pais,brief, estado_missao.estado FROM EXERCITO.missao
+									JOIN EXERCITO.tipo_missao
+									ON missao.tipo = tipo_missao.id
+									JOIN EXERCITO.estado_missao
+									ON missao.estado = estado_missao.id"
 
         CN.Open()
         Dim RDR As SqlDataReader
         RDR = CMD.ExecuteReader
 
         ListBox1.Items.Clear()
-        Dim M As New Missoes
         While RDR.Read
+            Dim M As New Missoes
             M.id = Convert.ToString(RDR.Item("id"))
             M.nome = RDR.Item("nome")
-            M.tipo = RDR.Item("tipo")
+            M.tipo = Convert.ToString(RDR.Item("tipo"))
             M.pais = RDR.Item("pais")
-            M.nBaixas = Convert.ToString(RDR.Item("nBaixas"))
-
+            M.brief = Convert.ToString(RDR.Item("brief"))
+            M.estado = Convert.ToString(RDR.Item("estado"))
             listaMissao.Add(M)
             ListBox1.Items.Add(M)
         End While
