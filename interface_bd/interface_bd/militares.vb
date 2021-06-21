@@ -58,7 +58,7 @@ Public Class militares
 
     Private Sub ListBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListBox1.SelectedIndexChanged
         Dim index = ListBox1.SelectedIndex
-        GlobalVariables.milSelected = listaMilitares(index)
+        GlobalVariables.milSelected = GlobalVariables.listaMilitares(index)
         militarSelected = GlobalVariables.listaMilitares(index)
     End Sub
 

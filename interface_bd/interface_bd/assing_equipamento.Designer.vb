@@ -168,8 +168,8 @@ Partial Class assing_equipamento
         Me.Controls.Add(Me.ListBox2)
         Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.menuBar)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "assing_equipamento"
-        Me.Text = "Form2"
         Me.menuBar.ResumeLayout(False)
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

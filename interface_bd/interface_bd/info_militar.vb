@@ -406,4 +406,5 @@ Public Class info_militar
         ae.Show()
         Me.Close()
     End Sub
+
 End Class

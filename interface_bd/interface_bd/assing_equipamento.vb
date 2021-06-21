@@ -6,17 +6,7 @@ Public Class assing_equipamento
     Dim userPass = "-99745397@BD"
     Dim listaEquipamento As New List(Of Equi)()
     Dim selectedEquip As Equi
-    Private Sub goBack_Click(sender As Object, e As EventArgs)
-        Dim pag_init = New militares
-        pag_init.Show()
-        Me.Close()
-    End Sub
 
-    Private Sub homeBttn_Click(sender As Object, e As EventArgs)
-        Dim home = New Form1
-        home.Show()
-        Me.Close()
-    End Sub
 
     Private Sub assing_equipamento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim arbox = Armbox
@@ -108,5 +98,17 @@ Public Class assing_equipamento
 
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
         selectedEquip = ListBox1.SelectedItem
+    End Sub
+
+    Private Sub goBack_Click_1(sender As Object, e As EventArgs) Handles goBack.Click
+        Dim equi = New equipamento
+        equi.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub homeBttn_Click(sender As Object, e As EventArgs) Handles homeBttn.Click
+        Dim home = New Form1
+        home.Show()
+        Me.Close()
     End Sub
 End Class
