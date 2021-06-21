@@ -63,10 +63,6 @@
         End Get
 
         Set(ByVal value As String)
-            If value Is Nothing Or value = "" Then
-                Throw New Exception("This field can’t be empty")
-                Exit Property
-            End If
             _brief = value
         End Set
     End Property

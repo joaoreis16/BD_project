@@ -93,7 +93,12 @@ Public Class missao
         'Criar Missão
         Dim nome = TBnome.Text
         Dim pais = ComboBox2.SelectedItem
-        Dim tipo = ComboBox1.SelectedItem
+        Dim tipo = ComboBox1.SelectedIndex
+
+        Dim M As Missoes
+        M.nome = nome
+        M.pais = pais
+        M.tipo = tipo
 
         Dim CN As SqlConnection
         Dim CMD As SqlCommand
@@ -101,16 +106,20 @@ Public Class missao
                                "initial Catalog = " + dbName + ";" +
                                "uid = " + userName + ";" +
                                "password = " + userPass)
-        CN.Open()
-        CMD = New SqlCommand("EXERCITO.deletePelotao")
+        CMD = New SqlCommand
         CMD.Connection = CN
-        CMD.CommandType = CommandType.StoredProcedure
-        CMD.Parameters.Add(New SqlParameter("@pel ", id_pelotao_selected))
+
+        CMD.CommandText = String.Format("INSERT INTO EXERCITO.missao (nome, tipo, pais, nBaixas, brief) 
+                                            VALUES ('{0}', {1}, '{2}', 0, '-')", nome, tipo, pais)
+
+        CN.Open()
         CMD.ExecuteNonQuery()
         GlobalVariables.porto()
-        MsgBox("Pelotão eliminado com sucesso!")
-        Dim pel = New pelotao
-        pel.Show()
+        CN.Close()
+        MsgBox("Missão criada com sucesso!")
+        listaMissao.Add(M)
+        Dim miss = New missao
+        miss.Show()
         Me.Close()
 
 
@@ -129,5 +138,29 @@ Public Class missao
 
     End Sub
 
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim index = ListBox1.SelectedIndex
+        Dim M = listaMissao(index)
 
+        Dim CN As SqlConnection
+        Dim CMD As SqlCommand
+        CN = New SqlConnection("data Source = " + dbServer + " ;" +
+                               "initial Catalog = " + dbName + ";" +
+                               "uid = " + userName + ";" +
+                               "password = " + userPass)
+        CMD = New SqlCommand
+        CMD.Connection = CN
+
+        CMD.CommandText = String.Format("DELETE FROM EXERCITO.missao WHERE id={0}", M.id)
+
+        CN.Open()
+        CMD.ExecuteNonQuery()
+        GlobalVariables.porto()
+        CN.Close()
+        MsgBox("Missão removida com sucesso!")
+        listaMissao.Remove(M)
+        Dim miss = New missao
+        miss.Show()
+        Me.Close()
+    End Sub
 End Class
