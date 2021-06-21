@@ -3,6 +3,10 @@ Public Class missao
     Dim CN As SqlConnection
     Dim CMD As SqlCommand
     Dim listaMissao As New List(Of Missoes)()
+    Dim dbServer = "tcp:mednat.ieeta.pt\SQLSERVER,8101"
+    Dim dbName = "p9g6"
+    Dim userName = "p9g6"
+    Dim userPass = "-99745397@BD"
     Private Sub goBack_Click(sender As Object, e As EventArgs) Handles goBack.Click
         Dim pag_init = New Form1
         pag_init.Show()
@@ -21,11 +25,6 @@ Public Class missao
         ComboBox2.Enabled = True
         ComboBox1.SelectedIndex = 0
         ComboBox2.SelectedIndex = 0
-
-        Dim dbServer = "tcp:mednat.ieeta.pt\SQLSERVER,8101"
-        Dim dbName = "p9g6"
-        Dim userName = "p9g6"
-        Dim userPass = "-99745397@BD"
 
         CN = New SqlConnection("data Source = " + dbServer + " ;" +
                                "initial Catalog = " + dbName + ";" +
@@ -95,6 +94,24 @@ Public Class missao
         Dim nome = TBnome.Text
         Dim pais = ComboBox2.SelectedItem
         Dim tipo = ComboBox1.SelectedItem
+
+        Dim CN As SqlConnection
+        Dim CMD As SqlCommand
+        CN = New SqlConnection("data Source = " + dbServer + " ;" +
+                               "initial Catalog = " + dbName + ";" +
+                               "uid = " + userName + ";" +
+                               "password = " + userPass)
+        CN.Open()
+        CMD = New SqlCommand("EXERCITO.deletePelotao")
+        CMD.Connection = CN
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Add(New SqlParameter("@pel ", id_pelotao_selected))
+        CMD.ExecuteNonQuery()
+        GlobalVariables.porto()
+        MsgBox("Pelotão eliminado com sucesso!")
+        Dim pel = New pelotao
+        pel.Show()
+        Me.Close()
 
 
     End Sub

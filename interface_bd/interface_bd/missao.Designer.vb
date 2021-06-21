@@ -39,6 +39,7 @@ Partial Class missao
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label15 = New System.Windows.Forms.Label()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,23 +104,25 @@ Partial Class missao
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(790, 152)
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label1.Location = New System.Drawing.Point(821, 165)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(105, 20)
+        Me.Label1.Size = New System.Drawing.Size(65, 20)
         Me.Label1.TabIndex = 44
-        Me.Label1.Text = "Missões Ativas"
+        Me.Label1.Text = "Missões"
         '
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(36, 337)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(178, 40)
+        Me.Button1.Size = New System.Drawing.Size(145, 40)
         Me.Button1.TabIndex = 45
         Me.Button1.Text = "Criar Missão"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Button4)
         Me.GroupBox1.Controls.Add(Me.TBnome)
         Me.GroupBox1.Controls.Add(Me.ComboBox2)
         Me.GroupBox1.Controls.Add(Me.Button3)
@@ -154,9 +157,9 @@ Partial Class missao
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(230, 337)
+        Me.Button3.Location = New System.Drawing.Point(426, 337)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(144, 40)
+        Me.Button3.Size = New System.Drawing.Size(145, 40)
         Me.Button3.TabIndex = 53
         Me.Button3.Text = "Reset"
         Me.Button3.UseVisualStyleBackColor = True
@@ -191,9 +194,9 @@ Partial Class missao
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(393, 337)
+        Me.Button2.Location = New System.Drawing.Point(402, 221)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(178, 40)
+        Me.Button2.Size = New System.Drawing.Size(169, 33)
         Me.Button2.TabIndex = 48
         Me.Button2.Text = "Ver mais Informações"
         Me.Button2.UseVisualStyleBackColor = True
@@ -206,6 +209,15 @@ Partial Class missao
         Me.Label15.Size = New System.Drawing.Size(50, 20)
         Me.Label15.TabIndex = 46
         Me.Label15.Text = "Nome"
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(229, 337)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(145, 40)
+        Me.Button4.TabIndex = 55
+        Me.Button4.Text = "Remover Missão"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'missao
         '
@@ -247,4 +259,5 @@ Partial Class missao
     Friend WithEvents Button3 As Button
     Friend WithEvents TBnome As TextBox
     Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents Button4 As Button
 End Class
