@@ -2,7 +2,11 @@
 
 Public Class GlobalVariables
     Public Shared Property baseSelected As Base
+
+    Public Shared Property milSelected As Militar
     Public Shared Property inserting As Boolean
 
-    Public Shared Property misSelected As Missao
+    Public Shared Property misSelected As missao
+
+    Public Shared Property typeEqui As Boolean
 End Class

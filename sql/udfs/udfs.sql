@@ -27,12 +27,20 @@ CREATE FUNCTION EXERCITO.equipIsAvailable (@id INT)
 RETURNS BIT
 AS
 BEGIN
-	IF EXISTS (SELECT * FROM EXERCITO.utiliza_equipamento WHERE equipamento=@id)
+	IF EXISTS (SELECT * FROM EXERCITO.utiliza_equipamento WHERE equipamento=@id AND data_f is NULL)
 		RETURN 0
 	RETURN 1
 END
 
+CREATE FUNCTION EXERCITO.militaresUsarEquip (@id INT)
+RETURNS TABLE
+AS
+	RETURN (SELECT nCC, Pnome, Unome FROM EXERCITO.militar JOIN
+			EXERCITO.utiliza_equipamento 
+			ON soldado=nCC
+			WHERE equipamento = @id AND data_f IS NULL)
 
+SELECT * FROM EXERCITO.militaresUsarEquip(28)
 /*
 *
 *	RETORNA TABLE COM O CONJUNTO DE NACIONALIDADES DOS MILITARES
@@ -196,3 +204,10 @@ AS
 
 
 
+
+SELECT * FROM EXERCITO.equipamento JOIN EXERCITO.arma ON  id = idEqui JOIN EXERCITO.tipo_arma ON tipo_arma.id = arma.idTipo
+WHERE EXERCITO.equipIsAvailable(idEqui) = 0
+
+DECLARE @id INT
+SELECT @id = EXERCITO.equipIsAvailable(28)
+print @id

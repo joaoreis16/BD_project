@@ -1,5 +1,6 @@
 ﻿Public Class Equi
     Private _nSerie_matricula As Integer
+    Private _id As Integer
     Private _tipo As String
     Private _modelo As String
     Private _missao As String
@@ -11,6 +12,15 @@
         End Get
         Set(ByVal value As Integer)
             _nSerie_matricula = value
+        End Set
+    End Property
+
+    Property id() As Integer
+        Get
+            Return _id
+        End Get
+        Set(ByVal value As Integer)
+            _id = value
         End Set
     End Property
     Property tipo() As String

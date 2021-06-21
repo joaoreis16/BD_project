@@ -83,6 +83,8 @@ Partial Class info_militar
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.submit = New System.Windows.Forms.Button()
+        Me.useArmaBttn = New System.Windows.Forms.Button()
+        Me.useVeiculoBttn = New System.Windows.Forms.Button()
         Me.BoxMissao.SuspendLayout()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -655,9 +657,9 @@ Partial Class info_militar
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(617, 486)
+        Me.Button1.Location = New System.Drawing.Point(788, 567)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(134, 74)
+        Me.Button1.Size = New System.Drawing.Size(120, 42)
         Me.Button1.TabIndex = 56
         Me.Button1.Text = "Reformar"
         Me.Button1.UseVisualStyleBackColor = True
@@ -671,11 +673,31 @@ Partial Class info_militar
         Me.submit.Text = "Submit"
         Me.submit.UseVisualStyleBackColor = True
         '
+        'useArmaBttn
+        '
+        Me.useArmaBttn.Location = New System.Drawing.Point(698, 454)
+        Me.useArmaBttn.Name = "useArmaBttn"
+        Me.useArmaBttn.Size = New System.Drawing.Size(132, 80)
+        Me.useArmaBttn.TabIndex = 58
+        Me.useArmaBttn.Text = "Armas"
+        Me.useArmaBttn.UseVisualStyleBackColor = True
+        '
+        'useVeiculoBttn
+        '
+        Me.useVeiculoBttn.Location = New System.Drawing.Point(859, 454)
+        Me.useVeiculoBttn.Name = "useVeiculoBttn"
+        Me.useVeiculoBttn.Size = New System.Drawing.Size(139, 80)
+        Me.useVeiculoBttn.TabIndex = 59
+        Me.useVeiculoBttn.Text = "Veiculos"
+        Me.useVeiculoBttn.UseVisualStyleBackColor = True
+        '
         'info_militar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1077, 632)
+        Me.Controls.Add(Me.useVeiculoBttn)
+        Me.Controls.Add(Me.useArmaBttn)
         Me.Controls.Add(Me.submit)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label15)
@@ -769,4 +791,6 @@ Partial Class info_militar
     Friend WithEvents fname As TextBox
     Friend WithEvents emailLab As Label
     Friend WithEvents TBemail As TextBox
+    Friend WithEvents useArmaBttn As Button
+    Friend WithEvents useVeiculoBttn As Button
 End Class

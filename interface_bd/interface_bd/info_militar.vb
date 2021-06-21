@@ -37,7 +37,7 @@ Public Class info_militar
             BaseCC.Hide()
             especCC.Hide()
             tSolCC.Hide()
-            Dim militar = militares.militarSelected
+            Dim militar = GlobalVariables.milSelected
             TBcargo.Text = militar.cargo
             TBmorada.Text = militar.morada
             TBnCC.Text = militar.nCC
@@ -122,7 +122,7 @@ Public Class info_militar
                 While RDR.Read
                     Veic.Text = RDR.Item("modelo")
                 End While
-
+                RDR.Close()
             End If
             CMD.Connection = CN
             If militar.tipo = "SOLDADO" Then
@@ -401,4 +401,10 @@ Public Class info_militar
         Me.Close()
     End Sub
 
+    Private Sub useArmaBttn_Click(sender As Object, e As EventArgs) Handles useArmaBttn.Click
+        GlobalVariables.typeEqui = True
+        Dim ae = New assing_equipamento
+        ae.Show()
+        Me.Close()
+    End Sub
 End Class

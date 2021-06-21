@@ -30,10 +30,10 @@ Partial Class equipamento
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.pesquisaBttn = New System.Windows.Forms.PictureBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.uso = New System.Windows.Forms.ComboBox()
         Me.ApplyFilters = New System.Windows.Forms.Button()
-        Me.BaseDD = New System.Windows.Forms.ComboBox()
+        Me.TipoDD = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TBpesquisa = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -131,10 +131,10 @@ Partial Class equipamento
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.ComboBox2)
-        Me.GroupBox1.Controls.Add(Me.ComboBox1)
+        Me.GroupBox1.Controls.Add(Me.Button1)
+        Me.GroupBox1.Controls.Add(Me.uso)
         Me.GroupBox1.Controls.Add(Me.ApplyFilters)
-        Me.GroupBox1.Controls.Add(Me.BaseDD)
+        Me.GroupBox1.Controls.Add(Me.TipoDD)
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.GroupBox1.Location = New System.Drawing.Point(18, 122)
         Me.GroupBox1.Name = "GroupBox1"
@@ -142,41 +142,41 @@ Partial Class equipamento
         Me.GroupBox1.TabIndex = 41
         Me.GroupBox1.TabStop = False
         '
-        'ComboBox2
+        'Button1
         '
-        Me.ComboBox2.AccessibleName = ""
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(333, 36)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(98, 28)
-        Me.ComboBox2.TabIndex = 33
+        Me.Button1.Location = New System.Drawing.Point(246, 91)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(133, 29)
+        Me.Button1.TabIndex = 33
+        Me.Button1.Text = "Reset"
+        Me.Button1.UseVisualStyleBackColor = True
         '
-        'ComboBox1
+        'uso
         '
-        Me.ComboBox1.AccessibleName = ""
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(182, 36)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(98, 28)
-        Me.ComboBox1.TabIndex = 32
+        Me.uso.AccessibleName = ""
+        Me.uso.FormattingEnabled = True
+        Me.uso.Location = New System.Drawing.Point(342, 36)
+        Me.uso.Name = "uso"
+        Me.uso.Size = New System.Drawing.Size(98, 28)
+        Me.uso.TabIndex = 32
         '
         'ApplyFilters
         '
-        Me.ApplyFilters.Location = New System.Drawing.Point(182, 98)
+        Me.ApplyFilters.Location = New System.Drawing.Point(87, 91)
         Me.ApplyFilters.Name = "ApplyFilters"
         Me.ApplyFilters.Size = New System.Drawing.Size(133, 29)
         Me.ApplyFilters.TabIndex = 31
         Me.ApplyFilters.Text = "Apply"
         Me.ApplyFilters.UseVisualStyleBackColor = True
         '
-        'BaseDD
+        'TipoDD
         '
-        Me.BaseDD.AccessibleName = ""
-        Me.BaseDD.FormattingEnabled = True
-        Me.BaseDD.Location = New System.Drawing.Point(31, 36)
-        Me.BaseDD.Name = "BaseDD"
-        Me.BaseDD.Size = New System.Drawing.Size(98, 28)
-        Me.BaseDD.TabIndex = 26
+        Me.TipoDD.AccessibleName = ""
+        Me.TipoDD.FormattingEnabled = True
+        Me.TipoDD.Location = New System.Drawing.Point(44, 36)
+        Me.TipoDD.Name = "TipoDD"
+        Me.TipoDD.Size = New System.Drawing.Size(253, 28)
+        Me.TipoDD.TabIndex = 26
         '
         'Label2
         '
@@ -388,10 +388,9 @@ Partial Class equipamento
     Friend WithEvents ListBox1 As ListBox
     Friend WithEvents pesquisaBttn As PictureBox
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents ComboBox2 As ComboBox
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents uso As ComboBox
     Friend WithEvents ApplyFilters As Button
-    Friend WithEvents BaseDD As ComboBox
+    Friend WithEvents TipoDD As ComboBox
     Friend WithEvents Label2 As Label
     Friend WithEvents TBpesquisa As TextBox
     Friend WithEvents Label1 As Label
@@ -411,4 +410,5 @@ Partial Class equipamento
     Friend WithEvents pesquisaBox As GroupBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents infoBox As GroupBox
+    Friend WithEvents Button1 As Button
 End Class
