@@ -31,13 +31,13 @@ Partial Class missao
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.TBnome = New System.Windows.Forms.TextBox()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.TBpais = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.TBnome = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -120,13 +120,13 @@ Partial Class missao
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.TBnome)
+        Me.GroupBox1.Controls.Add(Me.ComboBox2)
         Me.GroupBox1.Controls.Add(Me.Button3)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.ComboBox1)
-        Me.GroupBox1.Controls.Add(Me.TBpais)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Button2)
-        Me.GroupBox1.Controls.Add(Me.TBnome)
         Me.GroupBox1.Controls.Add(Me.Label15)
         Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Location = New System.Drawing.Point(52, 178)
@@ -135,6 +135,22 @@ Partial Class missao
         Me.GroupBox1.TabIndex = 46
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Informações da Missão"
+        '
+        'TBnome
+        '
+        Me.TBnome.Location = New System.Drawing.Point(148, 90)
+        Me.TBnome.Name = "TBnome"
+        Me.TBnome.Size = New System.Drawing.Size(423, 27)
+        Me.TBnome.TabIndex = 54
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Items.AddRange(New Object() {"-- País -- ", "Afeganistão", "África do Sul", "Akrotiri", "Albânia", "Alemanha", "Andorra", "Angola", "Anguila", "Antárctida", "Antígua e Barbuda", "Arábia Saudita", "Arctic Ocean", "Argélia", "Argentina", "Arménia", "Aruba", "Ashmore and Cartier Islands", "Atlantic Ocean", "Austrália", "Áustria", "Azerbaijão", "Baamas", "Bangladeche", "Barbados", "Barém", "Bélgica", "Belize", "Benim", "Bermudas", "Bielorrússia", "Birmânia", "Bolívia", "Bósnia e Herzegovina", "Botsuana", "Brasil", "Brunei", "Bulgária", "Burquina Faso", "Burúndi", "Butão", "Cabo Verde", "Camarões", "Camboja", "Canadá", "Catar", "Cazaquistão", "Chade", "Chile", "China", "Chipre", "Clipperton Island", "Colômbia", "Comores", "Congo-Brazzaville", "Congo-Kinshasa", "Coral Sea Islands", "Coreia do Norte", "Coreia do Sul", "Costa do Marfim", "Costa Rica", "Croácia", "Cuba", "Curacao", "Dhekelia", "Dinamarca", "Domínica", "Egipto", "Emiratos Árabes Unidos", "Equador", "Eritreia", "Eslováquia", "Eslovénia", "Espanha", "Estados Unidos", "Estónia", "Etiópia", "Faroé", "Fiji", "Filipinas", "Finlândia", "França", "Gabão", "Gâmbia", "Gana", "Gaza Strip", "Geórgia", "Geórgia do Sul e Sandwich do Sul", "Gibraltar", "Granada", "Grécia", "Gronelândia", "Guame", "Guatemala", "Guernsey", "Guiana", "Guiné", "Guiné Equatorial", "Guiné-Bissau", "Haiti", "Honduras", "Hong Kong", "Hungria", "Iémen", "Ilha Bouvet", "Ilha do Natal", "Ilha Norfolk", "Ilhas Caimão", "Ilhas Cook", "Ilhas dos Cocos", "Ilhas Falkland", "Ilhas Heard e McDonald", "Ilhas Marshall", "Ilhas Salomão", "Ilhas Turcas e Caicos", "Ilhas Virgens Americanas", "Ilhas Virgens Britânicas", "Índia", "Indian Ocean", "Indonésia", "Irão", "Iraque", "Irlanda", "Islândia", "Israel", "Itália", "Jamaica", "Jan Mayen", "Japão", "Jersey", "Jibuti", "Jordânia", "Kosovo", "Kuwait", "Laos", "Lesoto", "Letónia", "Líbano", "Libéria", "Líbia", "Listenstaine", "Lituânia", "Luxemburgo", "Macau", "Macedónia", "Madagáscar", "Malásia", "Malávi", "Maldivas", "Mali", "Malta", "Man, Isle of", "Marianas do Norte", "Marrocos", "Maurícia", "Mauritânia", "México", "Micronésia", "Moçambique", "Moldávia", "Mónaco", "Mongólia", "Monserrate", "Montenegro", "Mundo", "Namíbia", "Nauru", "Navassa Island", "Nepal", "Nicarágua", "Níger", "Nigéria", "Niue", "Noruega", "Nova Caledónia", "Nova Zelândia", "Omã", "Pacific Ocean", "Países Baixos", "Palau", "Panamá", "Papua-Nova Guiné", "Paquistão", "Paracel Islands", "Paraguai", "Peru", "Pitcairn", "Polinésia Francesa", "Polónia", "Porto Rico", "Portugal", "Quénia", "Quirguizistão", "Quiribati", "Reino Unido", "República Centro-Africana", "República Dominicana", "Roménia", "Ruanda", "Rússia", "Salvador", "Samoa", "Samoa Americana", "Santa Helena", "Santa Lúcia", "São Bartolomeu", "São Cristóvão e Neves", "São Marinho", "São Martinho", "São Pedro e Miquelon", "São Tomé e Príncipe", "São Vicente e Granadinas", "Sara Ocidental", "Seicheles", "Senegal", "Serra Leoa", "Sérvia", "Singapura", "Sint Maarten", "Síria", "Somália", "Southern Ocean", "Spratly Islands", "Sri Lanca", "Suazilândia", "Sudão", "Sudão do Sul", "Suécia", "Suíça", "Suriname", "Svalbard e Jan Mayen", "Tailândia", "Taiwan", "Tajiquistão", "Tanzânia", "Território Britânico do Oceano Índico", "Territórios Austrais Franceses", "Timor Leste", "Togo", "Tokelau", "Tonga", "Trindade e Tobago", "Tunísia", "Turquemenistão", "Turquia", "Tuvalu", "Ucrânia", "Uganda", "União Europeia", "Uruguai", "Usbequistão", "Vanuatu", "Vaticano", "Venezuela", "Vietname", "Wake Island", "Wallis e Futuna", "West Bank", "Zâmbia", "Zimbabué"})
+        Me.ComboBox2.Location = New System.Drawing.Point(148, 159)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(211, 28)
+        Me.ComboBox2.TabIndex = 47
         '
         'Button3
         '
@@ -158,19 +174,11 @@ Partial Class missao
         '
         Me.ComboBox1.Enabled = False
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"-- tipo --", "Territorial", "Conflito", "Diplomática", "Civil-Militar", "Evacuação", "Assalto"})
+        Me.ComboBox1.Items.AddRange(New Object() {"-- Tipo --", "Territorial", "Conflito", "Diplomática", "Civil-Militar", "Evacuação", "Assalto"})
         Me.ComboBox1.Location = New System.Drawing.Point(148, 224)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(211, 28)
         Me.ComboBox1.TabIndex = 51
-        '
-        'TBpais
-        '
-        Me.TBpais.Location = New System.Drawing.Point(148, 156)
-        Me.TBpais.Name = "TBpais"
-        Me.TBpais.ReadOnly = True
-        Me.TBpais.Size = New System.Drawing.Size(389, 27)
-        Me.TBpais.TabIndex = 50
         '
         'Label2
         '
@@ -190,14 +198,6 @@ Partial Class missao
         Me.Button2.Text = "Ver mais Informações"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'TBnome
-        '
-        Me.TBnome.Location = New System.Drawing.Point(148, 87)
-        Me.TBnome.Name = "TBnome"
-        Me.TBnome.ReadOnly = True
-        Me.TBnome.Size = New System.Drawing.Size(389, 27)
-        Me.TBnome.TabIndex = 47
-        '
         'Label15
         '
         Me.Label15.AutoSize = True
@@ -216,6 +216,7 @@ Partial Class missao
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.menuBar)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "missao"
         Me.Text = "missao"
         Me.menuBar.ResumeLayout(False)
@@ -239,11 +240,11 @@ Partial Class missao
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label3 As Label
     Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents TBpais As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label15 As Label
     Friend WithEvents Button3 As Button
     Friend WithEvents TBnome As TextBox
+    Friend WithEvents ComboBox2 As ComboBox
 End Class

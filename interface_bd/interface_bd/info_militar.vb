@@ -122,6 +122,7 @@ Public Class info_militar
                 While RDR.Read
                     Veic.Text = RDR.Item("modelo")
                 End While
+                RDR.Close()
 
             End If
             CMD.Connection = CN
@@ -202,9 +203,9 @@ Public Class info_militar
         Dim CN As SqlConnection
         Dim CMD As SqlCommand
         CN = New SqlConnection("data Source = " + dbServer + " ;" +
-                                   "initial Catalog = " + dbName + ";" +
-                                   "uid = " + userName + ";" +
-                                   "password = " + userPass)
+                               "initial Catalog = " + dbName + ";" +
+                               "uid = " + userName + ";" +
+                               "password = " + userPass)
         CN.Open()
         CMD = New SqlCommand("EXERCITO.retire")
         CMD.Connection = CN
@@ -322,8 +323,6 @@ Public Class info_militar
             especCC.Hide()
             EspecLabel.Hide()
         End If
-
-
     End Sub
 
     Private Sub submit_Click(sender As Object, e As EventArgs) Handles submit.Click

@@ -58,6 +58,7 @@ Partial Class Form1
         '
         'ButtonPelotao
         '
+        Me.ButtonPelotao.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ButtonPelotao.Location = New System.Drawing.Point(742, 440)
         Me.ButtonPelotao.Name = "ButtonPelotao"
         Me.ButtonPelotao.Size = New System.Drawing.Size(233, 130)
@@ -67,6 +68,7 @@ Partial Class Form1
         '
         'ButtonMissao
         '
+        Me.ButtonMissao.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ButtonMissao.Location = New System.Drawing.Point(427, 440)
         Me.ButtonMissao.Name = "ButtonMissao"
         Me.ButtonMissao.Size = New System.Drawing.Size(233, 130)
@@ -76,6 +78,7 @@ Partial Class Form1
         '
         'Equipamento
         '
+        Me.Equipamento.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Equipamento.Location = New System.Drawing.Point(123, 440)
         Me.Equipamento.Name = "Equipamento"
         Me.Equipamento.Size = New System.Drawing.Size(233, 130)
@@ -85,6 +88,7 @@ Partial Class Form1
         '
         'ButtonBases
         '
+        Me.ButtonBases.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ButtonBases.Location = New System.Drawing.Point(742, 250)
         Me.ButtonBases.Name = "ButtonBases"
         Me.ButtonBases.Size = New System.Drawing.Size(233, 134)
@@ -94,6 +98,7 @@ Partial Class Form1
         '
         'ButtonRamos
         '
+        Me.ButtonRamos.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ButtonRamos.Location = New System.Drawing.Point(427, 252)
         Me.ButtonRamos.Name = "ButtonRamos"
         Me.ButtonRamos.Size = New System.Drawing.Size(233, 134)
@@ -103,6 +108,7 @@ Partial Class Form1
         '
         'ButtonMilitar
         '
+        Me.ButtonMilitar.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ButtonMilitar.Location = New System.Drawing.Point(123, 250)
         Me.ButtonMilitar.Name = "ButtonMilitar"
         Me.ButtonMilitar.Size = New System.Drawing.Size(233, 134)
@@ -133,6 +139,7 @@ Partial Class Form1
         Me.Controls.Add(Me.ButtonRamos)
         Me.Controls.Add(Me.ButtonMilitar)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)

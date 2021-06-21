@@ -168,6 +168,7 @@ Partial Class info_base
         Me.Controls.Add(Me.TBnome)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.menuBar)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "info_base"
         Me.Text = "info_base"
         Me.menuBar.ResumeLayout(False)

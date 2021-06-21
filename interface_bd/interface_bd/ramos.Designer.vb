@@ -167,6 +167,7 @@ Partial Class ramos
         Me.Controls.Add(Me.ButtonFM)
         Me.Controls.Add(Me.ButtonFA)
         Me.Controls.Add(Me.Label3)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ramos"
         Me.Text = "              "
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()

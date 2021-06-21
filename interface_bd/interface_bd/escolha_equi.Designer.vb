@@ -118,6 +118,7 @@ Partial Class escolha_equi
         Me.Controls.Add(Me.armabttn)
         Me.Controls.Add(Me.veiculobttn)
         Me.Controls.Add(Me.menuBar)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "escolha_equi"
         Me.Text = "escolha_equi"
         Me.menuBar.ResumeLayout(False)

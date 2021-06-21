@@ -300,6 +300,7 @@ Partial Class info_ramo
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.dia_unidade)
         Me.Controls.Add(Me.brasao)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "info_ramo"
         Me.Text = "info_ramo"
         CType(Me.brasao, System.ComponentModel.ISupportInitialize).EndInit()

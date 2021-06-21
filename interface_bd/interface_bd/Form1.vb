@@ -1,4 +1,6 @@
-﻿Public Class Form1
+﻿Imports System.Data.SqlClient
+Public Class Form1
+
     Private Sub ButtonRamos_Click(sender As Object, e As EventArgs) Handles ButtonRamos.Click
         Dim ramos = New ramos
         ramos.Show()
@@ -27,5 +29,15 @@
         Dim mis = New missao
         mis.Show()
         Me.Close()
+    End Sub
+
+    Private Sub ButtonPelotao_Click(sender As Object, e As EventArgs) Handles ButtonPelotao.Click
+        Dim pel = New pelotao
+        pel.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        GlobalVariables.porto()
     End Sub
 End Class

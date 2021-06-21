@@ -20,6 +20,9 @@
     <Compile Update="info_militar.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="info_missao.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="info_ramo.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -27,6 +30,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="missao.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="pelotao.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ramos.vb">

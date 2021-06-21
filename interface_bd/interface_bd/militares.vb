@@ -3,7 +3,6 @@
 Public Class militares
     Dim CN As SqlConnection
     Dim CMD As SqlCommand
-    Dim listaMilitares As New List(Of Militar)()
     Dim StartingList As New List(Of Militar)()
     Friend Shared militarSelected As Militar
     Friend Shared EmMissao As Boolean
@@ -13,6 +12,12 @@ Public Class militares
     Dim userPass = "-99745397@BD"
 
     Private Sub militares_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If GlobalVariables.add2pelotao Then
+            Add2Pelotao.Visible = True
+            register.Visible = False
+
+        End If
 
         Dim RDR As SqlDataReader
 
@@ -39,50 +44,24 @@ Public Class militares
         Dim count As Integer = 0
         RDR = CMD.ExecuteReader
         ListBox1.Items.Clear()
+        Dim index = 0
         While RDR.Read
-            Dim M As New Militar
-            M.nCC = Convert.ToString(RDR.Item("nCC"))
-            M.Pnome = RDR.Item("Pnome")
-            M.Unome = RDR.Item("Unome")
-            M.morada = RDR.Item("morada")
-            M.email = RDR.Item("email")
-            M.dNasc = Convert.ToString(RDR.Item("dNasc"))
-            M.dInsc = Convert.ToString(RDR.Item("dInsc"))
-            M.tel = RDR.Item("tel")
-            M.nacionalidade = RDR.Item("nacionalidade")
-            M.nMissoes = Convert.ToString(RDR.Item("nMissoes"))
-            M.ramo = Convert.ToString(RDR.Item("ramo"))
-            If IsDBNull(RDR.Item("base")) Then
-                M.base = Nothing
-            Else
-                M.base = Convert.ToString(RDR.Item("base"))
-            End If
-            M.cargo = RDR.Item("cargo")
-            M.tipo = RDR.Item("tipo")
-            M.estado = RDR.Item("estado")
-            ' VERIFICAR SE O MILITAR ESTÁ EM MISSÃO    ---> PROBLEMA: como ver se um atributo é null?
-            '
-            'If If(RDR.IsDBNull("pelotao"), "", RDR.GetString("pelotao")) Then
-            'EmMissao = False
-            'Else
-            'EmMissao = True
-            'M.pelotao = Convert.ToString(RDR.Item("pelotao"))
-            'End If
-
-            M.missao = RDR.Item("EmMissao")
-
-            listaMilitares.Add(M)
+            Dim M = GlobalVariables.listaMilitares(index)
             ListBox1.Items.Add(M)
             count = count + 1
+            index = index + 1
         End While
-        StartingList.AddRange(listaMilitares.ToArray)
+        StartingList.AddRange(GlobalVariables.listaMilitares.ToArray)
         totalTxtBox.Text = count
         CN.Close()
     End Sub
 
     Private Sub ListBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListBox1.SelectedIndexChanged
         Dim index = ListBox1.SelectedIndex
-        militarSelected = listaMilitares(index)
+        militarSelected = GlobalVariables.listaMilitares(index)
+    End Sub
+
+    Private Sub ListBox1_PYlance(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListBox1.DoubleClick
         Dim info = New info_militar
         info.Show()
         Me.Close()
@@ -143,23 +122,23 @@ Public Class militares
             totalTxtBox.Text = 0
 
         Else
-            listaMilitares.AddRange(StartingList.ToArray)
+            GlobalVariables.listaMilitares.AddRange(StartingList.ToArray)
             ListBox1.Enabled = True
 
 
             RDR = CMD.ExecuteReader
 
             While (RDR.Read)
-                idx = BinSrch(listaMilitares, 0, listaMilitares.Count - 1, RDR.Item("nCC"))
+                idx = BinSrch(GlobalVariables.listaMilitares, 0, GlobalVariables.listaMilitares.Count - 1, RDR.Item("nCC"))
                 If idx > -1 Then
-                    ListBox1.Items.Add(listaMilitares(idx))
+                    ListBox1.Items.Add(GlobalVariables.listaMilitares(idx))
                     count = count + 1
                 End If
             End While
 
-            listaMilitares.Clear()
+            GlobalVariables.listaMilitares.Clear()
             For i As Integer = 0 To ListBox1.Items.Count - 1
-                listaMilitares.Add(ListBox1.Items(i))
+                GlobalVariables.listaMilitares.Add(ListBox1.Items(i))
             Next
             totalTxtBox.Text = count
         End If
@@ -256,7 +235,7 @@ Public Class militares
         ListBox1.Items.Clear()
 
 
-        listaMilitares.AddRange(ListBox1.Items.OfType(Of Militar).ToArray)
+        GlobalVariables.listaMilitares.AddRange(ListBox1.Items.OfType(Of Militar).ToArray)
 
         ListBox1.Enabled = True
 
@@ -264,16 +243,16 @@ Public Class militares
         RDR = SQLcmd.ExecuteReader
 
         While (RDR.Read)
-            i = BinSrch(listaMilitares, 0, listaMilitares.Count - 1, RDR.Item("nCC"))
+            i = BinSrch(GlobalVariables.listaMilitares, 0, GlobalVariables.listaMilitares.Count - 1, RDR.Item("nCC"))
             If i > -1 Then
-                ListBox1.Items.Add(listaMilitares(i))
+                ListBox1.Items.Add(GlobalVariables.listaMilitares(i))
                 count = count + 1
             End If
         End While
 
-        listaMilitares.Clear()
+        GlobalVariables.listaMilitares.Clear()
         For it As Integer = 0 To ListBox1.Items.Count - 1
-            listaMilitares.Add(ListBox1.Items(it))
+            GlobalVariables.listaMilitares.Add(ListBox1.Items(it))
         Next
         totalTxtBox.Text = count
 
@@ -284,9 +263,6 @@ Public Class militares
         End If
 
         CN.Close()
-
-    End Sub
-    Private Sub LoadMilitar()
 
     End Sub
 
@@ -425,10 +401,10 @@ Public Class militares
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles resetBttn.Click
-        listaMilitares.Clear()
-        listaMilitares.AddRange(StartingList.ToArray)
+        GlobalVariables.listaMilitares.Clear()
+        GlobalVariables.listaMilitares.AddRange(StartingList.ToArray)
         ListBox1.Items.Clear()
-        ListBox1.Items.AddRange(listaMilitares.ToArray)
+        ListBox1.Items.AddRange(GlobalVariables.listaMilitares.ToArray)
     End Sub
 
     Private Sub register_Click(sender As Object, e As EventArgs) Handles register.Click
@@ -436,5 +412,33 @@ Public Class militares
         Dim pag_init = New info_militar
         pag_init.Show()
         Me.Close()
+    End Sub
+
+    Private Sub Add2Pelotao_Click(sender As Object, e As EventArgs) Handles Add2Pelotao.Click
+        Dim CN As SqlConnection
+        Dim CMD As SqlCommand
+        CN = New SqlConnection("data Source = " + dbServer + " ;" +
+                               "initial Catalog = " + dbName + ";" +
+                               "uid = " + userName + ";" +
+                               "password = " + userPass)
+        CN.Open()
+        CMD = New SqlCommand("EXERCITO.addToPelotao")
+        CMD.Connection = CN
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Add(New SqlParameter("@nCC", militarSelected.nCC))
+        CMD.Parameters.Add(New SqlParameter("@pel", GlobalVariables.pelotao_id))
+        Try
+            CMD.ExecuteNonQuery()
+            MsgBox("Militar adicionado com sucesso!")
+            Exit Try
+        Catch ex As SqlException
+            MsgBox("Impossível adicionar militar com esse cargo")
+
+        End Try
+        GlobalVariables.porto()
+        Dim pelotao = New pelotao
+        pelotao.Show()
+        Me.Close()
+
     End Sub
 End Class
