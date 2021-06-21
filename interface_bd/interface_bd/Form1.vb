@@ -8,6 +8,7 @@ Public Class Form1
     End Sub
 
     Private Sub ButtonMilitar_Click(sender As Object, e As EventArgs) Handles ButtonMilitar.Click
+        GlobalVariables.add2pelotao = False
         Dim mil = New militares
         mil.Show()
         Me.Close()

@@ -63,9 +63,11 @@ Public Class militares
     End Sub
 
     Private Sub ListBox1_PYlance(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListBox1.DoubleClick
-        Dim info = New info_militar
-        info.Show()
-        Me.Close()
+        If Not GlobalVariables.add2pelotao Then
+            Dim info = New info_militar
+            info.Show()
+            Me.Close()
+        End If
     End Sub
 
     Private Sub homeBttn_Click(sender As Object, e As EventArgs) Handles homeBttn.Click

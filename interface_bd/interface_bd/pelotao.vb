@@ -82,7 +82,13 @@ Public Class pelotao
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
 
         TBnome.ReadOnly = True
-        Dim index = ListBox1.SelectedIndex
+        Dim index As Integer
+        If ListBox1.SelectedIndex = -1 Then
+            index = 0
+        Else
+            index = ListBox1.SelectedIndex
+        End If
+
         Dim P = listaPelotao(index)
 
         id_pelotao_selected = P.id
