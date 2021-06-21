@@ -12,7 +12,7 @@ Public Class militares
     Dim userPass = "-99745397@BD"
 
     Private Sub militares_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        GlobalVariables.porto()
         If GlobalVariables.add2pelotao Then
             Add2Pelotao.Visible = True
             register.Visible = False
