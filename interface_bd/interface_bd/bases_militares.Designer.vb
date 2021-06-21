@@ -162,7 +162,7 @@ Partial Class bases_militares
         '
         'baseReset
         '
-        Me.baseReset.Location = New System.Drawing.Point(0, 0)
+        Me.baseReset.Location = New System.Drawing.Point(97, 184)
         Me.baseReset.Name = "baseReset"
         Me.baseReset.Size = New System.Drawing.Size(75, 23)
         Me.baseReset.TabIndex = 0

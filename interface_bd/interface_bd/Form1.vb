@@ -18,7 +18,7 @@
     End Sub
 
     Private Sub Equipamento_Click(sender As Object, e As EventArgs) Handles Equipamento.Click
-        Dim equi = New equipamento
+        Dim equi = New escolha_equi
         equi.Show()
         Me.Close()
     End Sub

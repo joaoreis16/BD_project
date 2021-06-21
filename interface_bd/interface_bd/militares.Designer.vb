@@ -287,9 +287,9 @@ Partial Class militares
         '
         'register
         '
-        Me.register.Location = New System.Drawing.Point(33, 532)
+        Me.register.Location = New System.Drawing.Point(33, 540)
         Me.register.Name = "register"
-        Me.register.Size = New System.Drawing.Size(105, 66)
+        Me.register.Size = New System.Drawing.Size(153, 39)
         Me.register.TabIndex = 37
         Me.register.Text = "Registar Militar"
         Me.register.UseVisualStyleBackColor = True
