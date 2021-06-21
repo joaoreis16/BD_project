@@ -1,91 +1,87 @@
-﻿Public Class Missao
-    Private _id As Integer
-    Private _nome As String
-    Private _tipo As String
-    Private _pais As String
-    Private _brief As String
-    Private _estado As String
+﻿Imports System.Data.SqlClient
+Public Class missao
+    Dim CN As SqlConnection
+    Dim CMD As SqlCommand
+    Dim listaMissao As New List(Of Missoes)()
+    Friend Shared baseSelected As Base
+    Private Sub goBack_Click(sender As Object, e As EventArgs) Handles goBack.Click
+        Dim pag_init = New Form1
+        pag_init.Show()
+        Me.Close()
+    End Sub
 
-    Property id() As Integer
-        Get
-            Return _id
-        End Get
-        Set(ByVal value As Integer)
-            _id = value
-        End Set
-    End Property
+    Private Sub homeBttn_Click(sender As Object, e As EventArgs) Handles homeBttn.Click
+        Dim pag_init = New Form1
+        pag_init.Show()
+        Me.Close()
+    End Sub
 
-    Property nome() As String
-        Get
-            Return _nome
-        End Get
+    Private Sub missao_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TBnome.Enabled = True
+        TBpais.Enabled = True
+        ComboBox1.Enabled = True
+        ComboBox1.SelectedIndex = 0
 
-        Set(ByVal value As String)
-            If value Is Nothing Or value = "" Then
-                Throw New Exception("This field can’t be empty")
-                Exit Property
-            End If
-            _nome = value
-        End Set
-    End Property
+        Dim dbServer = "tcp:mednat.ieeta.pt\SQLSERVER,8101"
+        Dim dbName = "p9g6"
+        Dim userName = "p9g6"
+        Dim userPass = "-99745397@BD"
 
-    Property tipo() As String
-        Get
-            Return _tipo
-        End Get
+        CN = New SqlConnection("data Source = " + dbServer + " ;" +
+                               "initial Catalog = " + dbName + ";" +
+                               "uid = " + userName + ";" +
+                               "password = " + userPass)
 
-        Set(ByVal value As String)
-            If value Is Nothing Or value = "" Then
-                Throw New Exception("This field can’t be empty")
-                Exit Property
-            End If
-            _tipo = value
-        End Set
-    End Property
+        CMD = New SqlCommand
+        CMD.Connection = CN
 
-    Property pais() As String
-        Get
-            Return _pais
-        End Get
+        CMD.CommandText = "SELECT * FROM EXERCITO.missao"
 
-        Set(ByVal value As String)
-            If value Is Nothing Or value = "" Then
-                Throw New Exception("This field can’t be empty")
-                Exit Property
-            End If
-            _pais = value
-        End Set
-    End Property
+        CN.Open()
+        Dim RDR As SqlDataReader
+        RDR = CMD.ExecuteReader
 
-    Property brief() As String
-        Get
-            Return _brief
-        End Get
+        ListBox1.Items.Clear()
+        Dim M As New Missoes
+        While RDR.Read
+            M.id = Convert.ToString(RDR.Item("id"))
+            M.nome = RDR.Item("nome")
+            M.tipo = RDR.Item("tipo")
+            M.pais = RDR.Item("pais")
+            M.nBaixas = Convert.ToString(RDR.Item("nBaixas"))
 
-        Set(ByVal value As String)
-            If value Is Nothing Or value = "" Then
-                Throw New Exception("This field can’t be empty")
-                Exit Property
-            End If
-            _brief = value
-        End Set
-    End Property
-    Property estado() As String
-        Get
-            Return _estado
-        End Get
+            listaMissao.Add(M)
+            ListBox1.Items.Add(M)
+        End While
 
-        Set(ByVal value As String)
-            If value Is Nothing Or value = "" Then
-                Throw New Exception("This field can’t be empty")
-                Exit Property
-            End If
-            _estado = value
-        End Set
-    End Property
+        RDR.Close()
+        CN.Close()
 
-    Overrides Function ToString() As String
-        Return _id & "     |     " & _nome
-    End Function
+    End Sub
 
+    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
+        TBnome.Enabled = False
+        TBpais.Enabled = False
+        ComboBox1.Enabled = False
+
+        Dim index = ListBox1.SelectedIndex
+        Dim M = listaMissao(index)
+        Debug.Print(index)
+
+        TBnome.Text = M.nome
+        TBpais.Text = M.pais
+        ComboBox1.SelectedItem = M.tipo
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        TBnome.Enabled = True
+        TBpais.Enabled = True
+        ComboBox1.Enabled = True
+
+
+        TBnome.Text = ""
+        TBpais.Text = ""
+        ComboBox1.SelectedItem = ""
+        ComboBox1.SelectedIndex = 0
+    End Sub
 End Class

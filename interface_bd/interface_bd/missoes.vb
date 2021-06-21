@@ -1,75 +1,70 @@
-﻿Imports System.Data.SqlClient
+﻿Public Class Missoes
 
-Public Class missoes
-    Dim dbServer = "tcp:mednat.ieeta.pt\SQLSERVER,8101"
-    Dim dbName = "p9g6"
-    Dim userName = "p9g6"
-    Dim userPass = "-99745397@BD"
-    Dim listaMissoes As New List(Of Missao)()
-    Dim StartingList As New List(Of Missao)()
-    Friend Shared misSelected As missoes
-    Private Sub goBack_Click(sender As Object, e As EventArgs) Handles goBack.Click
-        Dim pag_init = New Form1
-        pag_init.Show()
-        Me.Close()
-    End Sub
+    Private _id As Integer
+    Private _nome As String
+    Private _tipo As String
+    Private _pais As String
+    Private _nBaixas As Integer
 
-    Private Sub info_militar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim CN As SqlConnection
-        Dim CMD As New SqlCommand
-        Dim RDR As SqlDataReader
-        CN = New SqlConnection("data Source = " + dbServer + " ;" +
-                                       "initial Catalog = " + dbName + ";" +
-                                       "uid = " + userName + ";" +
-                                       "password = " + userPass)
+    Property id() As Integer
+        Get
+            Return _id
+        End Get
+        Set(ByVal value As Integer)
+            _id = value
+        End Set
+    End Property
+    Property nome() As String
+        Get
+            Return _nome
+        End Get
 
-        CMD.Connection = CN
+        Set(ByVal value As String)
+            If value Is Nothing Or value = "" Then
+                Throw New Exception("This field can’t be empty")
+                Exit Property
+            End If
+            _nome = value
+        End Set
+    End Property
 
-        CMD.CommandText = "SELECT missao.id,nome, tipo_missao.tipo, pais,brief, estado_missao.estado FROM EXERCITO.missao
-									JOIN EXERCITO.tipo_missao
-									ON missao.tipo = tipo_missao.id
-									JOIN EXERCITO.estado_missao
-									ON missao.estado = estado_missao.id"
-        CN.Open()
+    Property tipo() As String
+        Get
+            Return _tipo
+        End Get
 
-        Dim count As Integer = 0
-        RDR = CMD.ExecuteReader
-        missoesLB.Items.Clear()
-        While RDR.Read
-            Dim M As New Missao
-            M.id = Convert.ToString(RDR.Item("id"))
-            M.nome = RDR.Item("nome")
-            M.tipo = Convert.ToString(RDR.Item("tipo"))
-            M.pais = RDR.Item("pais")
-            'B.data_inicio = Convert.ToString(RDR.Item("data_inicio"))
-            'B.data_fim = Convert.ToString(RDR.Item("data_fim"))
-            M.brief = Convert.ToString(RDR.Item("brief"))
-            M.estado = Convert.ToString(RDR.Item("estado"))
-            listaMissoes.Add(M)
-            missoesLB.Items.Add(M)
-            count = count + 1
-        End While
-        StartingList.AddRange(listaMissoes.ToArray)
-        'totalTxtBox.Text = count
-        CN.Close()
+        Set(ByVal value As String)
+            If value Is Nothing Or value = "" Then
+                Throw New Exception("This field can’t be empty")
+                Exit Property
+            End If
+            _tipo = value
+        End Set
+    End Property
 
+    Property pais() As String
+        Get
+            Return _pais
+        End Get
 
+        Set(ByVal value As String)
+            If value Is Nothing Or value = "" Then
+                Throw New Exception("This field can’t be empty")
+                Exit Property
+            End If
+            _pais = value
+        End Set
+    End Property
+    Property nBaixas() As Integer
+        Get
+            Return _nBaixas
+        End Get
+        Set(ByVal value As Integer)
+            _nBaixas = value
+        End Set
+    End Property
 
-
-    End Sub
-
-    Private Sub misLB_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles missoesLB.DoubleClick
-        Dim index = missoesLB.SelectedIndex
-        GlobalVariables.misSelected = listaMissoes(index)
-        'Dim info = New info_mis
-        'info.Show()
-        'Me.Close()
-    End Sub
-
-    Private Sub homeBttn_Click(sender As Object, e As EventArgs) Handles homeBttn.Click
-        Dim home = New Form1
-        home.Show()
-        Me.Close()
-    End Sub
-
+    Overrides Function ToString() As String
+        Return _id & "   |   " & _nome
+    End Function
 End Class
