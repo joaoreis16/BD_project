@@ -149,6 +149,7 @@ Public Class equipamento
     Private Sub ApplyFilters_Click(sender As Object, e As EventArgs) Handles ApplyFilters.Click
         Dim tp = TipoDD.SelectedValue
         Dim isUsed = uso.SelectedValue
+        Dim cmd As String
         Dim conds As New List(Of String)()
 
 
@@ -156,11 +157,18 @@ Public Class equipamento
                                "initial Catalog = " + dbName + ";" +
                                "uid = " + userName + ";" +
                                "password = " + userPass)
-        Dim cmd = "SELECT * FROM EXERCITO.equipamento JOIN EXERCITO.arma ON  id = idEqui JOIN EXERCITO.tipo_arma ON tipo_arma.id = arma.idTipo "
-
+        If escolha_equi.arma Then
+            cmd = "SELECT * FROM EXERCITO.equipamento JOIN EXERCITO.arma ON  id = idEqui JOIN EXERCITO.tipo_arma ON tipo_arma.id = arma.idTipo "
+        Else
+            cmd = "SELECT * FROM EXERCITO.equipamento JOIN EXERCITO.veiculo ON  id = idEqui JOIN EXERCITO.tipo_veiculo ON tipo_veiculo.id = veiculo.idTipo "
+        End If
 
         If tp > -1 Then
-            conds.Add(String.Format("arma.idTipo = {0}", tp))
+            If escolha_equi.arma Then
+                conds.Add(String.Format("arma.idTipo = {0}", tp))
+            Else
+                conds.Add(String.Format("veiculo.idTipo = {0}", tp))
+            End If
         End If
 
         If isUsed > -1 Then
@@ -242,9 +250,17 @@ Public Class equipamento
 
     Function PopulateBoxes(CN As SqlConnection)
         Dim SQA As SqlDataAdapter
-
+        Dim cmd As String
         'tipo
-        SQA = New SqlDataAdapter("SELECT id, tipo FROM EXERCITO.tipo_arma", CN)
+
+        If escolha_equi.arma Then
+            cmd = "SELECT id, tipo FROM EXERCITO.tipo_arma"
+
+        Else
+            cmd = "SELECT id, tipo FROM EXERCITO.tipo_veiculo"
+        End If
+
+        SQA = New SqlDataAdapter(cmd, CN)
         Dim dt As DataTable = New DataTable()
         SQA.Fill(dt)
 

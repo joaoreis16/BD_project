@@ -52,6 +52,8 @@ Public Class info_militar
 
             If militar.estado = "Reformado" Then
                 Button1.Enabled = False
+                useArmaBttn.Hide()
+                useVeiculoBttn.Hide()
             End If
 
             CMD.Connection = CN
