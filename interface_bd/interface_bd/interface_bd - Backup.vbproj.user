@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup />
   <ItemGroup>
     <Compile Update="bases_militares.vb">
       <SubType>Form</SubType>
@@ -8,10 +7,8 @@
     <Compile Update="equipamento.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="missoes.vb">
     <Compile Update="escolha_equi.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="info_base.vb">
@@ -30,6 +27,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ramos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

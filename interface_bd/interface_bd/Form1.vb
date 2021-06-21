@@ -24,8 +24,8 @@
     End Sub
 
     Private Sub ButtonMissao_Click(sender As Object, e As EventArgs) Handles ButtonMissao.Click
-        Dim missao = New missao
-        missao.Show()
+        Dim mis = New missao
+        mis.Show()
         Me.Close()
     End Sub
 End Class
