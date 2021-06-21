@@ -139,6 +139,8 @@ Public Class info_militar
                     TipoSol.Text = RDR.Item("tipo")
                 End While
             ElseIf militar.tipo = "MEDICO" Then
+                useArmaBttn.Hide()
+                useVeiculoBttn.Hide()
                 TipoSol.Hide()
                 TpSolLabel.Hide()
 
@@ -151,6 +153,8 @@ Public Class info_militar
                 End While
 
             Else
+                useArmaBttn.Hide()
+                useVeiculoBttn.Hide()
                 TipoSol.Hide()
                 TpSolLabel.Hide()
                 Espec.Hide()
@@ -402,6 +406,13 @@ Public Class info_militar
 
     Private Sub useArmaBttn_Click(sender As Object, e As EventArgs) Handles useArmaBttn.Click
         GlobalVariables.typeEqui = True
+        Dim ae = New assing_equipamento
+        ae.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub useVeicBttn_Click(sender As Object, e As EventArgs) Handles useVeiculoBttn.Click
+        GlobalVariables.typeEqui = False
         Dim ae = New assing_equipamento
         ae.Show()
         Me.Close()

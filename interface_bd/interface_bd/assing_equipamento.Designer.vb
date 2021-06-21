@@ -35,6 +35,8 @@ Partial Class assing_equipamento
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -141,9 +143,9 @@ Partial Class assing_equipamento
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(589, 219)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(45, 20)
+        Me.Label2.Size = New System.Drawing.Size(84, 20)
         Me.Label2.TabIndex = 40
-        Me.Label2.Text = "Arma"
+        Me.Label2.Text = "Arma Atual"
         '
         'Button2
         '
@@ -154,11 +156,31 @@ Partial Class assing_equipamento
         Me.Button2.Text = "Remover Arma"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(34, 109)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(131, 20)
+        Me.Label3.TabIndex = 42
+        Me.Label3.Text = "Armas Disponiveis"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(589, 391)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(139, 20)
+        Me.Label4.TabIndex = 43
+        Me.Label4.Text = "Historico Utilização"
+        '
         'assing_equipamento
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1071, 632)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -191,4 +213,6 @@ Partial Class assing_equipamento
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Button2 As Button
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
 End Class

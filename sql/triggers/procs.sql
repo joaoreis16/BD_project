@@ -229,6 +229,9 @@ AS
 					BEGIN
 						IF NOT EXISTS (SELECT * FROM EXERCITO.utiliza_equipamento WHERE equipamento = @equi AND data_f IS NULL)
 							BEGIN
+								DECLARE @cur_weapon INTEGER
+								SELECT @cur_weapon = EXERCITO.aUsarArma(@nCC)
+								EXEC EXERCITO.removeEquipamento @nCC, @cur_weapon
 								INSERT INTO EXERCITO.utiliza_equipamento(soldado, equipamento, data_i, data_f) VALUES (@nCC, @equi, GETDATE(), NULL)
 							END
 						ELSE
@@ -244,6 +247,7 @@ AS
 			RETURN
 	END
 GO
+
 
 CREATE PROC EXERCITO.removeEquipamento @nCC INT, @id INT
 AS
