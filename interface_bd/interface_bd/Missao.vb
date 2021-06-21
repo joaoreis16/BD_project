@@ -101,9 +101,15 @@ Public Class missao
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         'ver mais info
-        Dim info = New info_missao
-        info.Show()
-        Me.Close()
+        If ListBox1.SelectedIndex = -1 Then
+            MsgBox("Selecione uma missão primeiro")
+
+        Else
+            Dim info = New info_missao
+            info.Show()
+            Me.Close()
+        End If
+
     End Sub
 
 
