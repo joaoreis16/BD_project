@@ -26,6 +26,8 @@ Public Class pelotao
 
     Private Sub pelotao_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        GlobalVariables.porto()
+
         TBnome.ReadOnly = False
 
         CN = New SqlConnection("data Source = " + dbServer + " ;" +
