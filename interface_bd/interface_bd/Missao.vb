@@ -44,7 +44,6 @@ Public Class missao
         Dim RDR As SqlDataReader
         RDR = CMD.ExecuteReader
 
-        ListBox1.Items.Clear()
         While RDR.Read
             Dim M As New Missoes
             M.id = Convert.ToString(RDR.Item("id"))
