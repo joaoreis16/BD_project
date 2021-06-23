@@ -12,6 +12,7 @@ Public Class GlobalVariables
     Public Shared Property listaMilitares As New List(Of Militar)()
 
     Public Shared Property add2pelotao As Boolean = False
+    Public Shared Property add2missao As Boolean = False
 
     Public Shared Property pelotao_id As Integer
 
