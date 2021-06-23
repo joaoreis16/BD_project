@@ -34,11 +34,7 @@ Public Class missao
         CMD = New SqlCommand
         CMD.Connection = CN
 
-        CMD.CommandText = "SELECT missao.id,nome, tipo_missao.tipo, pais,brief, estado_missao.estado FROM EXERCITO.missao
-									JOIN EXERCITO.tipo_missao
-									ON missao.tipo = tipo_missao.id
-									JOIN EXERCITO.estado_missao
-									ON missao.estado = estado_missao.id"
+        CMD.CommandText = "SELECT * FROM EXERCITO.missao_info"
 
         CN.Open()
         Dim RDR As SqlDataReader
@@ -94,7 +90,7 @@ Public Class missao
         Dim pais = ComboBox2.SelectedItem
         Dim tipo = ComboBox1.SelectedIndex
 
-        Dim M As Missoes
+        Dim M As New Missoes
         M.nome = nome
         M.pais = pais
         M.tipo = tipo

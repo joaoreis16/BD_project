@@ -57,14 +57,7 @@ Public Class info_militar
             End If
 
             CMD.Connection = CN
-            CMD.CommandText = String.Format("SELECT design, nome FROM
-                                             EXERCITO.militar
-                                             JOIN EXERCITO.base_militar
-                                             ON militar.base = base_militar.id
-                                             JOIN EXERCITO.ramo
-                                             ON militar.ramo = ramo.id
-                                             JOIN EXERCITO.tipo_ramo
-                                             ON tipo_ramo.id = ramo.tipo")
+            CMD.CommandText = String.Format("SELECT * FROM EXERCITO.ramo_base_info")
 
             CN.Open()
             RDR = CMD.ExecuteReader

@@ -96,23 +96,11 @@ Public Class assing_equipamento
         RDR.Close()
 
         If GlobalVariables.typeEqui Then
-            txt = String.Format("SELECT * FROM EXERCITO.arma JOIN 
-				    EXERCITO.equipamento
-				    ON arma.idEqui = equipamento.id JOIN
-				    EXERCITO.utiliza_equipamento 
-				    ON utiliza_equipamento.equipamento = equipamento.id JOIN
-				    EXERCITO.militar
-				    ON militar.nCC = utiliza_equipamento.soldado
+            txt = String.Format("SELECT * FROM EXERCITO.arma_infos
 				    WHERE data_f IS NULL
 				    AND nCC={0}", GlobalVariables.milSelected.nCC)
         Else
-            txt = String.Format("SELECT * FROM EXERCITO.veiculo JOIN 
-				    EXERCITO.equipamento
-				    ON veiculo.idEqui = equipamento.id JOIN
-				    EXERCITO.utiliza_equipamento 
-				    ON utiliza_equipamento.equipamento = equipamento.id JOIN
-				    EXERCITO.militar
-				    ON militar.nCC = utiliza_equipamento.soldado
+            txt = String.Format("SELECT * FROM EXERCITO.veiculo_infos
 				    WHERE data_f IS NULL
 				    AND nCC={0}", GlobalVariables.milSelected.nCC)
         End If

@@ -33,12 +33,7 @@ Public Class militares
         CMD = New SqlCommand
         CMD.Connection = CN
 
-        CMD.CommandText = "SELECT nCC, Pnome, Unome, morada, email, dNasc, dInsc, tel, nacionalidade, nMissoes, ramo, base, EXERCITO.cargo.cargo, EXERCITO.militarEmMissao(nCC) AS EmMissao, EXERCITO.subclass(nCC) AS tipo, estado_militar.estado
-                           FROM EXERCITO.militar 
-                           JOIN EXERCITO.cargo 
-                           ON militar.cargo = cargo.id
-                           JOIN EXERCITO.estado_militar
-                           ON militar.estado = estado_militar.id"
+        CMD.CommandText = "SELECT * FROM EXERCITO.militar_info"
         CN.Open()
 
         Dim count As Integer = 0

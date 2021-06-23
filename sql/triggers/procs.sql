@@ -2,7 +2,7 @@
 *	TRATA DE REMOVER DA POSIÇAO CASO O MILITAR REPRESENTE
 *	UMA BASE OU UM RAMO.
 */
-DROP PROC EXERCITO.deleteMilitar
+DROP PROC EXERCITO.retireMilitar
 CREATE PROC EXERCITO.retireMilitar @nCC INT
 AS
 	BEGIN		
@@ -23,9 +23,6 @@ AS
 				UPDATE EXERCITO.pelotao SET nCC = NULL WHERE nCC = @nCC
 				DELETE FROM EXERCITO.utiliza_equipamento WHERE soldado = @nCC
 				DELETE FROM EXERCITO.manuntencao WHERE engenheiro = @nCC
-				DELETE FROM EXERCITO.soldado WHERE nCC = @nCC
-				DELETE FROM EXERCITO.medico WHERE nCC = @nCC
-				DELETE FROM EXERCITO.engenheiro WHERE nCC = @nCC
 
 				UPDATE EXERCITO.militar SET estado=3 WHERE nCC = @nCC
 				RETURN 1
@@ -36,6 +33,7 @@ AS
 	END
 GO
 
+SELECT * FROM EXERCITO.pelotao
 /*
 *	COLOCA nCC COMO RESPONSAVEL DE RAMO
 */
@@ -75,6 +73,7 @@ GO
 /*
 *	ADICIONAR MILITAR A PELOTAO
 */
+DROP PROC EXERCITO.addToPelotao
 EXEC EXERCITO.addToPelotao @nCC @pel
 CREATE PROC EXERCITO.addToPelotao @nCC INT, @pel INT
 AS
@@ -82,9 +81,15 @@ AS
 		IF EXISTS (SELECT * FROM EXERCITO.militar WHERE nCC = @nCC)
 			AND EXISTS (SELECT * FROM EXERCITO.pelotao WHERE id = @pel)
 			BEGIN
-				UPDATE EXERCITO.militar SET pelotao=@pel
-				WHERE nCC=@nCC
-				RETURN 1
+				IF EXISTS (SELECT * FROM EXERCITO.militar WHERE nCC = @nCC AND pelotao IS NULL)
+				BEGIN
+					UPDATE EXERCITO.militar SET pelotao=@pel
+					WHERE nCC=@nCC
+					RETURN 1
+				END
+
+				ELSE
+					RAISERROR ('MILITAR TA NOUTRO PELOTAO',1,1)
 			END
 		ELSE
 			RAISERROR ('PELOTAO OU MILITAR NÃO EXISTENTES',1,1)
@@ -230,7 +235,13 @@ AS
 						IF NOT EXISTS (SELECT * FROM EXERCITO.utiliza_equipamento WHERE equipamento = @equi AND data_f IS NULL)
 							BEGIN
 								DECLARE @cur_weapon INTEGER
-								SELECT @cur_weapon = EXERCITO.aUsarArma(@nCC)
+								IF EXISTS (SELECT * FROM EXERCITO.arma WHERE idEqui = @equi)
+									BEGIN
+										SELECT @cur_weapon = EXERCITO.aUsarArma(@nCC)
+									END
+								ELSE
+									SELECT @cur_weapon = EXERCITO.aUsarVeiculo(@nCC)
+
 								EXEC EXERCITO.removeEquipamento @nCC, @cur_weapon
 								INSERT INTO EXERCITO.utiliza_equipamento(soldado, equipamento, data_i, data_f) VALUES (@nCC, @equi, GETDATE(), NULL)
 							END
@@ -356,6 +367,7 @@ GO
 DROP PROC EXERCITO.retire
 
 
+SELECT * FROM EXERCITO.cargo
 /*
 *	CRIA MILITAR->SOLDADO 
 */

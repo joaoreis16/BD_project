@@ -38,7 +38,7 @@ Public Class pelotao
         CMD = New SqlCommand
         CMD.Connection = CN
 
-        CMD.CommandText = "SELECT id, nome, Pnome, Unome, idMissao, militar.nCC  FROM EXERCITO.pelotao LEFT JOIN EXERCITO.militar ON militar.nCC=pelotao.nCC"
+        CMD.CommandText = "SELECT * FROM EXERCITO.pelotao_infos"
 
         CN.Open()
         Dim RDR As SqlDataReader
