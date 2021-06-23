@@ -86,14 +86,15 @@ Public Class missao
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         'Criar Missão
-        Dim nome = TBnome.Text
-        Dim pais = ComboBox2.SelectedItem
-        Dim tipo = ComboBox1.SelectedIndex
 
         Dim M As New Missoes
         M.nome = nome
         M.pais = pais
         M.tipo = tipo
+        Dim m1 As New Missoes
+        m1.nome = TBnome.Text
+        m1.pais = ComboBox2.SelectedItem
+        m1.tipo = ComboBox1.SelectedIndex
 
         Dim CN As SqlConnection
         Dim CMD As SqlCommand
@@ -105,14 +106,14 @@ Public Class missao
         CMD.Connection = CN
 
         CMD.CommandText = String.Format("INSERT INTO EXERCITO.missao (nome, tipo, pais, nBaixas, brief) 
-                                            VALUES ('{0}', {1}, '{2}', 0, '-')", nome, tipo, pais)
+                                            VALUES ('{0}', {1}, '{2}', 0, '-')", m1.nome, m1.tipo, m1.pais)
 
         CN.Open()
         CMD.ExecuteNonQuery()
         GlobalVariables.porto()
         CN.Close()
         MsgBox("Missão criada com sucesso!")
-        listaMissao.Add(M)
+        listaMissao.Add(m1)
         Dim miss = New missao
         miss.Show()
         Me.Close()

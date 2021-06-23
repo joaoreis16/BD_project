@@ -162,10 +162,11 @@ Partial Class bases_militares
         '
         'baseReset
         '
-        Me.baseReset.Location = New System.Drawing.Point(97, 184)
+        Me.baseReset.Location = New System.Drawing.Point(93, 184)
         Me.baseReset.Name = "baseReset"
-        Me.baseReset.Size = New System.Drawing.Size(75, 23)
+        Me.baseReset.Size = New System.Drawing.Size(133, 29)
         Me.baseReset.TabIndex = 0
+        Me.baseReset.Text = "Reset"
         '
         'FT
         '

@@ -44,6 +44,7 @@ Partial Class pelotao
         Me.criarPelotao = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.addMission = New System.Windows.Forms.Button()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -249,11 +250,22 @@ Partial Class pelotao
         Me.Button4.Text = "Eliminar Pelotão"
         Me.Button4.UseVisualStyleBackColor = True
         '
+        'addMission
+        '
+        Me.addMission.Location = New System.Drawing.Point(426, 469)
+        Me.addMission.Name = "addMission"
+        Me.addMission.Size = New System.Drawing.Size(188, 55)
+        Me.addMission.TabIndex = 49
+        Me.addMission.Text = "Adicionar à Missão"
+        Me.addMission.UseVisualStyleBackColor = True
+        Me.addMission.Visible = False
+        '
         'pelotao
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1071, 632)
+        Me.Controls.Add(Me.addMission)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.criarPelotao)
@@ -305,4 +317,5 @@ Partial Class pelotao
     Friend WithEvents criarPelotao As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
+    Friend WithEvents addMission As Button
 End Class

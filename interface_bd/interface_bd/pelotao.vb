@@ -83,6 +83,7 @@ Public Class pelotao
 
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
 
+
         TBnome.ReadOnly = True
         Dim index As Integer
         If ListBox1.SelectedIndex = -1 Then
@@ -109,6 +110,7 @@ Public Class pelotao
             End If
         Next
     End Sub
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         GlobalVariables.add2pelotao = True
@@ -153,7 +155,7 @@ Public Class pelotao
     Private Sub criarPelotao_Click(sender As Object, e As EventArgs) Handles criarPelotao.Click
         Dim nome = TBnome.Text
 
-        Dim index = ListBox2.SelectedIndex
+        Dim index = ListBox1.SelectedIndex
         Dim CN As SqlConnection
         Dim CMD As SqlCommand
         CN = New SqlConnection("data Source = " + dbServer + " ;" +
@@ -192,6 +194,32 @@ Public Class pelotao
         MsgBox("Pelotão eliminado com sucesso!")
         Dim pel = New pelotao
         pel.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub addMission_Click(sender As Object, e As EventArgs) Handles addMission.Click
+        Dim index = ListBox1.SelectedIndex
+
+        Dim P = listaPelotao(index)
+        Dim info As New info_missao
+
+        Dim CN As SqlConnection
+        Dim CMD As SqlCommand
+        CN = New SqlConnection("data Source = " + dbServer + " ;" +
+                                   "initial Catalog = " + dbName + ";" +
+                                   "uid = " + userName + ";" +
+                                   "password = " + userPass)
+        CN.Open()
+        CMD = New SqlCommand("EXERCITO.assignPelToMissao")
+        CMD.Connection = CN
+        CMD.CommandType = CommandType.StoredProcedure
+        CMD.Parameters.Add(New SqlParameter("@pel", P.id))
+        CMD.Parameters.Add(New SqlParameter("@mis", info_missao.id))
+        CMD.ExecuteNonQuery()
+        GlobalVariables.porto()
+        MsgBox("Pelotão adicionado com sucesso!")
+        Dim infom = New info_missao
+        infom.Show()
         Me.Close()
     End Sub
 End Class

@@ -43,6 +43,8 @@ Partial Class info_missao
         Me.TBid = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.menuBar.SuspendLayout()
         CType(Me.homeBttn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -97,7 +99,7 @@ Partial Class info_missao
         '
         'TBnome
         '
-        Me.TBnome.Location = New System.Drawing.Point(140, 113)
+        Me.TBnome.Location = New System.Drawing.Point(140, 76)
         Me.TBnome.Name = "TBnome"
         Me.TBnome.ReadOnly = True
         Me.TBnome.Size = New System.Drawing.Size(308, 27)
@@ -106,7 +108,7 @@ Partial Class info_missao
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(39, 113)
+        Me.Label1.Location = New System.Drawing.Point(39, 76)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(50, 20)
         Me.Label1.TabIndex = 48
@@ -115,7 +117,7 @@ Partial Class info_missao
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(55, 173)
+        Me.Label2.Location = New System.Drawing.Point(55, 136)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(34, 20)
         Me.Label2.TabIndex = 50
@@ -124,7 +126,7 @@ Partial Class info_missao
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(50, 229)
+        Me.Label3.Location = New System.Drawing.Point(50, 192)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(39, 20)
         Me.Label3.TabIndex = 51
@@ -133,7 +135,7 @@ Partial Class info_missao
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(15, 283)
+        Me.Label4.Location = New System.Drawing.Point(15, 246)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(74, 20)
         Me.Label4.TabIndex = 52
@@ -142,7 +144,7 @@ Partial Class info_missao
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(35, 339)
+        Me.Label5.Location = New System.Drawing.Point(35, 302)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(54, 20)
         Me.Label5.TabIndex = 53
@@ -150,7 +152,7 @@ Partial Class info_missao
         '
         'TBpais
         '
-        Me.TBpais.Location = New System.Drawing.Point(140, 173)
+        Me.TBpais.Location = New System.Drawing.Point(140, 136)
         Me.TBpais.Name = "TBpais"
         Me.TBpais.ReadOnly = True
         Me.TBpais.Size = New System.Drawing.Size(308, 27)
@@ -158,7 +160,7 @@ Partial Class info_missao
         '
         'TBtipo
         '
-        Me.TBtipo.Location = New System.Drawing.Point(140, 229)
+        Me.TBtipo.Location = New System.Drawing.Point(140, 192)
         Me.TBtipo.Name = "TBtipo"
         Me.TBtipo.ReadOnly = True
         Me.TBtipo.Size = New System.Drawing.Size(308, 27)
@@ -166,7 +168,7 @@ Partial Class info_missao
         '
         'TBbrief
         '
-        Me.TBbrief.Location = New System.Drawing.Point(140, 283)
+        Me.TBbrief.Location = New System.Drawing.Point(140, 246)
         Me.TBbrief.Name = "TBbrief"
         Me.TBbrief.ReadOnly = True
         Me.TBbrief.Size = New System.Drawing.Size(308, 27)
@@ -174,7 +176,7 @@ Partial Class info_missao
         '
         'TBestado
         '
-        Me.TBestado.Location = New System.Drawing.Point(140, 339)
+        Me.TBestado.Location = New System.Drawing.Point(140, 302)
         Me.TBestado.Name = "TBestado"
         Me.TBestado.ReadOnly = True
         Me.TBestado.Size = New System.Drawing.Size(308, 27)
@@ -195,14 +197,14 @@ Partial Class info_missao
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label6.Location = New System.Drawing.Point(631, 169)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(223, 20)
+        Me.Label6.Size = New System.Drawing.Size(222, 20)
         Me.Label6.TabIndex = 59
-        Me.Label6.Text = "Militares listados nesta missão"
+        Me.Label6.Text = "Pelotões listados nesta missão"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(67, 58)
+        Me.Label7.Location = New System.Drawing.Point(67, 21)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(22, 20)
         Me.Label7.TabIndex = 60
@@ -210,7 +212,7 @@ Partial Class info_missao
         '
         'TBid
         '
-        Me.TBid.Location = New System.Drawing.Point(140, 58)
+        Me.TBid.Location = New System.Drawing.Point(140, 21)
         Me.TBid.Name = "TBid"
         Me.TBid.ReadOnly = True
         Me.TBid.Size = New System.Drawing.Size(47, 27)
@@ -233,7 +235,7 @@ Partial Class info_missao
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.GroupBox1.Location = New System.Drawing.Point(47, 196)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(510, 395)
+        Me.GroupBox1.Size = New System.Drawing.Size(510, 347)
         Me.GroupBox1.TabIndex = 62
         Me.GroupBox1.TabStop = False
         '
@@ -247,11 +249,31 @@ Partial Class info_missao
         Me.Label8.TabIndex = 63
         Me.Label8.Text = "Informações Avançadas"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(47, 562)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(176, 29)
+        Me.Button1.TabIndex = 64
+        Me.Button1.Text = "Adicionar Pelotão"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(381, 562)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(176, 29)
+        Me.Button2.TabIndex = 65
+        Me.Button2.Text = "Remover Pelotão"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'info_missao
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1077, 632)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label6)
@@ -291,4 +313,6 @@ Partial Class info_missao
     Friend WithEvents TBid As TextBox
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label8 As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 End Class
